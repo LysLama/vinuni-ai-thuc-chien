@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+  <title>Luyện Thi Đánh Giá Năng Lực Đầu Vào - AI Thực Chiến VinUni (Khóa V)</title>
+  
+  <!-- PWA & Mobile Meta Tags -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#1e3a8a">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="AI Thực Chiến">
+  <link rel="apple-touch-icon" href="/icons/icon-192.png">
+  <link rel="icon" type="image/png" href="/icons/favicon.png">
+
+  <!-- KaTeX CSS & JS for Math Rendering (Offline Local) -->
+  <link rel="stylesheet" href="vendor/katex/katex.min.css">
+  <script defer src="vendor/katex/katex.min.js"></script>
+  <script defer src="vendor/katex/auto-render.min.js"></script>
+
+  <!-- Prism.js for Syntax Highlighting (Offline Local) -->
+  <link rel="stylesheet" href="vendor/prism/prism-tomorrow.min.css">
+  <script defer src="vendor/prism/prism.min.js"></script>
+  <script defer src="vendor/prism/prism-python.min.js"></script>
+  <script defer src="vendor/prism/prism-sql.min.js"></script>
+
+  <!-- Marked.js for GFM Markdown Rendering (Offline Local) -->
+  <script defer src="vendor/marked/marked.min.js"></script>
+  <script defer src="vendor/marked/marked-katex-extension.umd.js"></script>
+
+  <!-- Lucide Icons (Offline Local) -->
+  <script src="vendor/lucide/lucide.min.js"></script>
+
+  <!-- Bespoke Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Application Header -->
+  <header class="app-header">
+    <div class="brand-section">
+      <div class="brand-logo-badge">VINUNI • AI</div>
+      <div class="brand-titles">
+        <div class="brand-title">ĐÀO TẠO NHÂN TÀI AI THỰC CHIẾN (KHÓA V)</div>
+        <div class="brand-sub">Hệ thống khảo thí & luyện tập đánh giá năng lực đầu vào (Vòng 2 - Đợt 1)</div>
+      </div>
+    </div>
+
+    <nav class="header-nav">
+      <button class="nav-tab-btn active" data-tab="exam">
+        <i data-lucide="award" style="width: 16px; height: 16px;"></i> Thi Thử 90 Phút
+      </button>
+      <button class="nav-tab-btn" data-tab="practice">
+        <i data-lucide="book-open" style="width: 16px; height: 16px;"></i> Luyện Chuyên Đề
+      </button>
+      <button class="nav-tab-btn" data-tab="docs">
+        <i data-lucide="file-text" style="width: 16px; height: 16px;"></i> Cẩm Nang Ôn Tập
+      </button>
+      <button class="nav-tab-btn" data-tab="results" id="nav-btn-results" style="display: none;">
+        <i data-lucide="bar-chart-2" style="width: 16px; height: 16px;"></i> Kết Quả
+      </button>
+    </nav>
+
+    <div style="font-size: 13px; font-weight: 600; color: var(--text-muted); display: flex; align-items: center; gap: 8px;">
+      <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background-color: #10b981;"></span>
+      Ngân hàng: <strong id="bank-total-stat" class="tabular-nums" style="color: var(--accent-primary);">240 câu</strong>
+    </div>
+  </header>
+
+  <!-- Exam Control Banner (Visible during exam) -->
+  <div class="exam-bar" id="exam-control-bar">
+    <div style="display: flex; align-items: center; gap: 20px;">
+      <div class="timer-box tabular-nums" id="exam-timer-box">
+        <i data-lucide="clock" style="width: 18px; height: 18px;"></i>
+        <span id="exam-timer-display">90:00</span>
+      </div>
+      <div style="color: var(--text-muted);">
+        Đã trả lời: <strong id="answered-progress-stat" class="tabular-nums" style="color: var(--text-main);">0 / 20 câu</strong>
+      </div>
+    </div>
+
+    <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+      <button class="btn btn-secondary mobile-palette-btn" onclick="toggleMobilePalette()" id="btn-toggle-mobile-palette">
+        <i data-lucide="layout-grid" style="width: 15px; height: 15px;"></i> Bảng câu hỏi
+      </button>
+      <button class="btn btn-secondary" onclick="startNewExam()">
+        <i data-lucide="rotate-ccw" style="width: 15px; height: 15px;"></i> Đổi Đề
+      </button>
+      <button class="btn btn-primary" onclick="submitExam()">
+        <i data-lucide="check-circle" style="width: 15px; height: 15px;"></i> Nộp Bài
+      </button>
+    </div>
+  </div>
+
+  <!-- Main Viewport -->
+  <main class="main-viewport">
+
+    <!-- VIEW 1: EXAM RUNNER -->
+    <div id="view-exam">
+      <div class="exam-grid">
+        <!-- Left: Question Viewport -->
+        <div class="question-viewport">
+          <div class="question-meta-bar">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <span id="q-index-label" class="tabular-nums" style="font-weight: 700; font-size: 15px;">Câu 1 / 20</span>
+              <span id="q-module-badge" class="module-badge">Module A</span>
+              <span id="q-diff-badge" class="difficulty-badge diff-med">Trung bình</span>
+            </div>
+            <div style="font-size: 13px; font-weight: 700; color: var(--accent-primary);">
+              5 điểm
+            </div>
+          </div>
+
+          <div id="q-text-body" class="question-title-text">
+            Đang nạp câu hỏi...
+          </div>
+
+          <!-- Options or Scenario input will be injected here -->
+          <div id="q-options-container"></div>
+
+          <!-- Footer Action Bar -->
+          <div class="question-footer">
+            <button class="btn btn-flag" id="btn-flag-toggle" onclick="toggleFlag()">
+              <i data-lucide="flag" style="width: 15px; height: 15px;"></i> Đánh dấu xem lại (F)
+            </button>
+
+            <div style="display: flex; gap: 10px;">
+              <button class="btn btn-secondary" id="btn-prev-q" onclick="prevQuestion()">
+                ← Câu trước (P)
+              </button>
+              <button class="btn btn-primary" id="btn-next-q" onclick="nextQuestion()">
+                Câu tiếp theo → (N)
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Question Palette Navigator -->
+        <aside class="nav-palette-card">
+          <div class="nav-palette-header">
+            <span>BẢNG ĐIỀU HƯỚNG CÂU HỎI</span>
+            <span style="font-size: 11px; font-weight: 600; color: var(--text-faint);">Phím: 1-4, P, N, F</span>
+          </div>
+
+          <div class="legend-bar">
+            <div class="legend-item"><span class="legend-dot" style="background:#ecfdf5; border:1px solid #10b981;"></span> Đã làm</div>
+            <div class="legend-item"><span class="legend-dot" style="background:#ffffff; border:1px solid #e2e8f0;"></span> Chưa làm</div>
+            <div class="legend-item"><span class="legend-dot" style="background:#f59e0b;"></span> Đã cắm cờ</div>
+          </div>
+
+          <div class="palette-grid" id="exam-palette-grid">
+            <!-- 20 question buttons generated by JS -->
+          </div>
+
+          <div style="padding-top: 14px; border-top: 1px solid var(--border-subtle); font-size: 12px; color: var(--text-muted);">
+            <p><strong>Cấu trúc bài thi:</strong> 20 câu</p>
+            <p>• Module A (Toán): 5 câu (25đ)</p>
+            <p>• Module B (Code): 5 câu (25đ)</p>
+            <p>• Module C (AI): 5 câu (25đ)</p>
+            <p>• Module D (Logic): 5 câu (25đ)</p>
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    <!-- VIEW 2: EXAM RESULTS & REVIEW -->
+    <div id="view-results" style="display: none;">
+      <div class="result-container">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 1px solid var(--border-subtle); padding-bottom: 20px;">
+          <div>
+            <h1 style="font-size: 24px; font-weight: 800; color: var(--text-main); margin-bottom: 6px;">BÁO CÁO KẾT QUẢ THI MÔ PHỎNG</h1>
+            <p style="color: var(--text-muted); font-size: 14px;">Kỳ thi Đánh giá Năng lực Đầu vào - Chương trình Đào tạo Nhân tài AI Thực chiến (Khóa V)</p>
+          </div>
+          <div id="res-verdict-badge" style="padding: 8px 16px; border-radius: var(--radius-sm); font-weight: 700; font-size: 14px;">
+            ĐANG CHẤM ĐIỂM
+          </div>
+        </div>
+
+        <!-- Metric Summary Row -->
+        <div class="score-hero-row">
+          <div class="score-box">
+            <span style="font-size: 12px; font-weight: 600; color: var(--text-muted);">TỔNG ĐIỂM ĐẠT ĐƯỢC</span>
+            <div class="score-box-num tabular-nums" id="res-total-score">0 / 100</div>
+          </div>
+          <div class="score-box">
+            <span style="font-size: 12px; font-weight: 600; color: var(--text-muted);">TỈ LỆ ĐẠT (CHUẨN >= 65%)</span>
+            <div class="score-box-num tabular-nums" id="res-percentage">0%</div>
+          </div>
+          <div class="score-box">
+            <span style="font-size: 12px; font-weight: 600; color: var(--text-muted);">THỜI GIAN HOÀN THÀNH</span>
+            <div class="score-box-num tabular-nums" id="res-time-elapsed">0p 0s</div>
+          </div>
+          <div class="score-box">
+            <span style="font-size: 12px; font-weight: 600; color: var(--text-muted);">XẾP LỚP DỰ KIẾN</span>
+            <div class="score-box-num" style="font-size: 18px; color: var(--accent-primary);">AI Thực Chiến</div>
+          </div>
+        </div>
+
+        <h2 style="font-size: 16px; font-weight: 700; color: var(--text-main); margin-top: 28px;">Kết Quả Năng Lực Theo 04 Module</h2>
+        <div class="module-breakdown-grid" id="res-modules-breakdown">
+          <!-- Injected by JS -->
+        </div>
+
+        <!-- Review Question Filters -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin: 32px 0 16px 0;">
+          <h2 style="font-size: 16px; font-weight: 700; color: var(--text-main);">Lời Giải & Giải Thích Chi Tiết 20 Câu Hỏi</h2>
+          <div style="display: flex; gap: 8px;">
+            <button class="btn btn-secondary" onclick="renderReviewList('all')">Tất cả (20)</button>
+            <button class="btn btn-secondary" onclick="renderReviewList('wrong')">Câu làm sai</button>
+            <button class="btn btn-secondary" onclick="renderReviewList('correct')">Câu làm đúng</button>
+            <button class="btn btn-primary" onclick="window.print()">
+              <i data-lucide="printer" style="width: 15px; height: 15px;"></i> In Bài Thi / Xuất PDF
+            </button>
+            <button class="btn btn-secondary" onclick="startNewExam(); switchTab('exam');">
+              <i data-lucide="refresh-cw" style="width: 15px; height: 15px;"></i> Thi Lại Đề Mới
+            </button>
+          </div>
+        </div>
+
+        <div id="res-review-accordion">
+          <!-- Accordion list injected by JS -->
+        </div>
+      </div>
+    </div>
+
+    <!-- VIEW 3: PRACTICE MODE (FILTER BY MODULE & DIFFICULTY) -->
+    <div id="view-practice" style="display: none;">
+      <div style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 24px; margin-bottom: 24px;">
+        <h1 style="font-size: 20px; font-weight: 800; color: var(--text-main); margin-bottom: 8px;">LUYỆN TẬP THEO CHUYÊN ĐỀ (240 CÂU HỎI)</h1>
+        <p style="color: var(--text-muted); font-size: 13px; margin-bottom: 20px;">Luyện theo từng module với phản hồi đáp án và phân tích chi tiết ngay sau mỗi câu.</p>
+
+        <div style="display: grid; grid-template-columns: 1fr 180px 180px 120px; gap: 14px; align-items: end;">
+          <div>
+            <label style="display: block; font-size: 12px; font-weight: 700; margin-bottom: 6px;">Chọn Module:</label>
+            <select id="practice-module-select" style="width: 100%; padding: 8px 12px; border-radius: var(--radius-md); border: 1px solid var(--border-strong); font-size: 13px;">
+              <option value="A">Module A: Nền tảng Toán học & Định lượng (60 câu)</option>
+              <option value="B">Module B: Kỹ thuật Lập trình & Xử lý dữ liệu (60 câu)</option>
+              <option value="C">Module C: Kiến thức AI & Tư duy sản phẩm AI (60 câu)</option>
+              <option value="D">Module D: Tư duy Logic, Đạo đức & Hành vi (60 câu)</option>
+            </select>
+          </div>
+
+          <div>
+            <label style="display: block; font-size: 12px; font-weight: 700; margin-bottom: 6px;">Độ khó:</label>
+            <select id="practice-diff-select" style="width: 100%; padding: 8px 12px; border-radius: var(--radius-md); border: 1px solid var(--border-strong); font-size: 13px;">
+              <option value="all">Tất cả mức độ</option>
+              <option value="Cơ bản">Cơ bản</option>
+              <option value="Trung bình">Trung bình</option>
+              <option value="Nâng cao">Nâng cao</option>
+            </select>
+          </div>
+
+          <div>
+            <label style="display: block; font-size: 12px; font-weight: 700; margin-bottom: 6px;">Chế độ ôn tập:</label>
+            <button id="btn-toggle-all-explanations" class="btn btn-secondary" onclick="toggleAllPracticeExplanations()" style="width: 100%; padding: 8px 10px; font-size: 12px; white-space: nowrap;">
+              <i data-lucide="eye" style="width: 14px; height: 14px;"></i>
+              <span id="toggle-all-exp-label">Mở hết lời giải</span>
+            </button>
+          </div>
+
+          <div>
+            <span class="tabular-nums" id="practice-count-badge" style="display: inline-block; padding: 9px 12px; background: #eff6ff; color: var(--accent-primary); font-weight: 700; border-radius: var(--radius-md); font-size: 13px; border: 1px solid #bfdbfe; width: 100%; text-align: center;">
+              60 câu hỏi
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div id="practice-questions-list">
+        <!-- Injected by JS -->
+      </div>
+    </div>
+
+    <!-- VIEW 4: STUDY CENTER & DOCS VIEWER -->
+    <div id="view-docs" style="display: none;">
+      <div class="doc-reader-layout">
+        <!-- Sidebar Document List -->
+        <aside class="doc-nav-list">
+          <div style="font-size: 12px; font-weight: 700; color: var(--text-faint); padding: 8px 12px; text-transform: uppercase;">
+            Tài Liệu Ôn Tập Trọng Tâm
+          </div>
+          <div class="doc-nav-item active" data-doc="KINH_NGHIEM_THI_THUC_CHIEN_VINUNI.md" onclick="loadDocumentContent('KINH_NGHIEM_THI_THUC_CHIEN_VINUNI.md')">
+            <i data-lucide="compass" style="width: 16px; height: 16px;"></i> Chiến Lược 90 Phút VinUni
+          </div>
+          <div class="doc-nav-item" data-doc="DE_THI_MAU_THUC_TE_CHIA_SE.md" onclick="loadDocumentContent('DE_THI_MAU_THUC_TE_CHIA_SE.md')">
+            <i data-lucide="award" style="width: 16px; height: 16px;"></i> Đề Mẫu Thực Tế (Practice.docx)
+          </div>
+          <div class="doc-nav-item" data-doc="CHUYEN_DE_MODULE_A_TOAN_DINH_LUONG.md" onclick="loadDocumentContent('CHUYEN_DE_MODULE_A_TOAN_DINH_LUONG.md')">
+            <i data-lucide="function-square" style="width: 16px; height: 16px;"></i> Chuyên Đề A: Toán Định Lượng
+          </div>
+          <div class="doc-nav-item" data-doc="CHUYEN_DE_MODULE_B_LAP_TRINH_DU_LIEU.md" onclick="loadDocumentContent('CHUYEN_DE_MODULE_B_LAP_TRINH_DU_LIEU.md')">
+            <i data-lucide="code" style="width: 16px; height: 16px;"></i> Chuyên Đề B: Code & Dữ Liệu
+          </div>
+          <div class="doc-nav-item" data-doc="CHUYEN_DE_MODULE_C_AI_SAN_PHAM.md" onclick="loadDocumentContent('CHUYEN_DE_MODULE_C_AI_SAN_PHAM.md')">
+            <i data-lucide="cpu" style="width: 16px; height: 16px;"></i> Chuyên Đề C: AI & Sản Phẩm
+          </div>
+          <div class="doc-nav-item" data-doc="CHUYEN_DE_MODULE_D_LOGIC_DAO_DUC.md" onclick="loadDocumentContent('CHUYEN_DE_MODULE_D_LOGIC_DAO_DUC.md')">
+            <i data-lucide="shield-check" style="width: 16px; height: 16px;"></i> Chuyên Đề D: Logic & Đạo Đức
+          </div>
+          <div class="doc-nav-item" data-doc="THONG_BAO_THI_TUYEN_KHOA_V.md" onclick="loadDocumentContent('THONG_BAO_THI_TUYEN_KHOA_V.md')">
+            <i data-lucide="bell" style="width: 16px; height: 16px;"></i> Thông Báo Tuyển Sinh Gốc
+          </div>
+
+          <div style="margin-top: 20px; padding: 12px; background: #f8fafc; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);">
+            <div style="font-size: 12px; font-weight: 700; margin-bottom: 8px;">Tải File Thông Báo Word:</div>
+            <a href="/docs/THONG_BAO_THI_TUYEN_KHOA_V.docx" download class="btn btn-secondary" style="width: 100%; text-decoration: none; font-size: 12px;">
+              <i data-lucide="download" style="width: 14px; height: 14px;"></i> Tải THONG_BAO.docx
+            </a>
+          </div>
+        </aside>
+
+        <!-- Main Document Reader -->
+        <article class="doc-article" id="doc-content-article">
+          <p style="color: var(--text-muted);">Đang tải nội dung tài liệu...</p>
+        </article>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Mobile Ergonomic Bottom Navigation Bar (Thumb-zone reachable) -->
+  <nav class="mobile-bottom-nav" id="mobile-bottom-nav">
+    <button class="mobile-nav-btn active" data-tab="exam">
+      <i data-lucide="award" style="width: 20px; height: 20px;"></i>
+      <span>Thi Thử</span>
+    </button>
+    <button class="mobile-nav-btn" data-tab="practice">
+      <i data-lucide="book-open" style="width: 20px; height: 20px;"></i>
+      <span>Chuyên Đề</span>
+    </button>
+    <button class="mobile-nav-btn" data-tab="docs">
+      <i data-lucide="file-text" style="width: 20px; height: 20px;"></i>
+      <span>Cẩm Nang</span>
+    </button>
+    <button class="mobile-nav-btn" data-tab="results" id="mobile-nav-btn-results" style="display: none;">
+      <i data-lucide="bar-chart-2" style="width: 20px; height: 20px;"></i>
+      <span>Kết Quả</span>
+    </button>
+  </nav>
+
+  <!-- Mobile Palette Backdrop -->
+  <div class="mobile-palette-backdrop" id="mobile-palette-backdrop" onclick="toggleMobilePalette(false)"></div>
+
+  <!-- Offline Prebundled Data for Zero-Latency & Standalone Execution -->
+  <script src="data/questions-data.js"></script>
+  <script src="docs/docs-data.js"></script>
+  <script src="app_v3.js"></script>
+  <script>
+    // Register Service Worker for 100% Offline Capability (when served over HTTP/HTTPS)
+    if ('serviceWorker' in navigator && window.location.protocol.startsWith('http')) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js').then(reg => {
+          console.log('VinUni AI Exam PWA ServiceWorker active:', reg.scope);
+        }).catch(err => {
+          console.warn('ServiceWorker registration error:', err);
+        });
+      });
+    }
+  </script>
+</body>
+</html>

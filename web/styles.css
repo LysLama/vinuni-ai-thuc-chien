@@ -1,0 +1,1032 @@
+/* 
+  VinUni - Vingroup AI Thuc Chien Exam Platform
+  Design System: Operate Mode (Academic & Production Grade)
+  Compliant with Impeccable Skill Craft Floor:
+  - Contrast >= 4.5:1, Tabular Numerals, Zero AI Slop
+  - No gradient text, no kicker/eyebrow, no decorative blur blobs, no hard offset zero-blur shadows
+*/
+
+:root {
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  
+  /* Color Palette - Restrained Slate & Academic Navy */
+  --bg-app: #f8fafc;
+  --bg-surface: #ffffff;
+  --bg-subtle: #f1f5f9;
+  --bg-elevated: #ffffff;
+  
+  --border-subtle: #e2e8f0;
+  --border-strong: #cbd5e1;
+  --border-focus: #2563eb;
+
+  --text-main: #0f172a;
+  --text-muted: #475569;
+  --text-faint: #64748b;
+  --text-on-accent: #ffffff;
+
+  --accent-primary: #1e3a8a;
+  --accent-hover: #1e40af;
+  --accent-subtle: #eff6ff;
+  --accent-active: #172554;
+
+  --status-success: #059669;
+  --status-success-bg: #ecfdf5;
+  --status-success-border: #a7f3d0;
+
+  --status-danger: #dc2626;
+  --status-danger-bg: #fef2f2;
+  --status-danger-border: #fecaca;
+
+  --status-warning: #d97706;
+  --status-warning-bg: #fffbeb;
+  --status-warning-border: #fde68a;
+
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+}
+
+/* Base Reset & Global Styles */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  font-family: var(--font-sans);
+  background-color: var(--bg-app);
+  color: var(--text-main);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background-color: #dbeafe;
+  color: #1e3a8a;
+}
+
+/* Scrollbar Theming */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-app);
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Tabular Numerals for Exam Clocks & Question Numbers */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
+
+/* Top App Header */
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background-color: var(--bg-surface);
+  border-bottom: 1px solid var(--border-subtle);
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+}
+
+.brand-section {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.brand-logo-badge {
+  background-color: #1e3a8a;
+  color: #ffffff;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.02em;
+}
+
+.brand-titles {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-main);
+  line-height: 1.2;
+}
+
+.brand-sub {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-tab-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text-muted);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 150ms ease;
+}
+
+.nav-tab-btn:hover {
+  background-color: var(--bg-subtle);
+  color: var(--text-main);
+}
+
+.nav-tab-btn.active {
+  background-color: var(--accent-subtle);
+  color: var(--accent-primary);
+  border-color: #bfdbfe;
+}
+
+/* Top Exam Info Banner (In Exam Mode) */
+.exam-bar {
+  background-color: #ffffff;
+  border-bottom: 1px solid var(--border-subtle);
+  padding: 10px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13px;
+}
+
+.timer-box {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #f8fafc;
+  border: 1px solid var(--border-strong);
+  padding: 6px 14px;
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--text-main);
+}
+
+.timer-box.warning {
+  background-color: #fef2f2;
+  border-color: #f87171;
+  color: #b91c1c;
+  animation: pulse-danger 1s infinite alternate;
+}
+
+@keyframes pulse-danger {
+  from { opacity: 0.9; }
+  to { opacity: 1; transform: scale(1.02); }
+}
+
+/* Main Layout */
+.main-viewport {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 24px;
+  min-height: calc(100vh - 120px);
+}
+
+/* Exam Two-Column Screen */
+.exam-grid {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 24px;
+  align-items: start;
+}
+
+@media (max-width: 1024px) {
+  .exam-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Question Card */
+.question-viewport {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  box-shadow: var(--shadow-sm);
+}
+
+.question-meta-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: 20px;
+}
+
+.module-badge {
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  background-color: #eff6ff;
+  color: #1e3a8a;
+  border: 1px solid #bfdbfe;
+}
+
+.difficulty-badge {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: var(--radius-sm);
+}
+.diff-easy { background-color: #f0fdf4; color: #166534; border: 1px solid #bbf7d0; }
+.diff-med { background-color: #fffbeb; color: #92400e; border: 1px solid #fde68a; }
+.diff-hard { background-color: #fef2f2; color: #991b1b; border: 1px solid #fecaca; }
+
+.question-title-text {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-main);
+  margin-bottom: 24px;
+  line-height: 1.7;
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: auto;
+  word-break: break-word;
+}
+
+/* Code block inside question */
+pre code {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  border-radius: var(--radius-md);
+  padding: 14px;
+  display: block;
+  background-color: #0f172a !important;
+  color: #f8fafc !important;
+  overflow-x: auto;
+  margin: 16px 0;
+}
+
+/* Multiple Choice Options */
+.options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.option-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 14px 18px;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  background: var(--bg-surface);
+  cursor: pointer;
+  transition: all 120ms ease;
+  user-select: none;
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.option-item:hover {
+  border-color: #94a3b8;
+  background-color: var(--bg-subtle);
+}
+
+.option-item.selected {
+  border-color: var(--accent-primary);
+  background-color: var(--accent-subtle);
+}
+
+.option-key {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-sm);
+  background: #f1f5f9;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 13px;
+  flex-shrink: 0;
+  border: 1px solid #cbd5e1;
+}
+
+.option-item.selected .option-key {
+  background-color: var(--accent-primary);
+  color: #ffffff;
+  border-color: var(--accent-primary);
+}
+
+.option-text {
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: 100%;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-main);
+  padding-top: 3px;
+  word-break: break-word;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+/* Question Action Footer */
+.question-footer {
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Action Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: var(--radius-md);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 120ms ease;
+  border: 1px solid transparent;
+}
+
+.btn-secondary {
+  background: #ffffff;
+  border-color: var(--border-strong);
+  color: var(--text-main);
+}
+.btn-secondary:hover {
+  background: var(--bg-subtle);
+}
+
+.btn-primary {
+  background: var(--accent-primary);
+  color: #ffffff;
+}
+.btn-primary:hover {
+  background: var(--accent-hover);
+}
+
+.btn-flag {
+  background: #ffffff;
+  border-color: #e2e8f0;
+  color: var(--text-muted);
+}
+.btn-flag.flagged {
+  background-color: #fffbeb;
+  border-color: #f59e0b;
+  color: #b45309;
+}
+
+.btn-danger {
+  background: var(--status-danger);
+  color: #ffffff;
+}
+.btn-danger:hover {
+  background: #b91c1c;
+}
+
+/* Right Sidebar Question Navigator Palette */
+.nav-palette-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  box-shadow: var(--shadow-sm);
+  position: sticky;
+  top: 88px;
+}
+
+.nav-palette-header {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.legend-bar {
+  display: flex;
+  gap: 12px;
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+}
+
+/* Grid of question buttons */
+.palette-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.q-cell-btn {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  border: 1px solid var(--border-subtle);
+  background: #ffffff;
+  color: var(--text-main);
+  transition: all 100ms ease;
+  position: relative;
+}
+
+.q-cell-btn:hover {
+  border-color: var(--accent-primary);
+}
+
+.q-cell-btn.active {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 1px;
+  font-weight: 800;
+}
+
+.q-cell-btn.answered {
+  background-color: #ecfdf5;
+  border-color: #10b981;
+  color: #065f46;
+}
+
+.q-cell-btn.flagged::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #f59e0b;
+}
+
+/* Result Screen */
+.result-container {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  box-shadow: var(--shadow-sm);
+}
+
+.score-hero-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin: 24px 0;
+}
+
+.score-box {
+  background-color: var(--bg-subtle);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 16px;
+}
+
+.score-box-num {
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--text-main);
+  line-height: 1.1;
+  margin-top: 4px;
+}
+
+.module-breakdown-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin: 24px 0;
+}
+
+.module-perf-card {
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  background: #ffffff;
+}
+
+.progress-track {
+  height: 8px;
+  background: #e2e8f0;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: #1e3a8a;
+  border-radius: 4px;
+  transform-origin: left center;
+  transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Review Accordions */
+.review-item {
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  margin-bottom: 12px;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+.review-item-header {
+  padding: 14px 18px;
+  background: #fafafa;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 600;
+  font-size: 14px;
+  border-bottom: 1px solid transparent;
+}
+
+.review-item.open .review-item-header {
+  border-bottom-color: var(--border-subtle);
+  background: #f1f5f9;
+}
+
+.review-item-body {
+  padding: 18px;
+  display: none;
+}
+
+.review-item.open .review-item-body {
+  display: block;
+}
+
+/* Study Center (Docs Reader) */
+.doc-reader-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 24px;
+}
+
+.doc-nav-list {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 12px;
+}
+
+.doc-nav-item {
+  padding: 10px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-muted);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.doc-nav-item:hover {
+  background: var(--bg-subtle);
+  color: var(--text-main);
+}
+
+.doc-nav-item.active {
+  background: var(--accent-subtle);
+  color: var(--accent-primary);
+}
+
+.doc-article {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 36px;
+  max-width: 960px;
+  min-width: 0;
+  overflow-x: auto;
+}
+
+.doc-article h1, .doc-article h2, .doc-article h3 {
+  color: var(--text-main);
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+}
+
+.doc-article p, .doc-article li {
+  line-height: 1.7;
+  color: #334155;
+  margin-bottom: 1em;
+}
+
+/* ==========================================================================
+   KaTeX & Mathematical Formula Rendering System
+   Designed for Operate Mode: High legibility, zero layout blowup, responsive
+   ========================================================================== */
+
+/* Block / Display Equations ($$...$$) */
+.katex-display {
+  display: block;
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-width: 100%;
+  margin: 16px 0;
+  padding: 14px 20px;
+  background: #f8fafc;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  text-align: center;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.02);
+  font-size: 1.08em;
+  line-height: 1.5;
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+}
+
+.katex-display:hover {
+  border-color: var(--border-strong);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.katex-display > .katex {
+  white-space: normal;
+  text-align: center;
+}
+
+.katex-display > .katex > .katex-html {
+  white-space: normal;
+  display: inline-block;
+  text-align: center;
+}
+
+/* Slim, clean scrollbar for wide equations on mobile/split views */
+.katex-display::-webkit-scrollbar,
+.option-text::-webkit-scrollbar,
+.question-title-text::-webkit-scrollbar,
+.review-item-body::-webkit-scrollbar,
+.doc-article::-webkit-scrollbar {
+  height: 5px;
+  width: 5px;
+}
+.katex-display::-webkit-scrollbar-track,
+.option-text::-webkit-scrollbar-track,
+.question-title-text::-webkit-scrollbar-track,
+.review-item-body::-webkit-scrollbar-track,
+.doc-article::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 3px;
+}
+.katex-display::-webkit-scrollbar-thumb,
+.option-text::-webkit-scrollbar-thumb,
+.question-title-text::-webkit-scrollbar-thumb,
+.review-item-body::-webkit-scrollbar-thumb,
+.doc-article::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+.katex-display::-webkit-scrollbar-thumb:hover,
+.option-text::-webkit-scrollbar-thumb:hover,
+.question-title-text::-webkit-scrollbar-thumb:hover,
+.review-item-body::-webkit-scrollbar-thumb:hover,
+.doc-article::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Inline Math ($...$) */
+.katex {
+  font-size: 1.05em;
+  line-height: 1.45;
+  text-rendering: auto;
+  white-space: normal;
+}
+
+/* Allow soft line-wrapping between formula terms at operator boundaries */
+.katex .base {
+  display: inline-block;
+  white-space: nowrap;
+  padding: 2px 0;
+  margin-right: 1px;
+}
+
+/* Display math inside MCQ options or review items */
+.option-text .katex-display {
+  margin: 6px 0;
+  padding: 8px 12px;
+  background: rgba(0, 0, 0, 0.02);
+  border-color: rgba(0, 0, 0, 0.06);
+  font-size: 1.0em;
+}
+
+.review-item-body .katex-display {
+  background: #ffffff;
+  border: 1px solid var(--border-subtle);
+}
+
+/* Protected Currency Tokens & Non-math identifiers */
+.currency-token,
+.no-math {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+/* KaTeX Fractions, Matrices, and Limits vertical spacing */
+.katex .mord + .mop,
+.katex .mop + .mord {
+  margin-left: 0.16667em;
+}
+
+.katex .frac-line {
+  border-bottom-width: 1.2px;
+}
+
+/* Print Stylesheet */
+@media print {
+  .app-header, .exam-bar, .nav-palette-card, .btn, .header-nav, .mobile-bottom-nav {
+    display: none !important;
+  }
+  .exam-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .main-viewport {
+    padding: 0 !important;
+    max-width: 100% !important;
+  }
+  .question-viewport {
+    border: none !important;
+    box-shadow: none !important;
+    page-break-after: always;
+  }
+}
+
+/* ==========================================================================
+   Mobile-First Responsive Layout & App Shell (Phone / Tablet Ergonomics)
+   ========================================================================== */
+
+/* Bottom Navigation Bar (Hidden on desktop, shown on mobile) */
+.mobile-bottom-nav {
+  display: none;
+}
+
+.mobile-palette-btn {
+  display: none;
+}
+
+.mobile-palette-backdrop {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  /* Layout adjustments */
+  body {
+    padding-bottom: calc(70px + env(safe-area-inset-bottom, 8px));
+  }
+
+  .main-viewport {
+    padding: 12px 10px;
+    min-height: auto;
+  }
+
+  /* Compact Header */
+  .app-header {
+    padding: 10px 14px;
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  }
+
+  .brand-titles {
+    display: none;
+  }
+
+  .header-nav {
+    display: none;
+  }
+
+  /* Exam Bar */
+  .exam-bar {
+    padding: 8px 12px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .mobile-palette-btn {
+    display: inline-flex;
+  }
+
+  .exam-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  /* Question Card */
+  .question-viewport {
+    padding: 16px 12px;
+    border-radius: var(--radius-md);
+  }
+
+  .question-title-text {
+    font-size: 15.5px;
+    line-height: 1.55;
+    margin-bottom: 16px;
+  }
+
+  /* Touch-friendly Options */
+  .option-item {
+    min-height: 52px;
+    padding: 12px 14px;
+    border-radius: var(--radius-md);
+    margin-bottom: 10px;
+    touch-action: manipulation;
+  }
+
+  .option-item:active {
+    transform: scale(0.99);
+  }
+
+  .option-key {
+    width: 28px;
+    height: 28px;
+    font-size: 13px;
+    margin-right: 12px;
+  }
+
+  .option-text {
+    font-size: 15px;
+    line-height: 1.45;
+  }
+
+  /* Math formulas on mobile */
+  .katex-display {
+    padding: 10px 12px;
+    margin: 12px 0;
+    font-size: 0.98em;
+  }
+
+  /* Mobile Question Palette Drawer (Slide-up Bottom Sheet) */
+  .nav-palette-card {
+    position: fixed;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    max-height: 80vh;
+    background: #ffffff;
+    border-radius: 16px 16px 0 0;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.2);
+    z-index: 110;
+    overflow-y: auto;
+    padding: 18px 16px calc(24px + env(safe-area-inset-bottom, 8px));
+    transform: translateY(105%);
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
+    visibility: hidden;
+  }
+
+  .nav-palette-card.drawer-open {
+    transform: translateY(0);
+    pointer-events: auto;
+    visibility: visible;
+  }
+
+  .mobile-palette-backdrop {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(15, 23, 42, 0.5);
+    backdrop-filter: blur(2px);
+    z-index: 105;
+  }
+
+  .mobile-palette-backdrop.active {
+    display: block;
+  }
+
+  /* Palette Grid cells */
+  .palette-grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+  }
+
+  .q-cell-btn {
+    height: 44px;
+    font-size: 14px;
+  }
+
+  /* Ergonomic Bottom Navigation Bar */
+  .mobile-bottom-nav {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: calc(56px + env(safe-area-inset-bottom, 8px));
+    padding-bottom: env(safe-area-inset-bottom, 8px);
+    background: #ffffff;
+    border-top: 1px solid var(--border-subtle);
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+    z-index: 100;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .mobile-nav-btn {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    background: transparent;
+    border: none;
+    padding: 6px 0;
+    color: var(--text-muted);
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    touch-action: manipulation;
+  }
+
+  .mobile-nav-btn.active {
+    color: var(--accent-primary);
+  }
+
+  .mobile-nav-btn.active svg {
+    stroke: var(--accent-primary);
+  }
+
+  /* Practice Toolbar */
+  .practice-filters-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .practice-filters-bar select {
+    width: 100%;
+    font-size: 15px;
+  }
+
+  /* Docs Reader Mobile */
+  .doc-reader-layout {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+

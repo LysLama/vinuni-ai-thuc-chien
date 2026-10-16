@@ -1,0 +1,1022 @@
+[
+  {
+    "id": "B01",
+    "module": "B",
+    "module_name": "Kỹ thuật Lập trình & Xử lý dữ liệu",
+    "topic": "Cấu trúc dữ liệu & Độ phức tạp",
+    "difficulty": "Cơ bản",
+    "type": "multiple_choice",
+    "question": "Trong Python, độ phức tạp thời gian trung bình (Average Time Complexity) của thao tác kiểm tra phần tử 'x in collection' lần lượt trên `list`, `set` và `dict` (keys) là gì?",
+    "options": {
+      "A": "List: O(1), Set: O(n), Dict: O(1)",
+      "B": "List: O(n), Set: O(1), Dict: O(1)",
+      "C": "List: O(n), Set: O(n), Dict: O(1)",
+      "D": "List: O(log n), Set: O(1), Dict: O(log n)"
+    },
+    "correct_answer": "B",
+    "points": 3,
+    "explanation": "List là mảng tuần tự liên tục nên tìm kiếm phần tử mất O(n). Set và Dict trong Python được xây dựng trên nền tảng Bảng băm (Hash Table) với hàm băm tối ưu, nên phép kiểm tra tồn tại của khóa có độ phức tạp trung bình O(1)."
+  },
+  {
+    "id": "B02",
+    "module": "B",
+    "module_name": "Kỹ thuật Lập trình & Xử lý dữ liệu",
+    "topic": "Pandas Data Wrangling",
+    "difficulty": "Trung bình",
+    "type": "multiple_choice",
+    "question": "Cho đoạn mã Pandas sau:\n```python\nimport pandas as pd\ndf = pd.DataFrame({'dept': ['A', 'A', 'B', 'B', 'C'], 'salary': [100, 200, 150, 250, 300]})\nres = df.groupby('dept')['salary'].transform(lambda x: x - x.mean())\n```\nKết quả trả về `res` có kích thước (shape) và đặc điểm gì?",
+    "options": {
+      "A": "Series có 3 phần tử (đại diện cho 3 phòng ban)",
+      "B": "DataFrame có kích thước (3, 2)",
+      "C": "Series có 5 phần tử (giữ nguyên chỉ số ban đầu của df và trừ lương theo trung bình từng phòng)",
+      "D": "Lỗi cú pháp (SyntaxError)"
+    },
+    "correct_answer": "C",
+    "points": 3,
+    "explanation": "Khác với `.agg()` (thu gọn dữ liệu theo nhóm về số nhóm duy nhất), hàm `.transform()` trả về Series hoặc DataFrame có cùng kích thước và chỉ mục (index) với DataFrame ban đầu. Kỹ thuật này là phương pháp chuẩn mực để chuẩn hóa (standardize/normalize) đặc trưng theo nhóm."
+  },
+  {
+    "id": "B03",
+    "module": "B",
+    "module_name": "Kỹ thuật Lập trình & Xử lý dữ liệu",
+    "topic": "NumPy Broadcasting",
+    "difficulty": "Trung bình",
+    "type": "multiple_choice",
+    "question": "Trong NumPy, cho 2 mảng `A` có shape (4, 1, 6) và `B` có shape (5, 6). Phép toán `A + B` có thực hiện được thông qua cơ chế Broadcasting không? Nếu có, shape kết quả là gì?",
+    "options": {
+      "A": "Không thể thực hiện, báo lỗi ValueError: operands could not be broadcast together",
+      "B": "Có thể thực hiện, kết quả có shape (4, 5, 6)",
+      "C": "Có thể thực hiện, kết quả có shape (5, 4, 6)",
+      "D": "Có thể thực hiện, kết quả có shape (4, 6, 6)"
+    },
+    "correct_answer": "B",
+    "points": 3,
+    "explanation": "Quy tắc Broadcasting: Dóng từ chiều cuối cùng về trước:\n- Chiều 3: A có 6, B có 6 -> Khớp (ra 6)\n- Chiều 2: A có 1, B có 5 -> Khớp (1 nhân bản thành 5)\n- Chiều 1: A có 4, B khuyết -> Khớp (B được bổ sung chiều 1 và nhân bản thành 4)\nShape kết quả là (4, 5, 6)."
+  },
+  {
+    "id": "B04",
+    "module": "B",
+    "module_name": "Kỹ thuật Lập trình & Xử lý dữ liệu",
+    "topic": "Python Core Traps",
+    "difficulty": "Cơ bản",
+    "type": "multiple_choice",
+    "question": "Cho đoạn code Python sau:\n```python\ndef append_to(element, target_list=[]):\n    target_list.append(element)\n    return target_list\nprint(append_to(1))\nprint(append_to(2))\n```\nKết quả in ra màn hình là gì?",
+    "options": {
+      "A": "[1] rồi đến [2]",
+      "B": "[1] rồi đến [1, 2]",
+      "C": "[1, 2] rồi đến [1, 2]",
+      "D": "Báo lỗi NameError"
+    },
+    "correct_answer": "B",
+    "points": 3,
+    "explanation": "Trong Python, đối số mặc định có kiểu dữ liệu biến đổi (mutable default argument như list, dict) chỉ được khởi tạo MỘT LẦN DUY NHẤT khi hàm được biên dịch (def-time). Các lần gọi hàm tiếp theo sẽ chia sẻ chung cùng một đối tượng list đó."
+  },
+  {
+    "id": "B05",
+    "module": "B",
+    "module_name": "Kỹ thuật Lập trình & Xử lý dữ liệu",
+    "topic": "Python Generators & Memory",
+    "difficulty": "Trung bình",
+    "type": "multiple_choice",
+    "question": "Khi xử lý một file dữ liệu 50 triệu dòng, sự khác biệt căn bản nhất giữa List Comprehension `[line.strip() for line in f]` và Generator Expression `(line.strip() for line in f)` là gì?",
+    "options": {
+      "A": "List Comprehension chạy trên GPU, Generator chạy trên CPU",
+      "B": "List Comprehension nạp toàn bộ 50 triệu dòng vào RAM cùng lúc (dễ gây OOM), trong khi Generator sinh từng phần tử một theo cơ chế Lazy Evaluation (bộ nhớ gần như O(1))",
+      "C": "Generator không hỗ trợ duyệt bằng vòng lặp for",
+      "D": "List Comprehension luôn nhanh hơn Generator gấp 100 lần"
+    },
+    "correct_answer": "B",
+    "points": 3,
+    "explanation": "Generator trả về iterator và chỉ sinh giá trị khi được gọi (`next()`), giúp xử lý dữ liệu kích thước lớn vượt quá dung lượng RAM với độ phức tạp không gian O(1)."
+  },
+  {
+    "id": "B06",
+    "module": "B",
+    "module_name": "Kỹ thuật Lập trình & Xử lý dữ liệu",
+    "topic": "Python Concurrency & GIL",
+    "difficulty": "Nâng cao",
+    "type": "multiple_choice",
+    "question": "Trong CPython, Global Interpreter Lock (GIL) ảnh hưởng như thế nào đến các tác vụ đa luồng (Multi-threading)?",
+    "options": {
+      "A": "Ngăn chặn các luồng tận dụng nhiều CPU core cho các tác vụ tính toán nặng (CPU-bound), nhưng không ảnh hưởng nhiều đến tác vụ vào/ra (I/O-bound)",
+      "B": "Làm cho các tác vụ I/O-bound chạy chậm hơn đơn luồng 10 lần",
+      "C": "Cho phép chạy song song hoàn hảo trên 64 CPU core mà không cần khóa",
+      "D": "Chỉ tồn tại trên hệ điều hành Windows, không có trên Linux"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "GIL chỉ cho phép 1 luồng thực thi bytecode Python tại một thời điểm trên một tiến trình. Do đó tác vụ tính toán nặng (CPU-bound) phải dùng `multiprocessing` hoặc thư viện viết bằng C/C++ (NumPy, PyTorch) để giải phóng GIL. Với I/O-bound (gọi API LLM, đọc file, tải mạng), threading hoặc `asyncio` vẫn đạt hiệu quả cao vì GIL được nhả ra trong lúc chờ I/O."
+  },
+  {
+    "id": "B07",
+    "module": "B",
+    "module_name": "Kỹ thuật Lập trình & Xử lý dữ liệu",
+    "topic": "Thuật toán & Heap",
+    "difficulty": "Trung bình",
+    "type": "multiple_choice",
+    "question": "Để tìm $k$ phần tử có điểm số tương đồng cosine cao nhất (Top-$k$ Similarity) từ một tập hợp $N$ vector nhúng lớn ($N \\gg k$), cấu trúc dữ liệu nào mang lại độ phức tạp thời gian tối ưu nhất?",
+    "options": {
+      "A": "Min-Heap kích thước $k$ với độ phức tạp $\\mathcal{O}(N \\log k)$",
+      "B": "Sắp xếp toàn bộ mảng (QuickSort) với độ phức tạp $\\mathcal{O}(N \\log N)$",
+      "C": "Tìm kiếm tuyến tính lặp lại $k$ lần với độ phức tạp $\\mathcal{O}(k \\cdot N)$",
+      "D": "Bảng băm (Hash Table) với độ phức tạp $\\mathcal{O}(1)$"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Sử dụng Min-Heap có kích thước cố định bằng $k$:\n- Duyệt qua từng phần tử trong $N$ vector: nếu phần tử lớn hơn đỉnh heap (giá trị nhỏ nhất trong top $k$), ta pop đỉnh và push phần tử mới vào.\n- Mỗi thao tác tốn $\\mathcal{O}(\\log k)$, do đó toàn bộ quá trình tốn:\n$$\\text{Complexity} = \\mathcal{O}(N \\log k)$$\nĐiều này vượt trội so với sắp xếp toàn bộ $\\mathcal{O}(N \\log N)$ khi $N$ lên tới hàng triệu mẫu."
+  },
+  {
+    "id": "B08",
+    "module": "B",
+    "module_name": "Kỹ thuật Lập trình & Xử lý dữ liệu",
+    "topic": "Pandas Missing Data",
+    "difficulty": "Cơ bản",
+    "type": "multiple_choice",
+    "question": "Trong xử lý dữ liệu dạng chuỗi thời gian (Time-series) bị khuyết dữ liệu (NaN do cảm biến ngắt quãng trong vài giây), phương pháp điền khuyết nào dưới đây bảo toàn tính thực tế và tránh rò rỉ dữ liệu tương lai (Data Leakage)?",
+    "options": {
+      "A": "Backward fill (`bfill`) lấy giá trị tương lai điền ngược về quá khứ",
+      "B": "Forward fill (`ffill`) lấy giá trị hợp lệ gần nhất trong quá khứ điền vào",
+      "C": "Điền giá trị trung bình (Mean) của toàn bộ tập dữ liệu cả năm",
+      "D": "Xóa toàn bộ các dòng trước và sau điểm khuyết 1 tháng"
+    },
+    "correct_answer": "B",
+    "points": 3,
+    "explanation": "Trong chuỗi thời gian thực chiến, tại thời điểm t ta chỉ có thông tin từ quá khứ trở về trước. Do đó dùng `ffill` (hoặc nội suy hướng tới) là chuẩn xác nhất để tránh rò rỉ dữ liệu tương lai vào mô hình huấn luyện."
+  },
+  {
+    "id": "B09",
+    "module": "B",
+    "module_name": "Kỹ thuật Lập trình & Xử lý dữ liệu",
+    "topic": "Lưu trữ định dạng Dữ liệu",
+    "difficulty": "Cơ bản",
+    "type": "multiple_choice",
+    "question": "Khi xây dựng Data Lake cho huấn luyện AI, tại sao định dạng **Parquet** lại vượt trội hơn định dạng **CSV**?",
+    "options": {
+      "A": "Parquet là lưu trữ dạng cột (Columnar), hỗ trợ nén cao (Snappy/Gzip), lưu trữ sẵn metadata kiểu dữ liệu và hỗ trợ đọc có chọn lọc cột (Column Pruning)",
+      "B": "Parquet có thể mở và sửa trực tiếp bằng Notepad mà không cần phần mềm",
+      "C": "Parquet chỉ hỗ trợ tối đa 100 dòng dữ liệu",
+      "D": "CSV xử lý nhanh hơn Parquet gấp 50 lần trên cụm Spark"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Apache Parquet là định dạng lưu trữ dạng cột chuẩn cho Big Data và AI: giảm 70-80% dung lượng lưu trữ nhờ nén theo cột cùng kiểu dữ liệu, tốc độ truy vấn nhanh gấp nhiều lần CSV vì chỉ cần nạp các cột cần thiết vào RAM (projection pushdown)."
+  },
+  {
+    "id": "B10",
+    "module": "B",
+    "module_name": "Kỹ thuật Lập trình & Xử lý dữ liệu",
+    "topic": "SQL & Window Functions",
+    "difficulty": "Trung bình",
+    "type": "multiple_choice",
+    "question": "Trong câu lệnh SQL phân tích lịch sử prompt của người dùng, hàm cửa sổ nào sau đây giúp đánh số thứ tự câu hỏi từ 1 đến N cho từng người dùng riêng biệt theo thời gian gửi?",
+    "options": {
+      "A": "ROW_NUMBER() OVER (PARTITION BY user_id ORDER BY created_at ASC)",
+      "B": "COUNT(user_id) GROUP BY created_at",
+      "C": "RANK() OVER (ORDER BY user_id)",
+      "D": "SUM(prompt_tokens) OVER (PARTITION BY created_at)"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "`PARTITION BY user_id` chia các dòng thành các nhóm độc lập theo từng người dùng, và `ORDER BY created_at ASC` sắp xếp theo thứ tự thời gian để hàm `ROW_NUMBER()` đánh số thứ tự liên tục 1, 2, 3... bắt đầu lại từ 1 cho mỗi user."
+  },
+  {
+    "id": "B11",
+    "module": "B",
+    "module_name": "Kỹ thuật Lập trình & Xử lý dữ liệu",
+    "topic": "Python OOP & Copying",
+    "difficulty": "Trung bình",
+    "type": "multiple_choice",
+    "question": "Cho đoạn code sau:\n```python\nimport copy\na = [[1, 2], [3, 4]]\nb = copy.copy(a)\nc = copy.deepcopy(a)\na[0][0] = 99\n```\nGiá trị của `b[0][0]` và `c[0][0]` lần lượt là gì?",
+    "options": {
+      "A": "b[0][0] = 99; c[0][0] = 1",
+      "B": "b[0][0] = 1; c[0][0] = 99",
+      "C": "b[0][0] = 99; c[0][0] = 99",
+      "D": "b[0][0] = 1; c[0][0] = 1"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "`copy.copy()` (Shallow copy) chỉ sao chép danh sách ngoài cùng nhưng các phần tử con bên trong vẫn trỏ cùng địa chỉ bộ nhớ, nên thay đổi `a[0][0]` làm `b[0][0]` đổi theo (thành 99). `copy.deepcopy()` sao chép đệ quy độc lập hoàn toàn, nên `c[0][0]` vẫn giữ nguyên giá trị ban đầu là 1."
+  },
+  {
+    "id": "B12",
+    "module": "B",
+    "module_name": "Kỹ thuật Lập trình & Xử lý dữ liệu",
+    "topic": "Tối ưu hóa bộ nhớ Pandas",
+    "difficulty": "Trung bình",
+    "type": "multiple_choice",
+    "question": "Một cột dữ liệu 'city' trong DataFrame gồm 10,000,000 dòng nhưng chỉ có 5 giá trị duy nhất ('Hanoi', 'HCMC', 'Danang', 'Haiphong', 'Cantho'). Cách tối ưu dung lượng RAM hiệu quả nhất trong Pandas là gì?",
+    "options": {
+      "A": "Chuyển kiểu dữ liệu của cột sang kiểu `category` (`df['city'] = df['city'].astype('category')`)",
+      "B": "Xóa cột đó đi",
+      "C": "Chuyển toàn bộ chuỗi sang chữ hoa",
+      "D": "Lưu trữ dưới dạng danh sách nhị phân pickle"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Kiểu `category` trong Pandas mã hóa các chuỗi lặp lại thành các số nguyên nhỏ (integer codes) và chỉ lưu danh mục chuỗi 1 lần duy nhất, giúp giảm dung lượng RAM cho cột từ hàng trăm Megabytes xuống chỉ còn vài Megabytes (tiết kiệm đến 90%+ RAM)."
+  },
+  {
+    "id": "B13",
+    "module": "B",
+    "module_name": "Kỹ thuật Lập trình & Xử lý dữ liệu",
+    "topic": "Python Decorators",
+    "difficulty": "Trung bình",
+    "type": "multiple_choice",
+    "question": "Trong việc phát triển hệ thống AI production, Decorator `@functools.lru_cache(maxsize=1024)` đặt trước hàm trích xuất embedding mang lại công dụng gì?",
+    "options": {
+      "A": "Tự động lưu bộ nhớ đệm (caching) kết quả trả về của hàm dựa trên tham số đầu vào, giúp trả về kết quả ngay lập tức nếu gặp lại câu query cũ mà không cần tính toán lại",
+      "B": "Tự động phân tán tính toán ra 1024 máy chủ đám mây",
+      "C": "Chuyển hàm Python thành mã Assembly",
+      "D": "Bắt buộc hàm chỉ được chạy tối đa 1024 giây"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "`functools.lru_cache` cài đặt cấu trúc Least Recently Used Cache: ghi nhớ kết quả của hàm tương ứng với đối số đầu vào, cực kỳ hữu dụng trong việc giảm thiểu gọi API trùng lặp hoặc tái tính toán embedding cho các câu hỏi phổ biến."
+  },
+  {
+    "id": "B14",
+    "module": "B",
+    "module_name": "Kỹ thuật Lập trình & Xử lý dữ liệu",
+    "topic": "Xử lý chuỗi & Regex",
+    "difficulty": "Cơ bản",
+    "type": "multiple_choice",
+    "question": "Để làm sạch dữ liệu văn bản tiếng Việt cho mô hình NLP, biểu thức chính quy (Regex) nào sau đây dùng để lọc bỏ toàn bộ các thẻ HTML (ví dụ `<div class='content'>...</div>`) ra khỏi văn bản thô?",
+    "options": {
+      "A": "r'<[^>]+>'",
+      "B": "r'\\d+'",
+      "C": "r'[a-zA-Z]+'",
+      "D": "r'\\s+'"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Pattern `<[^>]+>` khớp với dấu `<` mở đầu, theo sau bởi 1 hoặc nhiều ký tự bất kỳ không phải dấu `>`, và kết thúc bởi dấu `>`, loại bỏ chuẩn xác mọi thẻ HTML đóng mở."
+  },
+  {
+    "id": "B15",
+    "module": "B",
+    "module_name": "Kỹ thuật Lập trình & Xử lý dữ liệu",
+    "topic": "Thuật toán Hai con trỏ",
+    "difficulty": "Trung bình",
+    "type": "multiple_choice",
+    "question": "Cho một mảng số nguyên đã được sắp xếp tăng dần kích thước $N$. Để tìm xem một số nguyên $x$ có xuất hiện trong mảng hay không, thuật toán Binary Search (Tìm kiếm nhị phân) có độ phức tạp thời gian trường hợp xấu nhất là:",
+    "options": {
+      "A": "$\\mathcal{O}(\\log N)$",
+      "B": "$\\mathcal{O}(N)$",
+      "C": "$\\mathcal{O}(N \\log N)$",
+      "D": "$\\mathcal{O}(1)$"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Mỗi bước của Binary Search chia đôi không gian tìm kiếm: $N \\to N/2 \\to N/4 \\dots \\to 1$. Số bước tối đa để kết thúc là $\\log_2 N$. Do đó độ phức tạp thời gian là $\\mathcal{O}(\\log N)$."
+  },
+  {
+    "id": "B16",
+    "module": "B",
+    "module_name": "Kỹ thuật Lập trình & Xử lý dữ liệu",
+    "topic": "Python Context Manager",
+    "difficulty": "Cơ bản",
+    "type": "multiple_choice",
+    "question": "Cú pháp `with open('data.json') as f:` trong Python đảm bảo điều gì kể cả khi xảy ra Exception trong khối lệnh xử lý?",
+    "options": {
+      "A": "Tệp tin luôn được tự động đóng (close) giải phóng file descriptor nhờ phương thức `__exit__` của Context Manager",
+      "B": "Tệp tin được mã hóa bảo mật chuẩn AES",
+      "C": "Chương trình sẽ tự động bỏ qua lỗi và không bao giờ crash",
+      "D": "Dữ liệu trong tệp được tăng tốc độ đọc lên 200%"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Context Manager với từ khóa `with` gọi phương thức `__enter__` khi bắt đầu và cam kết luôn gọi `__exit__` khi thoát khối lệnh (dù có Exception hay không), ngăn ngừa rò rỉ tài nguyên hệ thống (Resource Leak)."
+  },
+  {
+    "id": "B17",
+    "module": "B",
+    "module_name": "Kỹ thuật Lập trình & Xử lý dữ liệu",
+    "topic": "NumPy Vectorization",
+    "difficulty": "Cơ bản",
+    "type": "multiple_choice",
+    "question": "Tại sao trong xử lý dữ liệu và AI, lập trình viên được khuyến cáo tuyệt đối KHÔNG dùng vòng lặp `for` Python truyền thống để duyệt từng phần tử của mảng NumPy?",
+    "options": {
+      "A": "Phép toán vector hóa (Vectorization) của NumPy được thực thi bằng mã C tối ưu, tận dụng SIMD (Single Instruction Multiple Data) trên CPU và bộ nhớ liên tục trong cache, nhanh hơn vòng lặp Python hàng chục đến hàng trăm lần",
+      "B": "Vòng lặp for làm hỏng dữ liệu trong mảng NumPy",
+      "C": "NumPy sẽ tự động ném ra lỗi cú pháp nếu thấy từ khóa for",
+      "D": "Vòng lặp for chỉ chạy được trên hệ điều hành 32-bit"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Vectorization tận dụng các chỉ thị phần cứng SIMD và mảng bộ nhớ C liên tục (C-contiguous arrays), loại bỏ chi phí kiểm tra kiểu động (dynamic type checking) và overhead thông dịch của từng bước lặp Python."
+  },
+  {
+    "id": "B18",
+    "module": "B",
+    "module_name": "Kỹ thuật Lập trình & Xử lý dữ liệu",
+    "topic": "Pandas Merging Traps",
+    "difficulty": "Trung bình",
+    "type": "multiple_choice",
+    "question": "Khi thực hiện `df1.merge(df2, on='customer_id', how='left')`, nếu bảng `df2` có các dòng trùng lặp mã `customer_id` (nhiều hơn 1 dòng cho cùng 1 ID), kết quả của bảng ghép sẽ bị hiện tượng gì?",
+    "options": {
+      "A": "Bị nhân bản số dòng (Row Explosion) làm số dòng kết quả lớn hơn số dòng ban đầu của `df1`",
+      "B": "Tự động xóa các dòng trùng lặp trong df2",
+      "C": "Báo lỗi UniqueConstraintError",
+      "D": "Chỉ lấy dòng cuối cùng của df2 và bỏ qua các dòng khác"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Nếu khóa ghép không phải là duy nhất ở bảng bên phải, phép ghép sẽ tạo ra tích Descartes (Cartesian product) cho các dòng trùng lặp, gây hiện tượng bùng nổ số lượng dòng dữ liệu và làm sai lệch nghiêm trọng các phép tính tổng (sum/count) sau đó."
+  },
+  {
+    "id": "B19",
+    "module": "B",
+    "module_name": "Kỹ thuật Lập trình & Xử lý dữ liệu",
+    "topic": "Python Dataclasses",
+    "difficulty": "Cơ bản",
+    "type": "multiple_choice",
+    "question": "Tính năng `@dataclass` (giới thiệu từ Python 3.7) giúp lập trình viên viết mã tinh gọn nhờ tự động sinh các phương thức đặc biệt (magic methods) nào sau đây?",
+    "options": {
+      "A": "`__init__()`, `__repr__()`, và `__eq__()`",
+      "B": "`__cuda__()` và `__gpu__()`",
+      "C": "`__compile__()` và `__execute__()`",
+      "D": "`__web__()` và `__http__()`"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Module `dataclasses` tự động tạo `__init__`, `__repr__` (in chuỗi dễ nhìn khi debug) và `__eq__` (so sánh bằng giữa hai đối tượng dữ liệu theo thuộc tính), giúp code ngắn gọn và dễ bảo trì."
+  },
+  {
+    "id": "B20",
+    "module": "B",
+    "module_name": "Kỹ thuật Lập trình & Xử lý dữ liệu",
+    "topic": "Tìm kiếm Nhị phân",
+    "difficulty": "Cơ bản",
+    "type": "multiple_choice",
+    "question": "Mô-đun nào trong thư viện chuẩn của Python hỗ trợ chèn và tìm kiếm phần tử trên danh sách đã sắp xếp bằng thuật toán tìm kiếm nhị phân (Binary Search)?",
+    "options": {
+      "A": "`bisect`",
+      "B": "`binary`",
+      "C": "`searchtree`",
+      "D": "`itertools`"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Mô-đun `bisect` (với các hàm `bisect_left`, `bisect_right`, `insort`) hiện thực giải thuật Binary Search tối ưu O(log n) trên danh sách đã sắp xếp."
+  },
+  {
+    "id": "B21",
+    "module": "B",
+    "module_name": "Kỹ thuật Lập trình & Xử lý dữ liệu",
+    "topic": "Dữ liệu JSON & Serialization",
+    "difficulty": "Cơ bản",
+    "type": "multiple_choice",
+    "question": "Trong Python, đối tượng nào sau đây KHÔNG THỂ tuần tự hóa (serialize) trực tiếp sang JSON bằng hàm `json.dumps()` mà sẽ gây ra lỗi `TypeError`?",
+    "options": {
+      "A": "`set` và `datetime.datetime`",
+      "B": "`list` và `dict`",
+      "C": "`int` và `float`",
+      "D": "`str` và `bool`"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Chuẩn JSON chỉ hỗ trợ các kiểu cơ bản: string, number, object (dict), array (list), boolean, null. Kiểu `set`, `tuple` (chuyển thành array), và đặc biệt `datetime` hoặc `numpy.ndarray` đòi hỏi lập trình viên phải tự viết custom encoder hoặc ép kiểu trước khi `dumps()`."
+  },
+  {
+    "id": "B22",
+    "module": "B",
+    "module_name": "Kỹ thuật Lập trình & Xử lý dữ liệu",
+    "topic": "Caching & Redis",
+    "difficulty": "Trung bình",
+    "type": "multiple_choice",
+    "question": "Trong kiến trúc microservice phục vụ AI, kỹ thuật Cache-Aside (Lazy Loading) bằng Redis hoạt động theo trình tự nào?",
+    "options": {
+      "A": "Ứng dụng kiểm tra Redis cache trước; nếu có (Cache Hit) thì trả về ngay; nếu không có (Cache Miss) thì gọi mô hình AI suy luận, ghi kết quả vào Redis rồi mới trả về",
+      "B": "Xóa toàn bộ cơ sở dữ liệu mỗi khi có request mới",
+      "C": "Luôn gọi mô hình AI chạy trước rồi mới lưu vào cache sau cùng mà không kiểm tra",
+      "D": "Ghi đè cache định kỳ mỗi 1 giây bất kể có request hay không"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Mô hình Cache-Aside tiêu chuẩn: Đọc từ cache trước -> nếu miss thì tính toán từ nguồn chính (AI inference / DB) -> ghi lại vào cache kèm TTL (Time-To-Live) -> trả về cho client."
+  },
+  {
+    "id": "B23",
+    "module": "B",
+    "module_name": "Kỹ thuật Lập trình & Xử lý dữ liệu",
+    "topic": "Async IO trong Python",
+    "difficulty": "Trung bình",
+    "type": "multiple_choice",
+    "question": "Khi gửi đồng thời 100 câu hỏi đến API của mô hình ngôn ngữ lớn (OpenAI / VinUni LLM Endpoint), cách viết nào trong Python cho tốc độ hoàn thành nhanh nhất và tiết kiệm tài nguyên nhất?",
+    "options": {
+      "A": "Sử dụng `asyncio` kết hợp `aiohttp` hoặc `httpx.AsyncClient` và `asyncio.gather()`",
+      "B": "Chạy vòng lặp `for` tuần tự với thư viện `requests`",
+      "C": "Tạo 100 tiến trình riêng biệt bằng `multiprocessing.Process`",
+      "D": "Ghi 100 câu hỏi ra file text rồi chờ hệ điều hành xử lý"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Gọi API LLM là tác vụ I/O mạng (Network I/O-bound). Lập trình bất đồng bộ (`asyncio`) sử dụng 1 luồng duy nhất với cơ chế Event Loop non-blocking, cho phép gửi và chờ hàng trăm kết nối mạng cùng lúc với chi phí bộ nhớ cực thấp so với tạo 100 tiến trình hay chạy tuần tự."
+  },
+  {
+    "id": "B24",
+    "module": "B",
+    "module_name": "Kỹ thuật Lập trình & Xử lý dữ liệu",
+    "topic": "Tối ưu hóa Truy vấn SQL",
+    "difficulty": "Trung bình",
+    "type": "multiple_choice",
+    "question": "Thao tác nào sau đây trên cơ sở dữ liệu PostgreSQL / MySQL sẽ vô hiệu hóa (bỏ qua) Index trên cột `created_at`, dẫn đến Full Table Scan gây nghẽn hệ thống?",
+    "options": {
+      "A": "Áp dụng hàm tính toán lên cột trong mệnh đề WHERE, ví dụ: `WHERE DATE(created_at) = '2026-10-03'` thay vì dùng khoảng `WHERE created_at >= '2026-10-03' AND created_at < '2026-10-04'`",
+      "B": "Sử dụng toán tử so sánh bằng `WHERE created_at = '2026-10-03 08:00:00'`",
+      "C": "Sử dụng `WHERE created_at IS NOT NULL`",
+      "D": "Sắp xếp theo `ORDER BY created_at ASC`"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Khi bọc một cột có đánh chỉ mục (Index) bằng một hàm (như `DATE()`, `LOWER()`), công cụ tối ưu hóa truy vấn không thể dùng B-Tree index sẵn có mà phải quét toàn bộ bảng (Full Table Scan) để tính toán hàm cho từng dòng. Cách viết đúng chuẩn là so sánh theo khoảng thời gian."
+  },
+  {
+    "id": "B25",
+    "module": "B",
+    "module_name": "Kỹ thuật Lập trình & Xử lý dữ liệu",
+    "topic": "Kiểm thử phần mềm AI",
+    "difficulty": "Cơ bản",
+    "type": "multiple_choice",
+    "question": "Trong việc xây dựng pipeline xử lý dữ liệu cho AI, kiểm thử nào dùng để đảm bảo dữ liệu đầu vào luôn tuân thủ đúng định dạng, không bị rỗng, và nằm trong ngưỡng giá trị cho phép trước khi nạp vào model?",
+    "options": {
+      "A": "Data Validation / Schema Testing (ví dụ sử dụng Pydantic hoặc Great Expectations)",
+      "B": "Load Testing máy chủ",
+      "C": "Penetration Testing bảo mật mạng",
+      "D": "A/B Testing giao diện người dùng"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Data Validation sử dụng các công cụ như Pydantic, Pandera, Great Expectations để thẩm định tính toàn vẹn của dữ liệu (Schema, Range, Non-null, Type check), ngăn chặn hiện tượng 'Garbage in, Garbage out' làm crash mô hình."
+  },
+  {
+    "id": "B26",
+    "module": "B",
+    "module_name": "Kỹ thuật Lập trình & Xử lý dữ liệu",
+    "topic": "Xử lý File lớn Out-Of-Memory",
+    "difficulty": "Nâng cao",
+    "type": "scenario",
+    "question": "[Tình huống Lập trình & Pipeline 1]: Bạn cần xử lý một file log giao dịch khổng lồ 20GB bằng Python trên máy tính chỉ có 8GB RAM để lọc ra các giao dịch bất thường (fraud). Nếu dùng `pd.read_csv('log.csv')` thì máy sẽ bị tràn bộ nhớ (Out of Memory - OOM). Hãy đề xuất 2 giải pháp kỹ thuật cụ thể bằng Python để giải quyết bài toán này một cách tối ưu?",
+    "sample_answer": "Giải pháp 1: Đọc và xử lý theo từng khối (Chunking) bằng Pandas: sử dụng `pd.read_csv('log.csv', chunksize=50000)`, duyệt từng chunk qua vòng lặp, lọc các dòng bất thường và ghi nối tiếp (append) vào file kết quả.\nGiải pháp 2: Sử dụng thư viện hiện đại như Polars với LazyFrame (`polars.scan_csv()`) hoặc DuckDB để streaming và tính toán trực tiếp mà không cần nạp toàn bộ vào RAM.\n(Bổ sung): Tối ưu kiểu dữ liệu (downcasting dtypes) như đổi float64 sang float32, category cho chuỗi lặp lại.",
+    "points": 5,
+    "explanation": "**Phân tích Kỹ thuật Tối ưu SQL & Đánh Chỉ Mục:**\n- **Nguyên nhân gây tràn bộ nhớ / Full Table Scan:**\n  - Sử dụng `SELECT *` buộc Database Engine đọc toàn bộ các cột từ ổ cứng lên RAM.\n  - Sử dụng hàm trên cột có đánh chỉ mục (Index Suppression) như `WHERE DATE(transaction_date) = '2026-10-01'` làm vô hiệu hóa B-Tree index.\n- **Chiến lược tối ưu chuẩn hóa:**\n  1. *Indexing:* Tạo Composite Index `(user_id, transaction_date, amount)` giúp truy vấn tận dụng hoàn toàn Index-Only Scan.\n  2. *Partitioning:* Phân vùng bảng theo tháng hoặc quý (Range Partitioning by Date), Database sẽ tự động bỏ qua (Partition Pruning) 95% dữ liệu không liên quan.\n  3. *Chuyển đổi điều kiện:* Thay bằng `transaction_date >= '2026-10-01' AND transaction_date < '2026-10-02'` để tận dụng Index Range Scan."
+  },
+  {
+    "id": "B27",
+    "module": "B",
+    "module_name": "Kỹ thuật Lập trình & Xử lý dữ liệu",
+    "topic": "Thiết kế Cấu trúc Dữ liệu LRU Cache",
+    "difficulty": "Nâng cao",
+    "type": "scenario",
+    "question": "[Tình huống Lập trình 2]: Hệ thống trợ lý AI cần một bộ đệm lưu trữ tối đa 1,000 vector embedding gần nhất đã sinh. Khi bộ đệm đầy và có vector mới cần nạp vào, hệ thống phải tự động loại bỏ vector ít được sử dụng nhất trong thời gian gần đây (Least Recently Used - LRU). Yêu cầu thao tác `get(key)` và `put(key, value)` đều phải đạt độ phức tạp thời gian O(1). Hãy trình bày cấu trúc dữ liệu cần kết hợp và nguyên lý hoạt động bằng Python?",
+    "sample_answer": "Cấu trúc dữ liệu tối ưu: Kết hợp giữa Hash Map (Bảng băm) và Doubly Linked List (Danh sách liên kết đôi), hoặc sử dụng `collections.OrderedDict` sẵn có trong Python.\nNguyên lý:\n1. Hash Map lưu `key -> con trỏ node`, cho phép truy cập node trong O(1).\n2. Doubly Linked List lưu các giá trị theo thứ tự truy cập: đầu danh sách là Most Recently Used, đuôi danh sách là Least Recently Used.\n- Thao tác `get(key)`: Tìm node trong Hash Map O(1), di chuyển node đó lên đầu danh sách O(1).\n- Thao tác `put(key, value)`: Nếu key đã có, cập nhật giá trị và đưa lên đầu. Nếu chưa có: chèn node mới vào đầu danh sách và map; nếu kích thước vượt quá 1,000, xóa node ở đuôi danh sách và xóa key tương ứng trong map O(1).",
+    "points": 5,
+    "explanation": "**Phân tích Thuật toán Cấu Trúc Dữ Liệu LRU Cache:**\n- **Tại sao cần kết hợp Hash Map và Doubly Linked List?**\n  - *Hash Map (Dict):* Cho phép tìm kiếm sự tồn tại của key trong thời gian $O(1)$.\n  - *Doubly Linked List (Danh sách liên kết đôi):* Cho phép xóa một node và chèn node mới vào đầu danh sách (Most Recently Used) hoặc xóa node ở đuôi danh sách (Least Recently Used) trong đúng $O(1)$ bước mà không cần dịch chuyển mảng.\n- **Lưu ý phòng thi:** Nếu chỉ dùng mảng thông thường (`list`), thao tác xóa phần tử ở đầu mảng mất $O(N)$ do phải dồn chỉ mục, vi phạm yêu cầu hiệu năng cực đoan của hệ thống Cache."
+  },
+  {
+    "id": "B28",
+    "module": "B",
+    "module_name": "Kỹ thuật Lập trình & Xử lý dữ liệu",
+    "topic": "Tối ưu hóa Pipeline Trích xuất Đặc trưng",
+    "difficulty": "Trung bình",
+    "type": "scenario",
+    "question": "[Tình huống Lập trình 3]: Một đồng nghiệp viết hàm tiền xử lý dữ liệu cho 1 triệu bản ghi văn bản bằng cách dùng vòng lặp `for i in range(len(df)): df.loc[i, 'clean_text'] = clean_func(df.loc[i, 'raw_text'])`. Đoạn mã chạy mất 45 phút. Hãy phân tích lý do đoạn mã trên chạy quá chậm và đề xuất cách viết lại chuẩn xác bằng Pandas hoặc multiprocessing để hoàn thành trong dưới 30 giây?",
+    "sample_answer": "1. Nguyên nhân chạy chậm:\n- `df.loc[i]` trong vòng lặp liên tục tạo overhead kiểm tra index, phân bổ bộ nhớ mới và chuyển đổi kiểu dữ liệu cho từng dòng riêng lẻ.\n- Không tận dụng được C-level vectorization hoặc đa lõi CPU.\n2. Cách viết lại tối ưu:\n- Cách 1: Sử dụng `df['raw_text'].apply(clean_func)` hoặc List Comprehension trực tiếp trên Series values: `df['clean_text'] = [clean_func(t) for t in df['raw_text'].tolist()]` (nhanh gấp 20-30 lần).\n- Cách 2: Nếu hàm `clean_func` xử lý nặng về CPU (như tách từ tiếng Việt bằng Underthesea/PyVi), sử dụng thư viện `pandarallel` (`df['raw_text'].parallel_apply(...)`) hoặc `multiprocessing.Pool` để phân tán tính toán trên toàn bộ số lõi CPU của máy tính, rút ngắn thời gian xuống dưới 30 giây.",
+    "points": 5,
+    "explanation": "**Phân tích Kỹ thuật Profiling & Tối ưu Mã Nguồn Python:**\n- **Nguyên tắc vàng:** *'Không bao giờ tối ưu hóa khi chưa đo lường'*.\n  - Dùng `cProfile` và thư viện `line_profiler` để lập bản đồ tiêu thụ thời gian CPU từng dòng lệnh.\n  - Dùng `memory_profiler` phát hiện các vùng nhớ bị rò rỉ (Memory Leaks).\n- **Các mẫu tối ưu thường gặp:**\n  - Thay thế vòng lặp Python lồng nhau duyệt qua DataFrame bằng các hàm Vectorized của NumPy / Polars.\n  - Sử dụng `__slots__` cho các class lưu trữ hàng triệu instance nhỏ để tiết kiệm 40% RAM do loại bỏ `__dict__` riêng của từng object.\n  - Chuyển mã nguồn các hàm xử lý tính toán nặng sang Cython, Numba (`@jit`), hoặc viết module mở rộng bằng C++/Rust."
+  },
+  {
+    "id": "B29",
+    "module": "B",
+    "module_name": "Kỹ thuật Lập trình & Xử lý dữ liệu",
+    "topic": "Thuật toán Phát hiện Bất thường Chuỗi Thời gian",
+    "difficulty": "Nâng cao",
+    "type": "scenario",
+    "question": "[Tình huống Lập trình 4]: Dữ liệu cảm biến pin xe điện VinFast gửi về thông số nhiệt độ mỗi giây. Bạn cần viết một hàm Python thời gian thực (Streaming) để phát hiện tức thì nhiệt độ bất thường (Anomaly Detection) bằng phương pháp Z-Score động trên cửa sổ trượt 60 giây (Rolling Window). Hãy mô tả cách cập nhật giá trị trung bình và độ lệch chuẩn một cách hiệu quả mà không cần tính toán lại toàn bộ 60 phần tử ở mỗi giây mới?",
+    "sample_answer": "Sử dụng giải thuật Welford hoặc công thức cập nhật tổng động (Running Sum & Running Sum of Squares) kết hợp Queue (hàng đợi độ dài cố định 60):\n1. Duy trì một hàng đợi `collections.deque(maxlen=60)` cùng 2 biến tích lũy: `sum_x` và `sum_x2`.\n2. Khi nhận điểm dữ liệu mới `x_new`:\n- Nếu deque đã đủ 60 phần tử, lấy phần tử cũ nhất `x_old = deque.popleft()`.\n- Cập nhật: `sum_x = sum_x - x_old + x_new` và `sum_x2 = sum_x2 - (x_old^2) + (x_new^2)`.\n- Tính trung bình: `mean = sum_x / 60`.\n- Tính phương sai: `var = (sum_x2 / 60) - (mean^2)`, độ lệch chuẩn `std = sqrt(max(0, var))`.\n- Tính `Z = (x_new - mean) / (std + 1e-6)`. Nếu `|Z| > 3`, phát cờ cảnh báo bất thường.\nĐộ phức tạp thời gian: O(1) cho mỗi giây dữ liệu mới, đáp ứng hoàn hảo yêu cầu thời gian thực.",
+    "points": 5,
+    "explanation": "**Phân tích Thuật toán Welford Cho Dữ Liệu Dòng (Streaming Data):**\n- **Vấn đề của công thức thống kê truyền thống:**\n  Công thức $\\text{Var} = E[X^2] - (E[X])^2$ rất dễ bị hiện tượng *Triệt tiêu số học (Catastrophic Cancellation)* khi xử lý các giá trị $X$ lớn với phương sai nhỏ trong số học dấu phẩy động.\n- **Thuật toán Welford (1-pass):**\n  Cập nhật trung bình và phương sai động với mỗi điểm dữ liệu mới $x_k$ mà không cần lưu lại toàn bộ lịch sử:\n  $$M_k = M_{k-1} + \\frac{x_k - M_{k-1}}{k}$$\n  $$S_k = S_{k-1} + (x_k - M_{k-1})(x_k - M_k)$$\n  $$\\text{Phương sai} = \\frac{S_k}{k - 1}$$\n- Thuật toán đạt độ phức tạp không gian $O(1)$ bộ nhớ và độ ổn định số học tuyệt đối, là chuẩn mực số 1 cho các pipeline IoT và hệ thống giám sát xe tự hành."
+  },
+  {
+    "id": "B30",
+    "module": "B",
+    "module_name": "Kỹ thuật Lập trình & Xử lý dữ liệu",
+    "topic": "Khắc phục Lỗi Bất đồng bộ & Rate Limit",
+    "difficulty": "Nâng cao",
+    "type": "scenario",
+    "question": "[Tình huống Lập trình 5]: Hệ thống thu thập dữ liệu tự động của bạn gọi đến API bên ngoài với giới hạn tốc độ nghiêm ngặt là tối đa 10 requests/giây. Nếu vượt quá, API sẽ trả về mã lỗi HTTP 429 (Too Many Requests) và tạm khóa IP trong 15 phút. Hãy thiết kế cơ chế Exponential Backoff with Jitter và Token Bucket Rate Limiter bằng Python để đảm bảo hệ thống không bao giờ bị khóa IP?",
+    "sample_answer": "Thiết kế giải pháp:\n1. Rate Limiter (Token Bucket / Semaphore):\n- Sử dụng `asyncio.Semaphore(10)` hoặc thư viện `aiolimiter` với `AsyncLimiter(max_rate=10, time_period=1.0)` để giới hạn số request xuất phát không vượt quá 10 trong 1 giây.\n2. Exponential Backoff with Jitter:\n- Khi gặp mã lỗi HTTP 429 hoặc lỗi mạng tạm thời, không retry ngay lập tức mà đợi theo hàm số mũ: `sleep_time = min(max_backoff, base_backoff * (2 ** retry_count))`.\n- Thêm yếu tố ngẫu nhiên (Full Jitter): `actual_sleep = random.uniform(0, sleep_time)` để tránh hiện tượng bầy đàn (Thundering Herd Problem) khi nhiều tiến trình cùng retry vào đúng một tích tắc.\n- Đặt ngưỡng tối đa số lần retry (ví dụ 5 lần), nếu vẫn thất bại thì ghi log lỗi và đưa vào Dead Letter Queue (DLQ).",
+    "points": 5,
+    "explanation": "**Phân tích Cơ chế Retry, Exponential Backoff & Jitter:**\n- **Nguyên lý chống sập hệ thống (Thundering Herd Problem):**\n  - Khi một dịch vụ AI bị nghẽn (Rate Limit 429), nếu hàng ngàn client cùng retry đồng thời sau một khoảng thời gian cố định (ví dụ 1 giây), các đợt request dồn dập sẽ tạo ra 'sóng xung kích' làm máy chủ sụp đổ hoàn toàn.\n- **Công thức Exponential Backoff với Full Jitter:**\n  $$T_{\\text{wait}} = \\text{random}(0, \\min(T_{\\max}, T_{\\text{base}} \\cdot 2^{\\text{attempt}}))$$\n- **Cơ chế Circuit Breaker:** Khi tỷ lệ lỗi vượt quá ngưỡng $50\\%$ trong 1 phút, hệ thống tự động 'ngắt mạch' (Open State) và trả về fallback ngay lập tức mà không gọi thêm API bên ngoài, bảo vệ hệ thống không bị cạn kiệt connection pool."
+  },
+  {
+    "id": "B31",
+    "module": "B",
+    "module_name": "Kỹ thuật Lập trình & Xử lý dữ liệu",
+    "topic": "Tối ưu hóa Bộ nhớ Python __slots__",
+    "difficulty": "Trung bình",
+    "type": "multiple_choice",
+    "question": "Khi khởi tạo 10 triệu đối tượng Node trong Python để xây dựng đồ thị tri thức, việc khai báo `__slots__ = ('id', 'val', 'next')` trong class giúp giảm dung lượng RAM chủ yếu nhờ cơ chế nào?",
+    "options": {
+      "A": "Ngăn chặn Python tự động cấp phát một từ điển `__dict__` riêng cho mỗi cá thể (instance), cố định thuộc tính trong một cấu trúc mảng C nhỏ gọn",
+      "B": "Tự động chuyển mã nguồn Python thành mã C++",
+      "C": "Nén dữ liệu bằng thuật toán gzip",
+      "D": "Chỉ cho phép lưu số nguyên mà không cho lưu chuỗi"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Mặc định mỗi instance trong Python có một `__dict__` để hỗ trợ gán thuộc tính động tùy ý, tốn khoảng vài trăm byte overhead cho mỗi object. Khai báo `__slots__` triệt tiêu `__dict__`, giúp tiết kiệm đến 60-70% RAM khi tạo hàng triệu đối tượng nhỏ."
+  },
+  {
+    "id": "B32",
+    "module": "B",
+    "module_name": "Kỹ thuật Lập trình & Xử lý dữ liệu",
+    "topic": "Cấu trúc dữ liệu Hàng đợi",
+    "difficulty": "Cơ bản",
+    "type": "multiple_choice",
+    "question": "Để triển khai hàng đợi FIFO (First In First Out) xử lý luồng tin nhắn và request trong hệ thống AI đa luồng, kiểu dữ liệu nào trong Python mang lại độ phức tạp $\\mathcal{O}(1)$ cho cả hai thao tác thêm vào đuôi (`push`) và lấy ra ở đầu (`pop`)?",
+    "options": {
+      "A": "`collections.deque`",
+      "B": "`list` thông thường với `pop(0)`",
+      "C": "`tuple`",
+      "D": "`set`"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "`collections.deque` được hiện thực dưới dạng danh sách liên kết đôi (doubly-linked list / block-based), cho phép thao tác `append()` và `popleft()` đều đạt độ phức tạp $\\mathcal{O}(1)$. Ngược lại, `list.pop(0)` tốn $\\mathcal{O}(N)$ do phải dồn dịch toàn bộ các phần tử phía sau lên đầu bộ nhớ."
+  },
+  {
+    "id": "B33",
+    "module": "B",
+    "module_name": "Kỹ thuật Lập trình & Xử lý dữ liệu",
+    "topic": "Quản lý Bộ nhớ & Garbage Collection",
+    "difficulty": "Trung bình",
+    "type": "multiple_choice",
+    "question": "Cơ chế dọn rác chính của CPython là đếm tham chiếu (Reference Counting). Khi xảy ra trường hợp hai đối tượng trỏ chéo lẫn nhau (Circular Reference / Reference Cycle), bộ thu gom rác (Garbage Collector) của Python giải quyết vấn đề này như thế nào?",
+    "options": {
+      "A": "Sử dụng một bộ dò chu trình (Cyclic Garbage Collector) chạy nền định kỳ quét qua 3 thế hệ (Generations 0, 1, 2) để phát hiện và giải phóng các khối bộ nhớ cô lập không thể tiếp cận từ gốc",
+      "B": "Hệ điều hành sẽ lập tức buộc dừng (kill) tiến trình Python",
+      "C": "Bộ nhớ sẽ bị rò rỉ vĩnh viễn không bao giờ giải phóng được",
+      "D": "Python tự động xóa ngẫu nhiên một trong hai đối tượng"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Module `gc` trong Python giải quyết nhược điểm của Reference Counting bằng thuật toán phát hiện chu trình dựa trên phân chia thế hệ (Generational GC). Khi một thế hệ đầy ngưỡng (threshold), nó sẽ quét các đối tượng có thể trỏ vòng tròn để dọn dẹp."
+  },
+  {
+    "id": "B34",
+    "module": "B",
+    "module_name": "Kỹ thuật Lập trình & Xử lý dữ liệu",
+    "topic": "Tối ưu hóa Lọc dữ liệu Pandas",
+    "difficulty": "Cơ bản",
+    "type": "multiple_choice",
+    "question": "Khi lọc dữ liệu trên một DataFrame lớn 20 triệu dòng với nhiều điều kiện: `(df['age'] > 30) & (df['income'] > 50000)`, phương thức nào sau đây sử dụng thư viện NumExpr biên dịch biểu thức C giúp chạy nhanh hơn và không tạo các mảng boolean trung gian tốn RAM?",
+    "options": {
+      "A": "`df.query('age > 30 and income > 50000')`",
+      "B": "`df.filter(regex='age')`",
+      "C": "Duyệt vòng lặp `for row in df.itertuples()`",
+      "D": "`df.apply(lambda r: r['age'] > 30)`"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "`df.query()` và `pd.eval()` sử dụng backend NumExpr, tự động tối ưu chuỗi biểu thức logic, tính toán theo từng khối trên CPU cache và tránh cấp phát các mảng boolean tạm thời tốn hàng gigabyte RAM."
+  },
+  {
+    "id": "B35",
+    "module": "B",
+    "module_name": "Kỹ thuật Lập trình & Xử lý dữ liệu",
+    "topic": "NumPy Views vs Copies",
+    "difficulty": "Trung bình",
+    "type": "multiple_choice",
+    "question": "Cho mảng `a = np.array([1, 2, 3, 4, 5])`. Phép cắt lát `b = a[1:4]` trong NumPy tạo ra:",
+    "options": {
+      "A": "Một View (khung nhìn) chia sẻ chung cùng vùng nhớ đệm dữ liệu với mảng a (thay đổi giá trị trên b sẽ làm a thay đổi theo)",
+      "B": "Một bản sao độc lập hoàn toàn (Copy)",
+      "C": "Một danh sách Python nguyên bản",
+      "D": "Một con trỏ hàm"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Trong NumPy, thao tác slicing cơ bản luôn trả về một View (không sao chép dữ liệu để tiết kiệm RAM và đạt tốc độ tối đa). Muốn tạo bản sao độc lập phải gọi rõ ràng `b = a[1:4].copy()`."
+  },
+  {
+    "id": "B36",
+    "module": "B",
+    "module_name": "Kỹ thuật Lập trình & Xử lý dữ liệu",
+    "topic": "Hàm SQL COALESCE",
+    "difficulty": "Cơ bản",
+    "type": "multiple_choice",
+    "question": "Trong câu lệnh SQL chuẩn bị dữ liệu đầu vào cho mô hình AI: `SELECT COALESCE(discount, promo_code_val, 0) FROM orders;`, hàm COALESCE hoạt động theo nguyên tắc nào?",
+    "options": {
+      "A": "Trả về giá trị khác NULL đầu tiên trong danh sách đối số truyền vào",
+      "B": "Tính giá trị trung bình cộng của 3 cột",
+      "C": "Nối 3 cột lại thành một chuỗi văn bản",
+      "D": "Báo lỗi nếu có bất kỳ cột nào là NULL"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "`COALESCE(val1, val2, ...)` trả về giá trị non-null đầu tiên, rất hữu ích trong feature engineering để xử lý giá trị khuyết (missing imputation) và fallback về giá trị mặc định."
+  },
+  {
+    "id": "B37",
+    "module": "B",
+    "module_name": "Kỹ thuật Lập trình & Xử lý dữ liệu",
+    "topic": "Cấu trúc dữ liệu Trie",
+    "difficulty": "Trung bình",
+    "type": "multiple_choice",
+    "question": "Cấu trúc dữ liệu cây tiền tố Trie (Prefix Tree) là giải pháp tối ưu hàng đầu cho tính năng nào trong sản phẩm tìm kiếm AI?",
+    "options": {
+      "A": "Tự động hoàn thành từ khóa (Autocomplete / Prefix Search) với thời gian tìm kiếm chỉ phụ thuộc vào độ dài chuỗi truy vấn O(L) chứ không phụ thuộc vào kích thước toàn bộ từ điển",
+      "B": "Giải mã âm thanh từ video sang văn bản",
+      "C": "Nhân ma trận trọng số trên GPU",
+      "D": "Nén dung lượng ảnh JPEG"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Trie lưu trữ các ký tự chung trên cùng nhánh cây. Tìm kiếm từ khóa theo tiền tố độ dài L chỉ tốn O(L) bước duyệt, cực kỳ nhanh cho thanh search box autocomplete của sàn thương mại điện tử hoặc ứng dụng trợ lý."
+  },
+  {
+    "id": "B38",
+    "module": "B",
+    "module_name": "Kỹ thuật Lập trình & Xử lý dữ liệu",
+    "topic": "Thư viện itertools.groupby",
+    "difficulty": "Trung bình",
+    "type": "multiple_choice",
+    "question": "Khi sử dụng hàm `itertools.groupby()` trong thư viện chuẩn Python, điều kiện tiên quyết bắt buộc đối với danh sách đầu vào là gì để gom nhóm chính xác?",
+    "options": {
+      "A": "Dữ liệu đầu vào phải được sắp xếp trước (sorted) theo cùng khóa gom nhóm",
+      "B": "Tất cả các phần tử phải là số nguyên",
+      "C": "Độ dài danh sách không được vượt quá 100",
+      "D": "Không được có phần tử trùng lặp"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Khác với SQL GROUP BY, `itertools.groupby()` chỉ gom các phần tử liên tiếp có cùng giá trị khóa. Nếu dữ liệu chưa sắp xếp, các nhóm có cùng khóa nhưng nằm rải rác sẽ bị tách thành các nhóm độc lập riêng biệt."
+  },
+  {
+    "id": "B39",
+    "module": "B",
+    "module_name": "Kỹ thuật Lập trình & Xử lý dữ liệu",
+    "topic": "Tối ưu hóa Thao tác Chuỗi Python",
+    "difficulty": "Cơ bản",
+    "type": "multiple_choice",
+    "question": "Khi nối 100,000 chuỗi văn bản nhỏ lại với nhau, phương pháp nào sau đây tối ưu nhất về thời gian và bộ nhớ trong Python?",
+    "options": {
+      "A": "`''.join(list_of_strings)` có độ phức tạp thời gian O(N)",
+      "B": "Dùng toán tử cộng chuỗi `s += item` trong vòng lặp for có độ phức tạp thời gian O(N^2)",
+      "C": "Ghi từng chuỗi ra file đĩa rồi đọc lại",
+      "D": "Chuyển từng chuỗi sang số nguyên rồi cộng dồn"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Chuỗi trong Python là bất biến (immutable). Dùng `s += item` trong vòng lặp liên tục tạo mới chuỗi và sao chép lại toàn bộ nội dung cũ tốn O(N^2). Phương thức `''.join()` tính trước tổng độ dài cần cấp phát và sao chép 1 lần duy nhất trong O(N)."
+  },
+  {
+    "id": "B40",
+    "module": "B",
+    "module_name": "Kỹ thuật Lập trình & Xử lý dữ liệu",
+    "topic": "Thuật toán Cửa sổ trượt Monotonic Deque",
+    "difficulty": "Nâng cao",
+    "type": "multiple_choice",
+    "question": "Để tìm giá trị lớn nhất trong từng cửa sổ trượt kích thước $k$ trên mảng gồm $N$ số thực (Sliding Window Maximum), cấu trúc dữ liệu nào cho phép giải quyết bài toán với tổng thời gian tối ưu $\\mathcal{O}(N)$?",
+    "options": {
+      "A": "Monotonic Deque (Hàng đợi hai đầu đơn điệu giảm)",
+      "B": "Duyệt tìm max từng cửa sổ với $\\mathcal{O}(N \\cdot k)$",
+      "C": "Max-Heap với $\\mathcal{O}(N \\log k)$",
+      "D": "Sắp xếp lại mảng ở mỗi bước"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Sử dụng Hàng đợi hai đầu đơn điệu (Monotonic Deque):\n- Lưu trữ chỉ số các phần tử sao cho giá trị tương ứng luôn giảm dần.\n- Mỗi phần tử được thêm vào và loại bỏ khỏi deque tối đa một lần trong suốt quá trình duyệt.\n- Tổng chi phí phân bổ (amortized time) cho toàn bộ mảng là:\n$$\\text{Complexity} = \\mathcal{O}(N)$$"
+  },
+  {
+    "id": "B41",
+    "module": "B",
+    "module_name": "Kỹ thuật Lập trình & Xử lý dữ liệu",
+    "topic": "Tăng tốc Phân tích Datetime trong Pandas",
+    "difficulty": "Trung bình",
+    "type": "multiple_choice",
+    "question": "Khi chuyển đổi một cột chuỗi ngày tháng 5 triệu dòng sang kiểu Datetime bằng Pandas, thao tác nào giúp tăng tốc độ xử lý lên gấp 20 - 50 lần?",
+    "options": {
+      "A": "Chỉ định rõ định dạng chuỗi bằng tham số `format='%Y-%m-%d %H:%M:%S'` thay vì để Pandas tự động suy đoán (infer)",
+      "B": "Xóa cột đó đi",
+      "C": "Chuyển sang chuỗi chữ thường",
+      "D": "Đổi tên cột thành 'date'"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Nếu không cung cấp `format`, Pandas phải thử nhiều regex/parser cho từng dòng dữ liệu làm tốc độ cực kỳ chậm. Cung cấp tham số `format` kích hoạt bộ phân tích C chính xác, tăng tốc độ xử lý ngoạn mục."
+  },
+  {
+    "id": "B42",
+    "module": "B",
+    "module_name": "Kỹ thuật Lập trình & Xử lý dữ liệu",
+    "topic": "Python Concurrent Futures",
+    "difficulty": "Trung bình",
+    "type": "multiple_choice",
+    "question": "Trong module `concurrent.futures`, khi nào lập trình viên AI BẮT BUỘC phải chọn `ProcessPoolExecutor` thay vì `ThreadPoolExecutor`?",
+    "options": {
+      "A": "Khi tác vụ là tính toán nặng bằng mã Python thuần (ví dụ: tiền xử lý văn bản, giải thuật tối ưu tùy biến) cần tận dụng nhiều lõi CPU để vượt qua giới hạn của GIL",
+      "B": "Khi chỉ gửi HTTP request đến API đám mây",
+      "C": "Khi đọc file nhỏ dưới 1KB",
+      "D": "Khi máy tính chỉ có đúng 1 CPU core"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Với các tác vụ CPU-bound bằng Python, ThreadPoolExecutor vẫn bị khóa bởi GIL nên các luồng chỉ chạy luân phiên trên 1 lõi. ProcessPoolExecutor tạo các tiến trình độc lập với không gian bộ nhớ và GIL riêng biệt, khai thác tối đa sức mạnh của tất cả CPU cores."
+  },
+  {
+    "id": "B43",
+    "module": "B",
+    "module_name": "Kỹ thuật Lập trình & Xử lý dữ liệu",
+    "topic": "SQL Common Table Expressions (CTE)",
+    "difficulty": "Cơ bản",
+    "type": "multiple_choice",
+    "question": "Mệnh đề `WITH cte AS (...)` trong SQL mang lại ưu điểm vượt trội nào so với việc lồng nhiều tầng truy vấn con (Nested Subqueries)?",
+    "options": {
+      "A": "Làm cho câu lệnh truy vấn có cấu trúc tuần tự rõ ràng, dễ đọc, dễ kiểm thử từng bước và có thể tái sử dụng bảng tạm CTE nhiều lần trong cùng một truy vấn chính",
+      "B": "Xóa vĩnh viễn dữ liệu gốc trong bảng",
+      "C": "Chỉ hoạt động được trên hệ quản trị cơ sở dữ liệu SQLite",
+      "D": "Biến mọi truy vấn thành câu lệnh UPDATE"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "CTE (Common Table Expressions) giúp module hóa câu lệnh SQL phức tạp, biến mã SQL dài ngoằng khó hiểu thành các bước logic tuần tự, tăng khả năng bảo trì và tái sử dụng cho các pipeline phân tích dữ liệu."
+  },
+  {
+    "id": "B44",
+    "module": "B",
+    "module_name": "Kỹ thuật Lập trình & Xử lý dữ liệu",
+    "topic": "Python Metaclasses & Registry Pattern",
+    "difficulty": "Nâng cao",
+    "type": "multiple_choice",
+    "question": "Trong các framework AI lớn như PyTorch Lightning hay Hugging Face Transformers, phương thức `__init_subclass__` thường được sử dụng cho mục đích kiến trúc nào?",
+    "options": {
+      "A": "Tự động đăng ký (Auto-register) các lớp con mới định nghĩa vào một Registry chung (Factory Pattern) mà không cần cấu hình thủ công",
+      "B": "Tự động tắt máy tính khi kết thúc huấn luyện",
+      "C": "Chuyển mã Python sang Javascript",
+      "D": "Ngăn chặn việc kế thừa lớp"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "`__init_subclass__` là một hook được gọi bất cứ khi nào một lớp con được định nghĩa, cho phép triển khai Registry Pattern cực kỳ gọn gàng để quản lý các kiến trúc mô hình, backbone hoặc loss function mới."
+  },
+  {
+    "id": "B45",
+    "module": "B",
+    "module_name": "Kỹ thuật Lập trình & Xử lý dữ liệu",
+    "topic": "Ánh xạ Bộ nhớ Memory Mapping (mmap)",
+    "difficulty": "Nâng cao",
+    "type": "multiple_choice",
+    "question": "Mô-đun `mmap` trong Python cho phép ánh xạ một tệp tin lớn trực tiếp vào không gian địa chỉ bộ nhớ ảo của tiến trình. Lợi ích lớn nhất của kỹ thuật này khi nạp tập dữ liệu huấn luyện khổng lồ là gì?",
+    "options": {
+      "A": "Truy cập dữ liệu theo kiểu ngẫu nhiên (Random Access) mà không cần nạp toàn bộ tệp vào RAM vật lý, hệ điều hành tự động phân trang (Page Cache) đọc phần cần thiết theo nhu cầu (Lazy Paging)",
+      "B": "Làm cho tệp tin biến mất khỏi ổ cứng",
+      "C": "Mã hóa tệp tin thành chuỗi base64",
+      "D": "Chỉ đọc được tệp tin có đuôi .txt"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "`mmap` tận dụng cơ chế bộ nhớ ảo của hệ điều hành, cho phép đọc/ghi dữ liệu nhị phân hàng trăm GB với độ trễ cực thấp và chia sẻ bộ nhớ giữa nhiều tiến trình mà không làm cạn kiệt RAM vật lý."
+  },
+  {
+    "id": "B46",
+    "module": "B",
+    "module_name": "Kỹ thuật Lập trình & Xử lý dữ liệu",
+    "topic": "Định dạng Apache Arrow / Feather",
+    "difficulty": "Trung bình",
+    "type": "multiple_choice",
+    "question": "Định dạng Apache Arrow / Feather đạt tốc độ truyền dữ liệu nhanh hơn mọi định dạng khác giữa các tiến trình Python, R và C++ nhờ đặc tính kỹ thuật nào?",
+    "options": {
+      "A": "Cơ chế Zero-Copy Reads: Dữ liệu trên đĩa có cùng cấu trúc bộ nhớ trong RAM, cho phép nạp trực tiếp mà không tốn chi phí tuần tự hóa hay giải tuần tự hóa (Serialization/Deserialization overhead)",
+      "B": "Xóa bỏ toàn bộ tên cột của bảng",
+      "C": "Chỉ dùng để lưu file âm thanh",
+      "D": "Tự động đổi tên các file trên máy"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Apache Arrow chuẩn hóa bố cục bộ nhớ dạng cột (Columnar In-Memory Format). Khi đọc file Feather/Arrow, tiến trình chỉ việc ánh xạ con trỏ bộ nhớ (Zero-copy), không tốn một chu kỳ CPU nào để parse dữ liệu."
+  },
+  {
+    "id": "B47",
+    "module": "B",
+    "module_name": "Kỹ thuật Lập trình & Xử lý dữ liệu",
+    "topic": "Đồng bộ hóa & Phòng chống Deadlock",
+    "difficulty": "Trung bình",
+    "type": "multiple_choice",
+    "question": "Khi hai luồng xử lý dữ liệu cùng cần sử dụng hai tài nguyên Lock A và Lock B, nguyên tắc thiết kế đơn giản và hiệu quả nhất để đảm bảo KHÔNG BAO GIỜ xảy ra bế tắc (Deadlock) là gì?",
+    "options": {
+      "A": "Bắt buộc mọi luồng phải luôn chiếm dụng các khóa theo cùng một thứ tự nghiêm ngặt (ví dụ: luôn acquire Lock A trước rồi mới acquire Lock B)",
+      "B": "Không dùng khóa mà để các luồng ghi đè tự do",
+      "C": "Cho một luồng chạy trước 1 tiếng rồi mới bật luồng thứ hai",
+      "D": "Khởi động lại máy tính sau mỗi 5 phút"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Một trong 4 điều kiện gây Deadlock (Coffman conditions) là Chờ đợi vòng tròn (Circular Wait). Việc áp đặt thứ tự lấy khóa toàn cục (Global Lock Ordering) triệt tiêu hoàn toàn khả năng hình thành chu trình chờ đợi, loại trừ tận gốc nguy cơ deadlock."
+  },
+  {
+    "id": "B48",
+    "module": "B",
+    "module_name": "Kỹ thuật Lập trình & Xử lý dữ liệu",
+    "topic": "Thiết kế Pipeline Dữ liệu Lớn Polars",
+    "difficulty": "Nâng cao",
+    "type": "scenario",
+    "question": "[Tình huống Lập trình 6]: Bạn cần tính toán khoảng cách di chuyển và thời gian sạc pin từ một tệp dữ liệu GPS xe điện VinFast dung lượng 60GB trên một máy chủ phân tích có 32GB RAM. Thư viện Pandas báo lỗi Out-Of-Memory khi đọc. Hãy trình bày kiến trúc sử dụng thư viện Polars với LazyFrame để thực hiện truy vấn tổng hợp trên và giải thích vì sao giải pháp này thành công?",
+    "sample_answer": "Kiến trúc giải pháp Polars LazyFrame:\n1. Triển khai bằng mã nguồn:\n```python\nimport polars as pl\n# Quét dữ liệu dạng Lazy (không nạp toàn bộ vào RAM)\nq = (pl.scan_parquet('gps_data.parquet')\n     .filter(pl.col('speed') > 0)\n     .group_by('vehicle_id')\n     .agg([\n         pl.col('distance_km').sum().alias('total_distance'),\n         pl.col('charging_kwh').sum().alias('total_charge')\n     ]))\n# Thực thi tính toán theo luồng streaming\ndf_result = q.collect(streaming=True)\n```\n2. Lý do thành công:\n- Query Optimization: Polars phân tích cây thực thi, tự động đẩy bộ lọc xuống nguồn đọc (Predicate Pushdown) và chỉ nạp các cột cần thiết (Projection Pushdown).\n- Streaming Engine: `streaming=True` cho phép Polars xử lý dữ liệu theo từng lô (batches) chạy qua các lõi CPU bằng ngôn ngữ Rust, bộ nhớ RAM tiêu thụ luôn được khống chế dưới 32GB.",
+    "points": 5,
+    "explanation": "**Phân tích Kỹ thuật Polars LazyFrame & Động Cơ Query Optimization:**\n- **Ưu thế vượt trội của Polars so với Pandas:**\n  1. *Ngôn ngữ Rust:* Quản lý bộ nhớ chặt chẽ không có chi phí bộ thu gom rác (No Garbage Collector Overhead).\n  2. *Cấu trúc cột Apache Arrow:* Dữ liệu lưu liền kề trong bộ nhớ giúp tận dụng tối đa cache L1/L2 của CPU và tập lệnh vector SIMD.\n  3. *Lazy Execution (Thực thi lười):* Xây dựng đồ thị thực thi (Logical Query Plan) trước, sau đó tự động tối ưu hóa:\n     - *Predicate Pushdown:* Đẩy các bộ lọc `filter()` xuống sát tầng đọc đĩa, không nạp các dòng không thỏa mãn lên RAM.\n     - *Projection Pushdown:* Chỉ đọc đúng các cột được yêu cầu, giảm 80% dung lượng I/O từ ổ cứng."
+  },
+  {
+    "id": "B49",
+    "module": "B",
+    "module_name": "Kỹ thuật Lập trình & Xử lý dữ liệu",
+    "topic": "Hàng đợi Tác vụ Bất đồng bộ & Tính Bất biến Idempotency",
+    "difficulty": "Nâng cao",
+    "type": "scenario",
+    "question": "[Tình huống Lập trình 7]: Trong hệ thống sinh ảnh tự động bằng AI, người dùng ấn liên tục nút 'Tạo ảnh' nhiều lần khi mạng lag, dẫn đến nhiều tác vụ trùng lặp được đẩy vào hàng đợi Celery/Redis, gây lãng phí GPU và trừ tiền người dùng nhiều lần. Hãy thiết kế cơ chế Khóa phân tán (Distributed Lock) và Tính bất biến (Idempotency) bằng Python và Redis để ngăn chặn hoàn toàn hiện tượng này?",
+    "sample_answer": "Thiết kế cơ chế Idempotency & Distributed Lock:\n1. Sinh Khóa Định Danh (Idempotency Key): Phía Frontend sinh một UUID duy nhất cho mỗi hành động click, hoặc Backend sinh hàm băm SHA256 từ `hash(user_id + prompt + timestamp_minute)`.\n2. Kiểm tra và chiếm khóa nguyên tử bằng Redis `SETNX`:\n```python\nlock_key = f'gen_lock:{idempotency_key}'\n# Chiếm khóa trong 60 giây (ngăn duplicate requests)\nis_acquired = redis_client.set(lock_key, 'processing', nx=True, ex=60)\nif not is_acquired:\n    return {'status': 'ignored', 'message': 'Yêu cầu đang được xử lý, vui lòng không gửi lại!'}\n```\n3. Caching kết quả: Khi tác vụ sinh ảnh xong, lưu URL kết quả vào Redis với key `result:{idempotency_key}` kèm thời gian sống 1 giờ. Nếu client gửi lại cùng key, trả ngay kết quả cũ mà không cần gọi GPU tính toán lại.",
+    "points": 5,
+    "explanation": "**Phân tích Kỹ thuật Tính Bất Biến (Idempotency) Trong Hàng Đợi Tác Vụ:**\n- **Nguyên lý At-least-once Delivery:**\n  Trong các hệ thống phân tán (RabbitMQ, Kafka, Celery), một thông điệp có thể được gửi nhiều hơn 1 lần do mạng bị trễ hoặc worker bị crash trước khi gửi ACK.\n- **Cơ chế khóa phân tán Idempotency Key:**\n  1. Mỗi tác vụ sinh một UUID duy nhất: `task_id = hash(user_id, input_payload, timestamp)`.\n  2. Trước khi gọi GPU inference đắt đỏ, worker kiểm tra Redis: `SET key task_id NX EX 3600`.\n  3. Nếu key đã tồn tại và trạng thái là `SUCCESS`, trả về kết quả ngay lập tức từ bộ nhớ đệm mà không tốn tài nguyên chạy lại mô hình."
+  },
+  {
+    "id": "B50",
+    "module": "B",
+    "module_name": "Kỹ thuật Lập trình & Xử lý dữ liệu",
+    "topic": "Kiến trúc Real-time Feature Store",
+    "difficulty": "Nâng cao",
+    "type": "scenario",
+    "question": "[Tình huống Lập trình 8]: Hệ thống phát hiện gian lận giao dịch thẻ ngân hàng của VinGroup cần độ trễ suy luận toàn trình dưới 20ms. Mô hình AI yêu cầu 10 đặc trưng động tính toán trong 10 phút gần nhất (ví dụ: số lần quẹt thẻ trong 10 phút, tổng số tiền giao dịch trong 1 giờ). Nếu truy vấn SQL từ cơ sở dữ liệu quan hệ sẽ mất hơn 100ms. Hãy thiết kế kiến trúc Real-time Feature Store sử dụng Redis Data Structures để cung cấp các đặc trưng này trong dưới 2ms?",
+    "sample_answer": "Kiến trúc Real-time Feature Store với Redis:\n1. Cấu trúc dữ liệu Redis Sorted Set (ZSET):\n- Mỗi khách hàng có một khóa: `user_tx:{customer_id}`.\n- Mỗi giao dịch mới được thêm vào bằng lệnh: `ZADD user_tx:{customer_id} <timestamp> <tx_amount>`.\n2. Trích xuất đặc trưng thời gian thực (O(log N + M)):\n- Lấy số lượng giao dịch trong 10 phút qua: `ZCOUNT user_tx:{customer_id} (current_time - 600) +inf`.\n- Dọn dẹp dữ liệu cũ hơn 1 giờ tự động: `ZREMRANGEBYSCORE user_tx:{customer_id} -inf (current_time - 3600)`.\n3. Kết quả: Toàn bộ dữ liệu nằm trong RAM Redis, thời gian truy xuất chỉ mất 0.5 - 1.5ms qua kết nối nội bộ, đáp ứng vượt trội chỉ tiêu độ trễ 20ms của bài toán thanh toán trực tuyến.",
+    "points": 5,
+    "explanation": "**Phân tích Kiến trúc Feature Store Thời Gian Thực:**\n- **Giải quyết bài toán Train-Serve Skew:**\n  - Sự sai lệch giữa đặc trưng lúc huấn luyện (Offline - chạy theo lô qua BigQuery/Spark) và đặc trưng lúc phục vụ thực tế (Online - yêu cầu độ trễ < 10ms qua Redis/DynamoDB).\n- **Cơ chế đồng bộ kép (Dual Storage):**\n  - *Offline Store (Parquet trên S3/GCS):* Lưu toàn bộ lịch sử điểm dữ liệu với dấu thời gian chính xác (Point-in-time Correctness) phục vụ Backtesting và chống rò rỉ dữ liệu tương lai (Data Leakage).\n  - *Online Store (Redis In-Memory Key-Value):* Chỉ lưu giá trị đặc trưng mới nhất của từng User/Entity, phục vụ inference trực tiếp với độ trễ cực thấp."
+  },
+  {
+    "id": "B51",
+    "module": "B",
+    "module_name": "Kỹ thuật Lập trình & Xử lý dữ liệu",
+    "topic": "Tính số Tham số LoRA (Đề gốc Practice.docx)",
+    "difficulty": "Nâng cao",
+    "type": "multiple_choice",
+    "question": "Cho ma trận trọng số gốc của mô hình LLM $W_0$ có kích thước $d \\times k$ với $d = 4096$ và $k = 4096$. Khi áp dụng kỹ thuật LoRA phân rã $W = W_0 + B A$ với rank $r = 8$, tổng số tham số có thể huấn luyện (Trainable Parameters) của riêng ma trận này là bao nhiêu, và đã tiết kiệm được bao nhiêu phần trăm tham số so với ma trận gốc?",
+    "options": {
+      "A": "65,536 tham số (tiết kiệm ~99.61%)",
+      "B": "131,072 tham số (tiết kiệm ~99.22%)",
+      "C": "32,768 tham số (tiết kiệm ~99.80%)",
+      "D": "262,144 tham số (tiết kiệm ~98.44%)"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Phân tích kích thước tham số LoRA:\n1. Ma trận gốc $W_0$:\n$$N_{\\text{original}} = d \\times k = 4096 \\times 4096 = 16,777,216\\text{ tham số}$$\n2. LoRA phân rã thành $B \\in \\mathbb{R}^{d \\times r}$ ($4096 \\times 8$) và $A \\in \\mathbb{R}^{r \\times k}$ ($8 \\times 4096$):\n$$N_{\\text{LoRA}} = (d \\times r) + (r \\times k) = r(d + k) = 8 \\times (4096 + 4096) = 8 \\times 8192 = 65,536\\text{ tham số}$$\n3. Tỷ lệ tiết kiệm tham số:\n$$\\text{Tiết kiệm} = \\left(1 - \\frac{65,536}{16,777,216}\\right) \\times 100\\% \\approx 99.61\\%$$"
+  },
+  {
+    "id": "B52",
+    "module": "B",
+    "module_name": "Kỹ thuật Lập trình & Xử lý dữ liệu",
+    "topic": "Cạm bẫy Alias vs Slicing trong Python (Đề gốc Practice.docx)",
+    "difficulty": "Cơ bản",
+    "type": "multiple_choice",
+    "question": "Cho đoạn code Python sau:\n```python\na = [1, [2, 3], 4]\nb = a\nc = a[:]\nb[0] = 99\nc[1][0] = 88\n```\nSau khi thực thi, giá trị của danh sách gốc `a` là gì?",
+    "options": {
+      "A": "[99, [88, 3], 4]",
+      "B": "[1, [2, 3], 4]",
+      "C": "[99, [2, 3], 4]",
+      "D": "[1, [88, 3], 4]"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "- `b = a` tạo Alias (bí danh), trỏ chung vào cùng một đối tượng list trong bộ nhớ, nên `b[0] = 99` trực tiếp thay đổi phần tử đầu của `a`.\n- `c = a[:]` tạo Shallow Copy (sao chép nông): `c` là list mới, nhưng phần tử thứ 2 `[2, 3]` là đối tượng lồng nhau (nested list) vẫn dùng chung tham chiếu. Do đó `c[1][0] = 88` sẽ làm thay đổi danh sách con bên trong `a`.\n- Kết quả của `a` là `[99, [88, 3], 4]`."
+  },
+  {
+    "id": "B53",
+    "module": "B",
+    "module_name": "Kỹ thuật Lập trình & Xử lý dữ liệu",
+    "topic": "Phân biệt Decorators Python (Đề gốc Practice.docx)",
+    "difficulty": "Trung bình",
+    "type": "multiple_choice",
+    "question": "Trong Python OOP, sự khác biệt cốt lõi giữa hai decorator `@staticmethod` và `@classmethod` là gì?",
+    "options": {
+      "A": "`@classmethod` nhận tham số đầu tiên ngầm định là chính bản thân lớp (thường đặt tên là `cls`) và có thể truy cập/sửa đổi trạng thái của lớp; trong khi `@staticmethod` không nhận `self` hay `cls` và hoạt động như một hàm độc lập thông thường được đóng gói bên trong namespace của lớp",
+      "B": "`@staticmethod` chỉ chạy được trên CPU, `@classmethod` chạy trên GPU",
+      "C": "`@classmethod` không cho phép truyền tham số",
+      "D": "Hai decorator này hoàn toàn tương đương và có thể thay thế lẫn nhau"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "`@classmethod` liên kết với class (thường dùng làm Factory Methods để khởi tạo đối tượng từ nhiều định dạng như `from_json()`, `from_pretrained()`). `@staticmethod` hoàn toàn cô lập, không phụ thuộc vào trạng thái của class hay instance."
+  },
+  {
+    "id": "B54",
+    "module": "B",
+    "module_name": "Kỹ thuật Lập trình & Xử lý dữ liệu",
+    "topic": "Decorator @property trong Python (Đề gốc Practice.docx)",
+    "difficulty": "Cơ bản",
+    "type": "multiple_choice",
+    "question": "Decorator `@property` được sử dụng nhằm mục đích chính nào trong lập trình hướng đối tượng Python?",
+    "options": {
+      "A": "Biến một phương thức (method) thành thuộc tính (attribute) ở chế độ chỉ đọc (Getter), cho phép truy cập giá trị mà không cần dấu ngoặc tròn `()`, đồng thời hỗ trợ đóng gói logic kiểm tra hợp lệ dữ liệu",
+      "B": "Xóa đối tượng khỏi RAM ngay lập tức",
+      "C": "Biến biến toàn cục thành biến cục bộ",
+      "D": "Tự động dịch mã Python sang C"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "`@property` cài đặt thuộc tính Getter (và đi kèm `@property_name.setter`), giúp kiểm soát việc truy cập và gán giá trị cho thuộc tính riêng tư (Encapsulation), duy trì cú pháp truy cập tự nhiên `obj.attribute` thay vì `obj.get_attribute()`."
+  },
+  {
+    "id": "B55",
+    "module": "B",
+    "module_name": "Kỹ thuật Lập trình & Xử lý dữ liệu",
+    "topic": "Đọc Code Tính toán Chuỗi Điều kiện (Đề gốc Practice.docx)",
+    "difficulty": "Cơ bản",
+    "type": "multiple_choice",
+    "question": "Cho đoạn code Python sau:\n```python\nx = 10\ny = 5\nif x > 5:\n    x += y\nif y > 10:\n    x *= 2\nelif x > 12:\n    x -= y\nelse:\n    x = 0\nprint(x)\n```\nKết quả in ra màn hình là:",
+    "options": {
+      "A": "10",
+      "B": "15",
+      "C": "30",
+      "D": "0"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Theo dõi từng bước thực thi:\n1. Khởi tạo: x = 10, y = 5.\n2. Bước if thứ nhất: `x > 5` (10 > 5 là True) -> `x += y` -> x = 15.\n3. Bước if thứ hai: `y > 10` (5 > 10 là False) -> nhảy sang nhánh `elif x > 12`.\n4. Điều kiện `x > 12` (15 > 12 là True) -> thực hiện `x -= y` -> x = 15 - 5 = 10.\n5. Bỏ qua nhánh `else`. Kết quả cuối cùng in ra x = 10."
+  },
+  {
+    "id": "B56",
+    "module": "B",
+    "module_name": "Kỹ thuật Lập trình & Xử lý dữ liệu",
+    "topic": "Thư viện Caching @lru_cache (Đề gốc Practice.docx)",
+    "difficulty": "Cơ bản",
+    "type": "multiple_choice",
+    "question": "Khi áp dụng decorator `@functools.lru_cache(maxsize=None)` cho một hàm đệ quy tính số Fibonacci, độ phức tạp thời gian thay đổi như thế nào?",
+    "options": {
+      "A": "Giảm từ cấp số mũ O(2^N) xuống độ phức tạp tuyến tính O(N)",
+      "B": "Không thay đổi thời gian chạy",
+      "C": "Tăng lên O(N^2)",
+      "D": "Làm hàm bị lỗi đệ quy vô hạn"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Đệ quy Fibonacci ngây thơ tính lặp lại các bài toán con trùng lặp dẫn tới O(2^N). Bằng việc lưu cache (Memoization) kết quả đã tính của từng giá trị n, mỗi bài toán con chỉ được giải đúng 1 lần, đưa độ phức tạp về O(N)."
+  },
+  {
+    "id": "B57",
+    "module": "B",
+    "module_name": "Kỹ thuật Lập trình & Xử lý dữ liệu",
+    "topic": "Lập trình Trừu tượng @abstractmethod (Đề gốc Practice.docx)",
+    "difficulty": "Trung bình",
+    "type": "multiple_choice",
+    "question": "Điều gì sẽ xảy ra nếu một lập trình viên cố gắng khởi tạo một đối tượng (instance) từ một lớp kế thừa từ `abc.ABC` nhưng chưa override (cài đặt) một phương thức có gắn `@abstractmethod`?",
+    "options": {
+      "A": "Python ném ra ngoại lệ `TypeError: Can't instantiate abstract class with abstract method`",
+      "B": "Đối tượng được tạo thành công nhưng phương thức đó trả về None",
+      "C": "Hệ điều hành tự động xóa lớp đó",
+      "D": "Chương trình tự động sinh mã ngẫu nhiên cho phương thức đó"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "`@abstractmethod` từ module `abc` định nghĩa giao diện (Interface / Abstract Class). Python nghiêm ngặt cấm khởi tạo bất kỳ class nào còn chứa abstract method chưa được hiện thực hóa."
+  },
+  {
+    "id": "B58",
+    "module": "B",
+    "module_name": "Kỹ thuật Lập trình & Xử lý dữ liệu",
+    "topic": "Kỹ thuật Vector hóa NumPy cho Confusion Matrix (Đề gốc Practice.docx)",
+    "difficulty": "Trung bình",
+    "type": "multiple_choice",
+    "question": "Cho hai mảng NumPy nhị phân `y_true = np.array([1, 0, 1, 1, 0])` và `y_pred = np.array([1, 0, 0, 1, 1])`. Biểu thức nào sau đây tính chính xác số lượng True Positives (TP)?",
+    "options": {
+      "A": "`np.sum((y_true == 1) & (y_pred == 1))`",
+      "B": "`np.sum(y_true and y_pred)`",
+      "C": "`np.sum(y_true + y_pred == 1)`",
+      "D": "`len(y_true == y_pred)`"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Trong NumPy, toán tử logic theo từng phần tử (element-wise boolean) bắt buộc phải dùng toán tử bitwise `&` kèm dấu ngoặc đơn bọc từng điều kiện: `(y_true == 1) & (y_pred == 1)`. Toán tử `and` của Python thuần sẽ gây ra lỗi `ValueError: The truth value of an array with more than one element is ambiguous`."
+  },
+  {
+    "id": "B59",
+    "module": "B",
+    "module_name": "Kỹ thuật Lập trình & Xử lý dữ liệu",
+    "topic": "Bài tập Coding Tự luận Python Thuần (Đề gốc Practice.docx)",
+    "difficulty": "Trung bình",
+    "type": "scenario",
+    "question": "[Bài tập Coding Tự luận 1 - Đề mẫu Thực chiến]: Viết một hàm Python thuần `calculate_metrics(y_true, y_pred)` nhận vào hai danh sách nhãn nhị phân (0 và 1) có cùng độ dài. Hãy tính toán và trả về một tuple gồm 4 giá trị: `(accuracy, precision, recall, f1)`. Yêu cầu: Bắt lỗi nếu hai danh sách không cùng độ dài, và xử lý an toàn trường hợp mẫu số bằng 0 (tránh ZeroDivisionError) bằng cách gán chỉ số đó về 0.0?",
+    "sample_answer": "```python\ndef calculate_metrics(y_true, y_pred):\n    if len(y_true) != len(y_pred):\n        raise ValueError('y_true và y_pred phải có cùng số phần tử')\n    \n    tp = sum(1 for t, p in zip(y_true, y_pred) if t == 1 and p == 1)\n    tn = sum(1 for t, p in zip(y_true, y_pred) if t == 0 and p == 0)\n    fp = sum(1 for t, p in zip(y_true, y_pred) if t == 0 and p == 1)\n    fn = sum(1 for t, p in zip(y_true, y_pred) if t == 1 and p == 0)\n    \n    total = len(y_true)\n    accuracy = (tp + tn) / total if total > 0 else 0.0\n    precision = tp / (tp + fp) if (tp + fp) > 0 else 0.0\n    recall = tp / (tp + fn) if (tp + fn) > 0 else 0.0\n    f1 = (2 * precision * recall) / (precision + recall) if (precision + recall) > 0 else 0.0\n    \n    return accuracy, precision, recall, f1\n```",
+    "points": 5,
+    "explanation": "**Phân tích Lập Trình Python Thuần & Bẫy Chia Cho 0 (ZeroDivisionError):**\n- **Cơ sở thuật toán:**\n  - Độ chính xác: $\\text{Accuracy} = \\frac{TP + TN}{TP + TN + FP + FN}$.\n  - Độ chuẩn xác: $\\text{Precision} = \\frac{TP}{TP + FP}$.\n  - Độ bao phủ: $\\text{Recall} = \\frac{TP}{TP + FN}$.\n  - Điểm F1: $F_1 = \\frac{2 \\cdot \\text{Precision} \\cdot \\text{Recall}}{\\text{Precision} + \\text{Recall}}$.\n- **Bẫy phòng thi nguy hiểm nhất:**\n  Khi mô hình dự đoán toàn bộ là 0 ($TP = 0, FP = 0$), mẫu số của Precision $TP + FP = 0$. Nếu không kiểm tra điều kiện `if tp + fp == 0: precision = 0.0`, chương trình sẽ văng lỗi `ZeroDivisionError` làm sập toàn bộ pipeline kiểm thử. Tương tự với mẫu số của Recall và F1-score."
+  },
+  {
+    "id": "B60",
+    "module": "B",
+    "module_name": "Kỹ thuật Lập trình & Xử lý dữ liệu",
+    "topic": "Bài tập Coding Tự luận NumPy (Đề gốc Practice.docx)",
+    "difficulty": "Trung bình",
+    "type": "scenario",
+    "question": "[Bài tập Coding Tự luận 2 - Đề mẫu Thực chiến]: Viết một hàm `calculate_metrics_numpy(y_true, y_pred)` sử dụng thư viện NumPy. Yêu cầu chuyển đổi đầu vào thành numpy array, kiểm tra shape, dùng các phép toán vector hóa boolean để tính TP, TN, FP, FN và trả về `(accuracy, precision, recall, f1)`?",
+    "sample_answer": "```python\nimport numpy as np\n\ndef calculate_metrics_numpy(y_true, y_pred):\n    y_true = np.asarray(y_true)\n    y_pred = np.asarray(y_pred)\n    \n    if y_true.shape != y_pred.shape:\n        raise ValueError('y_true và y_pred phải có cùng kích thước')\n        \n    tp = np.sum((y_true == 1) & (y_pred == 1))\n    tn = np.sum((y_true == 0) & (y_pred == 0))\n    fp = np.sum((y_true == 0) & (y_pred == 1))\n    fn = np.sum((y_true == 1) & (y_pred == 0))\n    \n    total = len(y_true)\n    accuracy = float((tp + tn) / total) if total > 0 else 0.0\n    precision = float(tp / (tp + fp)) if (tp + fp) > 0 else 0.0\n    recall = float(tp / (tp + fn)) if (tp + fn) > 0 else 0.0\n    f1 = float((2 * precision * recall) / (precision + recall)) if (precision + recall) > 0 else 0.0\n    \n    return accuracy, precision, recall, f1\n```",
+    "points": 5,
+    "explanation": "**Phân tích Kỹ thuật NumPy Vectorization & Tránh Vòng Lặp:**\n- **Tại sao vòng lặp Python thuần bị cấm trong AI Engineering?**\n  - Vòng lặp `for` trong Python thông dịch mất chi phí Type Checking và Dynamic Dispatch tại từng bước, chạy chậm hơn từ 50 đến 100 lần so với mã C tối ưu.\n- **Kỹ thuật Vectorized Confusion Matrix:**\n  Áp dụng phép nhân logic mảng boolean song song:\n  `tp = np.sum((y_true == 1) & (y_pred == 1))`\n  `tn = np.sum((y_true == 0) & (y_pred == 0))`\n  `fp = np.sum((y_true == 0) & (y_pred == 1))`\n  `fn = np.sum((y_true == 1) & (y_pred == 0))`\n  Mã nguồn ngắn gọn, trực tiếp gọi tập lệnh SIMD của CPU và hoàn thành trong vài mili-giây trên mảng hàng triệu phần tử."
+  }
+]

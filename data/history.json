@@ -1,0 +1,16 @@
+[
+  {
+    "timestamp": "2026-09-28 16:57:14",
+    "elapsed_seconds": 3600,
+    "total_score": 100,
+    "max_score": 100,
+    "percentage": 100.0,
+    "is_passed": true,
+    "module_scores": {
+      "A": 25,
+      "B": 25,
+      "C": 25,
+      "D": 25
+    }
+  }
+]
