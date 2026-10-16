@@ -1,0 +1,1028 @@
+[
+  {
+    "id": "A01",
+    "module": "A",
+    "module_name": "Nền tảng Toán học & Tư duy Định lượng",
+    "topic": "Đại số tuyến tính",
+    "difficulty": "Cơ bản",
+    "type": "multiple_choice",
+    "question": "Cho ma trận vuông $A$ kích thước $3 \\times 3$ có $\\det(A) = 4$. Giá trị của $\\det(2A)$ bằng bao nhiêu?",
+    "options": {
+      "A": "8",
+      "B": "16",
+      "C": "32",
+      "D": "64"
+    },
+    "correct_answer": "C",
+    "points": 3,
+    "explanation": "Với ma trận vuông $A$ cấp $n$ và số thực $k$, ta có định lý tính định thức:\n$$\\det(k \\cdot A) = k^n \\cdot \\det(A)$$\nỞ đây với $n = 3$, $k = 2$, và $\\det(A) = 4$, ta có:\n$$\\det(2A) = 2^3 \\cdot \\det(A) = 8 \\times 4 = 32$$"
+  },
+  {
+    "id": "A02",
+    "module": "A",
+    "module_name": "Nền tảng Toán học & Tư duy Định lượng",
+    "topic": "Xác suất & Định lý Bayes",
+    "difficulty": "Nâng cao",
+    "type": "multiple_choice",
+    "question": "Một hệ thống AI nhận diện khuôn mặt có $\\text{Recall (TPR)} = 99\\%$, $\\text{FPR} = 1\\%$. Tỉ lệ người có quyền truy cập trong tổng dân số là $0.1\\%$ ($P(\\text{Auth}) = 0.001$). Khi hệ thống báo 'Đồng ý' (Alert), xác suất người đó thực sự hợp lệ $P(\\text{Auth} \\mid \\text{Alert})$ xấp xỉ bằng bao nhiêu?",
+    "options": {
+      "A": "99.0%",
+      "B": "9.0%",
+      "C": "50.0%",
+      "D": "90.0%"
+    },
+    "correct_answer": "B",
+    "points": 4,
+    "explanation": "Áp dụng định lý Bayes tính xác suất hậu nghiệm:\n$$P(\\text{Auth} \\mid \\text{Alert}) = \\frac{P(\\text{Alert} \\mid \\text{Auth}) \\cdot P(\\text{Auth})}{P(\\text{Alert})}$$\nKhai triển tổng xác suất nhận diện báo động ở mẫu số:\n$$\\begin{aligned}\nP(\\text{Alert}) &= P(\\text{Alert} \\mid \\text{Auth}) \\cdot P(\\text{Auth}) + P(\\text{Alert} \\mid \\neg\\text{Auth}) \\cdot P(\\neg\\text{Auth}) \\\\\n&= (0.99 \\times 0.001) + (0.01 \\times 0.999) \\\\\n&= 0.00099 + 0.00999 = 0.01098\n\\end{aligned}$$\nThay vào công thức Bayes:\n$$P(\\text{Auth} \\mid \\text{Alert}) = \\frac{0.00099}{0.01098} \\approx 0.09016 \\quad (\\approx 9.02\\%)$$\n> **Hiện tượng Base Rate Fallacy:** Dù mô hình có độ chính xác rất cao ($99\\%$), nhưng do tỉ lệ dương tính thực tế quá thấp ($0.1\\%$), phần lớn cảnh báo nhận được thực chất là False Positive."
+  },
+  {
+    "id": "A03",
+    "module": "A",
+    "module_name": "Nền tảng Toán học & Tư duy Định lượng",
+    "topic": "Tối ưu hóa & Gradient Descent",
+    "difficulty": "Trung bình",
+    "type": "multiple_choice",
+    "question": "Hàm mất mát $L(w) = w^2 - 6w + 10$. Nếu khởi tạo trọng số $w_0 = 1$ và hệ số học (learning rate) $\\alpha = 0.1$ trong thuật toán Gradient Descent, giá trị của $w$ sau 1 bước cập nhật ($w_1$) là:",
+    "options": {
+      "A": "0.6",
+      "B": "1.4",
+      "C": "2.0",
+      "D": "1.0"
+    },
+    "correct_answer": "B",
+    "points": 3,
+    "explanation": "**Bước 1: Tính đạo hàm của hàm mất mát:**\n$$\\frac{dL}{dw} = 2w - 6$$\nTại điểm khởi tạo $w_0 = 1$:\n$$\\left.\\frac{dL}{dw}\\right|_{w_0=1} = 2(1) - 6 = -4$$\n**Bước 2: Cập nhật trọng số theo Gradient Descent:**\n$$\\begin{aligned}\nw_1 &= w_0 - \\alpha \\cdot \\frac{dL}{dw}(w_0) \\\\\n&= 1 - 0.1 \\times (-4) \\\\\n&= 1 + 0.4 = 1.4\n\\end{aligned}$$"
+  },
+  {
+    "id": "A04",
+    "module": "A",
+    "module_name": "Nền tảng Toán học & Tư duy Định lượng",
+    "topic": "Đại số tuyến tính & Vector",
+    "difficulty": "Cơ bản",
+    "type": "multiple_choice",
+    "question": "Cho hai vector nhúng (embeddings) $\\mathbf{u} = [2, 1, 2]$ và $\\mathbf{v} = [0, 3, 4]$. Độ tương đồng Cosine (Cosine Similarity) giữa $\\mathbf{u}$ và $\\mathbf{v}$ là:",
+    "options": {
+      "A": "0.55",
+      "B": "0.73",
+      "C": "0.85",
+      "D": "1.00"
+    },
+    "correct_answer": "B",
+    "points": 3,
+    "explanation": "Công thức độ tương đồng Cosine:\n$$\\text{Cosine}(\\mathbf{u}, \\mathbf{v}) = \\frac{\\mathbf{u} \\cdot \\mathbf{v}}{\\|\\mathbf{u}\\|_2 \\|\\mathbf{v}\\|_2}$$\n1. Tích vô hướng:\n$$\\mathbf{u} \\cdot \\mathbf{v} = (2 \\times 0) + (1 \\times 3) + (2 \\times 4) = 11$$\n2. Chuẩn $L_2$:\n$$\\|\\mathbf{u}\\|_2 = \\sqrt{2^2 + 1^2 + 2^2} = \\sqrt{9} = 3, \\quad \\|\\mathbf{v}\\|_2 = \\sqrt{0^2 + 3^2 + 4^2} = \\sqrt{25} = 5$$\n3. Độ tương đồng Cosine:\n$$\\text{Cosine}(\\mathbf{u}, \\mathbf{v}) = \\frac{11}{3 \\times 5} = \\frac{11}{15} \\approx 0.733$$"
+  },
+  {
+    "id": "A05",
+    "module": "A",
+    "module_name": "Nền tảng Toán học & Tư duy Định lượng",
+    "topic": "Đại số tuyến tính",
+    "difficulty": "Trung bình",
+    "type": "multiple_choice",
+    "question": "Cho ma trận vuông $M = \\begin{pmatrix} 2 & 1 \\\\ 1 & 2 \\end{pmatrix}$. Các giá trị riêng (eigenvalues) của ma trận $M$ là:",
+    "options": {
+      "A": "$\\lambda_1 = 1, \\lambda_2 = 3$",
+      "B": "$\\lambda_1 = 2, \\lambda_2 = 2$",
+      "C": "$\\lambda_1 = 0, \\lambda_2 = 4$",
+      "D": "$\\lambda_1 = -1, \\lambda_2 = 3$"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Phương trình đặc trưng để tìm giá trị riêng $\\lambda$:\n$$\\det(M - \\lambda I) = 0 \\iff \\begin{vmatrix} 2 - \\lambda & 1 \\\\ 1 & 2 - \\lambda \\end{vmatrix} = 0$$\nKhai triển định thức:\n$$\\begin{aligned}\n(2 - \\lambda)^2 - 1 &= 0 \\\\\n\\lambda^2 - 4\\lambda + 3 &= 0 \\\\\n(\\lambda - 1)(\\lambda - 3) &= 0\n\\end{aligned}$$\nDo đó hai giá trị riêng là $\\lambda_1 = 1$ và $\\lambda_2 = 3$."
+  },
+  {
+    "id": "A06",
+    "module": "A",
+    "module_name": "Nền tảng Toán học & Tư duy Định lượng",
+    "topic": "Đại số tuyến tính",
+    "difficulty": "Cơ bản",
+    "type": "multiple_choice",
+    "question": "Cho ma trận $X$ có kích thước $(N, D)$ và ma trận trọng số $W$ có kích thước $(D, H)$. Kích thước của ma trận kết quả $Y = X \\cdot W$ và số phép nhân vô hướng cần thực hiện là:",
+    "options": {
+      "A": "Kích thước $(N, H)$; Số phép nhân: $N \\times D \\times H$",
+      "B": "Kích thước $(D, D)$; Số phép nhân: $D \\times H \\times N$",
+      "C": "Kích thước $(N, H)$; Số phép nhân: $N + D + H$",
+      "D": "Kích thước $(H, N)$; Số phép nhân: $2 \\times N \\times D \\times H$"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Theo quy tắc nhân ma trận:\n$$(N, D) \\times (D, H) \\longrightarrow (N, H)$$\nMỗi phần tử $Y_{ij}$ là tích vô hướng của 1 hàng (chiều $D$) với 1 cột (chiều $D$), tốn đúng $D$ phép nhân.\nTổng số phần tử trong ma trận $Y$ là $N \\times H$. Do đó tổng số phép nhân vô hướng là:\n$$\\text{Số phép nhân} = N \\times D \\times H$$"
+  },
+  {
+    "id": "A07",
+    "module": "A",
+    "module_name": "Nền tảng Toán học & Tư duy Định lượng",
+    "topic": "Giải tích & Mạng Nơ-ron",
+    "difficulty": "Trung bình",
+    "type": "multiple_choice",
+    "question": "Trong mạng nơ-ron, hàm kích hoạt Sigmoid có dạng $\\sigma(z) = \\frac{1}{1 + e^{-z}}$. Đạo hàm $\\sigma'(z)$ được biểu diễn theo $\\sigma(z)$ như thế nào?",
+    "options": {
+      "A": "$\\sigma'(z) = \\sigma(z)(1 - \\sigma(z))$",
+      "B": "$\\sigma'(z) = 1 - \\sigma(z)^2$",
+      "C": "$\\sigma'(z) = \\frac{e^{-z}}{1 + e^{-z}}$",
+      "D": "$\\sigma'(z) = \\sigma(z)^2$"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Khai triển đạo hàm hàm Sigmoid:\n$$\\begin{aligned}\n\\sigma'(z) &= \\frac{d}{dz}\\left( (1 + e^{-z})^{-1} \\right) \\\\\n&= -(1 + e^{-z})^{-2} \\cdot (-e^{-z}) \\\\\n&= \\frac{1}{1 + e^{-z}} \\cdot \\frac{e^{-z}}{1 + e^{-z}} \\\\\n&= \\sigma(z)(1 - \\sigma(z))\n\\end{aligned}$$\nĐặc tính này giúp việc lan truyền ngược (backpropagation) tính toán rất nhanh vì chỉ cần tái sử dụng kết quả kích hoạt ở lượt truyền xuôi."
+  },
+  {
+    "id": "A08",
+    "module": "A",
+    "module_name": "Nền tảng Toán học & Tư duy Định lượng",
+    "topic": "Hàm kích hoạt & Phân phối",
+    "difficulty": "Cơ bản",
+    "type": "multiple_choice",
+    "question": "Cho vector logits $\\mathbf{z} = [1.0, 2.0, 3.0]$. Khi đi qua hàm Softmax, xác suất đầu ra của phần tử thứ 3 ($z_3 = 3.0$) xấp xỉ bằng bao nhiêu? (Lấy $e^1 \\approx 2.718, e^2 \\approx 7.389, e^3 \\approx 20.086$)",
+    "options": {
+      "A": "33.3%",
+      "B": "50.0%",
+      "C": "66.5%",
+      "D": "85.2%"
+    },
+    "correct_answer": "C",
+    "points": 3,
+    "explanation": "Tổng mẫu số:\n$$\\sum_{j=1}^3 e^{z_j} = e^1 + e^2 + e^3 \\approx 2.718 + 7.389 + 20.086 = 30.193$$\nXác suất Softmax của $z_3$:\n$$P(y = 3) = \\frac{e^{z_3}}{\\sum_{j=1}^3 e^{z_j}} = \\frac{e^3}{30.193} \\approx \\frac{20.086}{30.193} \\approx 0.6652 \\quad (\\approx 66.5\\%)$$"
+  },
+  {
+    "id": "A09",
+    "module": "A",
+    "module_name": "Nền tảng Toán học & Tư duy Định lượng",
+    "topic": "Thống kê & Đo lường",
+    "difficulty": "Cơ bản",
+    "type": "multiple_choice",
+    "question": "Nếu nhân tất cả các giá trị của một tập dữ liệu $X$ với hằng số dương $c = 3$, thì kỳ vọng $\\mathbb{E}[3X]$ và phương sai $\\text{Var}(3X)$ thay đổi như thế nào so với ban đầu?",
+    "options": {
+      "A": "$\\mathbb{E}[3X] = 3\\mathbb{E}[X], \\quad \\text{Var}(3X) = 3\\text{Var}(X)$",
+      "B": "$\\mathbb{E}[3X] = 3\\mathbb{E}[X], \\quad \\text{Var}(3X) = 9\\text{Var}(X)$",
+      "C": "$\\mathbb{E}[3X] = 9\\mathbb{E}[X], \\quad \\text{Var}(3X) = 9\\text{Var}(X)$",
+      "D": "$\\mathbb{E}[3X] = \\mathbb{E}[X], \\quad \\text{Var}(3X) = \\text{Var}(X)$"
+    },
+    "correct_answer": "B",
+    "points": 3,
+    "explanation": "Tính chất của kỳ vọng và phương sai:\n1. Kỳ vọng:\n$$\\mathbb{E}[c X] = c \\cdot \\mathbb{E}[X] \\implies \\mathbb{E}[3X] = 3 \\mathbb{E}[X]$$\n2. Phương sai:\n$$\\text{Var}(c X) = c^2 \\cdot \\text{Var}(X) \\implies \\text{Var}(3X) = 3^2 \\cdot \\text{Var}(X) = 9 \\text{Var}(X)$$\n(Độ lệch chuẩn: $\\text{Std}(3X) = 3 \\cdot \\text{Std}(X)$)."
+  },
+  {
+    "id": "A10",
+    "module": "A",
+    "module_name": "Nền tảng Toán học & Tư duy Định lượng",
+    "topic": "Lý thuyết thông tin",
+    "difficulty": "Trung bình",
+    "type": "multiple_choice",
+    "question": "Một nguồn phát dữ liệu nhị phân phát ra ký hiệu 0 với xác suất $p = 0.5$ và ký hiệu 1 với xác suất $p = 0.5$. Độ hỗn loạn thông tin Shannon Entropy $H(X)$ (tính theo đơn vị bit) bằng bao nhiêu?",
+    "options": {
+      "A": "0 bit",
+      "B": "0.5 bit",
+      "C": "1.0 bit",
+      "D": "2.0 bit"
+    },
+    "correct_answer": "C",
+    "points": 3,
+    "explanation": "Công thức Shannon Entropy:\n$$H(X) = - \\sum_{i=1}^n p_i \\log_2(p_i)$$\nThay số $p_1 = 0.5, p_2 = 0.5$:\n$$\\begin{aligned}\nH(X) &= - [0.5 \\log_2(0.5) + 0.5 \\log_2(0.5)] \\\\\n&= - [0.5 \\times (-1) + 0.5 \\times (-1)] = 1.0\\text{ bit}\n\\end{aligned}$$\nĐây là mức entropy tối đa của biến ngẫu nhiên nhị phân, thể hiện độ bất định cao nhất."
+  },
+  {
+    "id": "A11",
+    "module": "A",
+    "module_name": "Nền tảng Toán học & Tư duy Định lượng",
+    "topic": "Xác suất & Phân phối",
+    "difficulty": "Cơ bản",
+    "type": "multiple_choice",
+    "question": "Biết thời gian xử lý một request của mô hình AI tuân theo phân phối chuẩn với trung bình $\\mu = 100\\text{ ms}$, độ lệch chuẩn $\\sigma = 15\\text{ ms}$. Theo quy tắc thực nghiệm (Empirical 68-95-99.7 Rule), khoảng $95\\%$ request sẽ có thời gian phản hồi nằm trong khoảng nào?",
+    "options": {
+      "A": "[85 ms, 115 ms]",
+      "B": "[70 ms, 130 ms]",
+      "C": "[55 ms, 145 ms]",
+      "D": "[0 ms, 200 ms]"
+    },
+    "correct_answer": "B",
+    "points": 3,
+    "explanation": "Khoảng tin cậy $95\\%$ trong phân phối chuẩn tương ứng với:\n$$[\\mu - 2\\sigma, \\; \\mu + 2\\sigma] = [100 - 30, \\; 100 + 30] = [70\\text{ ms}, \\; 130\\text{ ms}]$$"
+  },
+  {
+    "id": "A12",
+    "module": "A",
+    "module_name": "Nền tảng Toán học & Tư duy Định lượng",
+    "topic": "Đại số tuyến tính & Norms",
+    "difficulty": "Cơ bản",
+    "type": "multiple_choice",
+    "question": "Cho vector sai số $\\mathbf{e} = [-3, 4]$. Chuẩn $L_1$ (Manhattan) và chuẩn $L_2$ (Euclidean) của vector $\\mathbf{e}$ lần lượt là:",
+    "options": {
+      "A": "$L_1 = 7, \\; L_2 = 5$",
+      "B": "$L_1 = 5, \\; L_2 = 7$",
+      "C": "$L_1 = 1, \\; L_2 = 5$",
+      "D": "$L_1 = 7, \\; L_2 = 25$"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Chuẩn $L_1$:\n$$\\|\\mathbf{e}\\|_1 = |-3| + |4| = 3 + 4 = 7$$\nChuẩn $L_2$:\n$$\\|\\mathbf{e}\\|_2 = \\sqrt{(-3)^2 + 4^2} = \\sqrt{9 + 16} = \\sqrt{25} = 5$$"
+  },
+  {
+    "id": "A13",
+    "module": "A",
+    "module_name": "Nền tảng Toán học & Tư duy Định lượng",
+    "topic": "Xác suất & Kỳ vọng",
+    "difficulty": "Trung bình",
+    "type": "multiple_choice",
+    "question": "Một thuật toán tự động gắn nhãn (Auto-labeling) xử lý 10,000 ảnh. Với mỗi ảnh, có xác suất 0.8 được gắn nhãn chính xác (tiết kiệm 0.5 USD chi phí kiểm thử thủ công), và xác suất 0.2 bị gắn nhãn sai (tốn thêm 1.0 USD để chuyên viên sửa lại). Kỳ vọng tổng chi phí tiết kiệm được trên 10,000 ảnh là:",
+    "options": {
+      "A": "1,000 USD",
+      "B": "2,000 USD",
+      "C": "3,000 USD",
+      "D": "4,000 USD"
+    },
+    "correct_answer": "B",
+    "points": 3,
+    "explanation": "Kỳ vọng lợi ích ròng trên mỗi ảnh: $$E = 0.8 \\times (+0.5) + 0.2 \\times (-1.0) = +0.4 - 0.2 = +0.2\\text{ USD/ảnh}$$ Với 10,000 ảnh, tổng kỳ vọng tiết kiệm được là: $$10,000 \\times 0.2\\text{ USD} = 2,000\\text{ USD}$$"
+  },
+  {
+    "id": "A14",
+    "module": "A",
+    "module_name": "Nền tảng Toán học & Tư duy Định lượng",
+    "topic": "Tối ưu hóa",
+    "difficulty": "Trung bình",
+    "type": "multiple_choice",
+    "question": "Hiện tượng 'Exploding Gradients' (Bùng nổ Gradient) thường xảy ra khi nào trong quá trình huấn luyện Deep Neural Network?",
+    "options": {
+      "A": "Các giá trị riêng của ma trận trọng số nhỏ hơn 1 rất nhiều",
+      "B": "Đạo hàm theo các lớp tích lũy theo cấp số nhân và vượt quá khả năng biểu diễn số thực, dẫn đến giá trị NaN",
+      "C": "Hệ số học (learning rate) được đặt quá nhỏ tiến về 0",
+      "D": "Hàm kích hoạt luôn bị bão hòa ở hai đầu"
+    },
+    "correct_answer": "B",
+    "points": 3,
+    "explanation": "Khi các ma trận trọng số có giá trị kỳ dị/giá trị riêng lớn hơn 1, qua nhiều lớp liên tiếp trong Backpropagation, tích các Jacobian matrix sẽ tăng trưởng theo cấp số nhân, làm gradient bùng nổ (vọt lên vô cực/NaN). Biện pháp khắc phục thực tế là Gradient Clipping hoặc Weight Normalization."
+  },
+  {
+    "id": "A15",
+    "module": "A",
+    "module_name": "Nền tảng Toán học & Tư duy Định lượng",
+    "topic": "Đại số tuyến tính",
+    "difficulty": "Trung bình",
+    "type": "multiple_choice",
+    "question": "Vết của một ma trận vuông (Trace của $A$, ký hiệu $\\text{tr}(A)$) được định nghĩa là tổng các phần tử trên đường chéo chính. Tính chất nào sau đây luôn ĐÚNG với hai ma trận vuông $A$ và $B$ cùng kích thước?",
+    "options": {
+      "A": "$\\text{tr}(A B) = \\text{tr}(B A)$",
+      "B": "$\\text{tr}(A B) = \\text{tr}(A) \\cdot \\text{tr}(B)$",
+      "C": "$\\text{tr}(A + B) = \\text{tr}(A) \\cdot \\text{tr}(B)$",
+      "D": "$\\text{tr}(A) = \\det(A)$"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Tính chất Cyclic của Trace:\n$$\\text{tr}(A B) = \\text{tr}(B A)$$\nNgoài ra Trace còn có tính chất tuyến tính $\\text{tr}(A + B) = \\text{tr}(A) + \\text{tr}(B)$, và tổng các giá trị riêng của $A$ chính bằng $\\text{tr}(A)$."
+  },
+  {
+    "id": "A16",
+    "module": "A",
+    "module_name": "Nền tảng Toán học & Tư duy Định lượng",
+    "topic": "Tương quan & Thống kê",
+    "difficulty": "Cơ bản",
+    "type": "multiple_choice",
+    "question": "Hệ số tương quan tuyến tính Pearson $r$ giữa hai biến $X$ và $Y$ luôn nằm trong khoảng nào, và giá trị $r = 0$ có ý nghĩa gì?",
+    "options": {
+      "A": "$[0, 1]$; $r = 0$ nghĩa là $X$ và $Y$ hoàn toàn độc lập tuyệt đối",
+      "B": "$[-1, 1]$; $r = 0$ nghĩa là không có mối tương quan tuyến tính giữa $X$ và $Y$",
+      "C": "$[-1, 0]$; $r = 0$ nghĩa là quan hệ phi tuyến",
+      "D": "$(-\\infty, +\\infty)$; $r = 0$ nghĩa là không có dữ liệu"
+    },
+    "correct_answer": "B",
+    "points": 3,
+    "explanation": "Hệ số tương quan Pearson $r \\in [-1, 1]$:\n- Khi $r = 1$: tương quan tuyến tính dương tuyệt đối.\n- Khi $r = -1$: tương quan tuyến tính âm tuyệt đối.\n- Khi $r = 0$: **không có mối quan hệ tuyến tính** giữa $X$ và $Y$ (tuy nhiên $X$ và $Y$ vẫn có thể phụ thuộc phi tuyến rất mạnh, ví dụ như quan hệ parabol $y = x^2$)."
+  },
+  {
+    "id": "A17",
+    "module": "A",
+    "module_name": "Nền tảng Toán học & Tư duy Định lượng",
+    "topic": "Đại số & SVD",
+    "difficulty": "Trung bình",
+    "type": "multiple_choice",
+    "question": "Phân tích suy biến SVD (Singular Value Decomposition) biểu diễn ma trận $A$ thành $A = U \\Sigma V^T$. Ứng dụng quan trọng nhất của SVD trong nén ảnh và hệ thống gợi ý (Recommendation System) là gì?",
+    "options": {
+      "A": "Chuyển ma trận thành ma trận đường chéo nguyên",
+      "B": "Xấp xỉ hạng thấp (Low-rank approximation) bằng cách chỉ giữ lại k giá trị suy biến lớn nhất để giảm chiều dữ liệu mà vẫn giữ phần lớn thông tin",
+      "C": "Đảo ngược mọi ma trận suy biến thành ma trận khả nghịch",
+      "D": "Tăng kích thước dữ liệu lên gấp đôi để tránh overfitting"
+    },
+    "correct_answer": "B",
+    "points": 3,
+    "explanation": "Theo định lý Eckart-Young-Mirsky, việc giữ lại $k$ giá trị suy biến lớn nhất trong phân tích $A = U \\Sigma V^T$ cho phép tìm ma trận hạng $k$ ($A_k = U_k \\Sigma_k V_k^T$) xấp xỉ tốt nhất cho ma trận ban đầu theo chuẩn Frobenius:\n$$\\min_{\\text{rank}(B)=k} \\|A - B\\|_F = \\|A - A_k\\|_F$$\nĐiều này giúp giảm hàng triệu tham số trong các ma trận embedding khổng lồ."
+  },
+  {
+    "id": "A18",
+    "module": "A",
+    "module_name": "Nền tảng Toán học & Tư duy Định lượng",
+    "topic": "Hàm mất mát",
+    "difficulty": "Cơ bản",
+    "type": "multiple_choice",
+    "question": "Hàm mất mát Binary Cross-Entropy Loss được định nghĩa là $$\\mathcal{L} = - [y \\log(p) + (1 - y) \\log(1 - p)]$$ Khi nhãn thực tế $y = 1$ và mô hình dự đoán xác suất $p = 0.99$, giá trị mất mát $\\mathcal{L}$ sẽ:",
+    "options": {
+      "A": "Tiến rất gần về 0",
+      "B": "Tiến về vô cùng",
+      "C": "Bằng chính xác 1.0",
+      "D": "Bằng số âm lớn"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Khi $y = 1$, số hạng thứ hai biến mất: $$\\mathcal{L} = -\\log(0.99) \\approx -(-0.01005) \\approx 0.01$$ Giá trị này tiến rất gần về 0. Ngược lại, nếu dự đoán $p = 0.01$ (rất tự tin nhưng đoán sai), tổn thất sẽ vọt lên $\\mathcal{L} = -\\log(0.01) \\approx 4.6$, phạt rất nặng sự tự tin sai lầm của mô hình."
+  },
+  {
+    "id": "A19",
+    "module": "A",
+    "module_name": "Nền tảng Toán học & Tư duy Định lượng",
+    "topic": "Tổ hợp & Xác suất",
+    "difficulty": "Cơ bản",
+    "type": "multiple_choice",
+    "question": "Có một tập dữ liệu gồm 10 chuyên gia AI. Hội đồng cần chọn ra 1 nhóm dự án gồm 3 người (1 Trưởng nhóm, 1 Kỹ sư chính, 1 Phản biện). Số cách phân công nhiệm vụ là:",
+    "options": {
+      "A": "$C_{10}^3 = 120$",
+      "B": "$A_{10}^3 = 720$",
+      "C": "$10^3 = 1000$",
+      "D": "$3^{10} = 59049$"
+    },
+    "correct_answer": "B",
+    "points": 3,
+    "explanation": "Do 3 vai trò khác nhau (có tính thứ tự phân công chức danh), ta dùng công thức chỉnh hợp chập 3 của 10:\n$$A_{10}^3 = \\frac{10!}{(10 - 3)!} = 10 \\times 9 \\times 8 = 720\\text{ cách}$$"
+  },
+  {
+    "id": "A20",
+    "module": "A",
+    "module_name": "Nền tảng Toán học & Tư duy Định lượng",
+    "topic": "Đại số ma trận",
+    "difficulty": "Trung bình",
+    "type": "multiple_choice",
+    "question": "Một ma trận vuông $Q$ được gọi là ma trận trực giao (Orthogonal Matrix) nếu thỏa mãn điều kiện nào sau đây?",
+    "options": {
+      "A": "$Q^T Q = I$ (Ma trận nghịch đảo chính bằng ma trận chuyển vị: $Q^{-1} = Q^T$)",
+      "B": "$\\det(Q) = 0$",
+      "C": "Mọi phần tử trên đường chéo đều bằng 0",
+      "D": "$Q = Q^T$ (Ma trận đối xứng)"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Ma trận trực giao thỏa mãn:\n$$Q^T Q = Q Q^T = I \\iff Q^{-1} = Q^T$$\nMa trận trực giao bảo toàn độ dài vector và góc giữa các vector khi nhân (phép quay và đối xứng trong không gian):\n$$\\|Q \\mathbf{x}\\|_2 = \\|\\mathbf{x}\\|_2, \\quad \\det(Q) = \\pm 1$$"
+  },
+  {
+    "id": "A21",
+    "module": "A",
+    "module_name": "Nền tảng Toán học & Tư duy Định lượng",
+    "topic": "Kiểm định giả thuyết",
+    "difficulty": "Trung bình",
+    "type": "multiple_choice",
+    "question": "Trong thử nghiệm A/B cho mô hình phân loại mới, $p\\text{-value}$ tính được là $0.03$ với mức ý nghĩa $\\alpha = 0.05$. Kết luận thống kê chính xác là gì?",
+    "options": {
+      "A": "Bác bỏ giả thuyết không $H_0$ (Null Hypothesis), sự khác biệt về hiệu năng có ý nghĩa thống kê ở mức $5\\%$",
+      "B": "Chấp nhận giả thuyết không $H_0$, mô hình mới không có gì khác biệt",
+      "C": "Xác suất mô hình mới đúng là $97\\%$",
+      "D": "Cần thu thập thêm dữ liệu vì $p\\text{-value}$ phải nhỏ hơn $0.01$ mới được kết luận"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Khi $p\\text{-value} = 0.03 < \\alpha = 0.05$, ta có đủ bằng chứng thống kê để bác bỏ giả thuyết $H_0$ (giả thuyết cho rằng không có sự khác biệt giữa hai mô hình), khẳng định mô hình mới mang lại hiệu quả vượt trội có ý nghĩa thống kê."
+  },
+  {
+    "id": "A22",
+    "module": "A",
+    "module_name": "Nền tảng Toán học & Tư duy Định lượng",
+    "topic": "Độ phức tạp tính toán",
+    "difficulty": "Cơ bản",
+    "type": "multiple_choice",
+    "question": "Cơ chế Self-Attention chuẩn của kiến trúc Transformer có độ phức tạp tính toán về thời gian và bộ nhớ theo chiều dài chuỗi đầu vào $N$ là:",
+    "options": {
+      "A": "$\\mathcal{O}(N)$",
+      "B": "$\\mathcal{O}(N \\log N)$",
+      "C": "$\\mathcal{O}(N^2)$",
+      "D": "$\\mathcal{O}(2^N)$"
+    },
+    "correct_answer": "C",
+    "points": 3,
+    "explanation": "Trong Self-Attention, mỗi token cần tính tích vô hướng với tất cả $N$ token khác để tạo ma trận Attention weights kích thước $(N, N)$, do đó độ phức tạp tính toán thời gian và bộ nhớ VRAM đều là:\n$$\\text{Complexity} = \\mathcal{O}(N^2)$$"
+  },
+  {
+    "id": "A23",
+    "module": "A",
+    "module_name": "Nền tảng Toán học & Tư duy Định lượng",
+    "topic": "Độ đo tương đồng",
+    "difficulty": "Cơ bản",
+    "type": "multiple_choice",
+    "question": "Cho hai tập hợp từ khóa $A = \\{\\text{'ai'}, \\text{'deep'}, \\text{'learning'}\\}$ và $B = \\{\\text{'deep'}, \\text{'learning'}, \\text{'python'}, \\text{'pytorch'}\\}$. Hệ số tương đồng Jaccard giữa hai tập hợp $A$ và $B$ là:",
+    "options": {
+      "A": "$\\frac{2}{5} = 0.40$",
+      "B": "$\\frac{2}{3} \\approx 0.67$",
+      "C": "$\\frac{2}{7} \\approx 0.28$",
+      "D": "$\\frac{1}{2} = 0.50$"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Giao của hai tập hợp:\n$$A \\cap B = \\{\\text{'deep'}, \\text{'learning'}\\} \\implies |A \\cap B| = 2$$\nHợp của hai tập hợp:\n$$A \\cup B = \\{\\text{'ai'}, \\text{'deep'}, \\text{'learning'}, \\text{'python'}, \\text{'pytorch'}\\} \\implies |A \\cup B| = 5$$\nHệ số Jaccard:\n$$J(A, B) = \\frac{|A \\cap B|}{|A \\cup B|} = \\frac{2}{5} = 0.40$$"
+  },
+  {
+    "id": "A24",
+    "module": "A",
+    "module_name": "Nền tảng Toán học & Tư duy Định lượng",
+    "topic": "Tối ưu & Momentum",
+    "difficulty": "Trung bình",
+    "type": "multiple_choice",
+    "question": "Trong thuật toán Gradient Descent có Momentum với hệ số $\\beta = 0.9$:\n$$v_t = \\beta v_{t-1} + (1 - \\beta) g_t, \\quad w_{t+1} = w_t - \\alpha v_t$$\nCơ chế này mang lại lợi ích chính nào?",
+    "options": {
+      "A": "Giảm dao động (oscillations) theo phương dốc đứng và tăng tốc độ di chuyển theo phương đáy hẻm (ravine)",
+      "B": "Biến hàm mất mát không lồi thành hàm lồi tuyệt đối",
+      "C": "Loại bỏ hoàn toàn nhu cầu tính đạo hàm",
+      "D": "Giảm kích thước mô hình đi 50%"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Momentum tích lũy động lượng từ các bước trước đó, giúp triệt tiêu dao động qua lại ở những chiều có độ dốc thay đổi liên tục và duy trì vận tốc theo hướng dốc chính, giúp mô hình vượt qua các điểm yên ngựa (saddle points) và cực tiểu địa phương nông."
+  },
+  {
+    "id": "A25",
+    "module": "A",
+    "module_name": "Nền tảng Toán học & Tư duy Định lượng",
+    "topic": "Xác suất có điều kiện",
+    "difficulty": "Trung bình",
+    "type": "multiple_choice",
+    "question": "Gieo 2 con xúc xắc cân đối đồng chất 6 mặt. Biết rằng tổng số chấm xuất hiện lớn hơn hoặc bằng 10. Xác suất để ít nhất một con xúc xắc xuất hiện mặt 6 là:",
+    "options": {
+      "A": "$\\frac{5}{6}$",
+      "B": "$\\frac{3}{6}$",
+      "C": "$\\frac{4}{6}$",
+      "D": "$\\frac{1}{6}$"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Các cặp có tổng $\\ge 10$: $(4,6), (5,5), (5,6), (6,4), (6,5), (6,6) \\implies$ tổng cộng có $6$ trường hợp có thể xảy ra.\nTrong đó, các trường hợp có ít nhất một mặt 6 là: $(4,6), (5,6), (6,4), (6,5), (6,6) \\implies$ có $5$ trường hợp.\nDo đó xác suất có điều kiện là:\n$$P = \\frac{5}{6}$$"
+  },
+  {
+    "id": "A26",
+    "module": "A",
+    "module_name": "Nền tảng Toán học & Tư duy Định lượng",
+    "topic": "Tối ưu hóa chi phí AI",
+    "difficulty": "Nâng cao",
+    "type": "scenario",
+    "question": "[Tình huống Định lượng 1]: Một công ty AI phục vụ 100,000 queries/ngày. Mô hình lớn (LLM) có chi phí 0.03 USD/query, độ chính xác 95%. Mô hình nhỏ (SLM) có chi phí 0.002 USD/query, độ chính xác 85%. Nếu thiết kế kiến trúc Router phân luồng: 70% queries đơn giản chuyển sang SLM xử lý, 30% queries phức tạp chuyển sang LLM lớn. Hãy tính chi phí tiết kiệm được mỗi ngày và phần trăm giảm chi phí so với kiến trúc ban đầu?",
+    "sample_answer": "Chi phí cũ: 100,000 * 0.03 USD = 3,000 USD/ngày.\nChi phí mới:\n- SLM (70,000 queries): 70,000 * 0.002 USD = 140 USD/ngày.\n- LLM lớn (30,000 queries): 30,000 * 0.03 USD = 900 USD/ngày.\nTổng chi phí mới: 140 USD + 900 USD = 1,040 USD/ngày.\nSố tiền tiết kiệm: 3,000 USD - 1,040 USD = 1,960 USD/ngày (giảm 65.33%).",
+    "points": 5,
+    "explanation": "**Phân tích Kỹ thuật & Bài toán Kinh tế (Cost Optimization):**\n- **Cơ sở định lượng:** Chi phí ban đầu khi 100% queries dùng LLM:\n  $$100,000 \\times 0.03\\text{ USD} = 3,000\\text{ USD/ngày}$$\n  Khi áp dụng kiến trúc Router:\n  $$\\text{Chi phí SLM} = 70,000 \\times 0.002 = 140\\text{ USD/ngày}$$\n  $$\\text{Chi phí LLM} = 30,000 \\times 0.03 = 900\\text{ USD/ngày}$$\n  $$\\text{Tổng chi phí mới} = 140 + 900 = 1,040\\text{ USD/ngày}$$\n  Tiết kiệm được $1,960\\text{ USD/ngày}$ (giảm tới $65.33\\%$ ngân sách hạ tầng!).\n- **Độ chính xác kỳ vọng của hệ thống:**\n  $$E[\\text{Acc}] = 0.70 \\times 0.85 + 0.30 \\times 0.95 = 0.595 + 0.285 = 88.0\\%$$\n- **Tiêu chí chấm điểm VinUni:** Giám khảo đánh giá khả năng cân đối giữa chi phí vận hành và chất lượng dịch vụ (Cost vs Quality Trade-off). Điểm cộng lớn nếu ứng viên đề xuất cơ chế *Fallback*: nếu SLM trả về độ tin cậy (Confidence Score) thấp thì tự động chuyển tiếp câu hỏi lên LLM lớn."
+  },
+  {
+    "id": "A27",
+    "module": "A",
+    "module_name": "Nền tảng Toán học & Tư duy Định lượng",
+    "topic": "Ước lượng Token & Băng thông LLM",
+    "difficulty": "Nâng cao",
+    "type": "scenario",
+    "question": "[Tình huống Định lượng 2]: Một hệ thống hỏi đáp tài liệu phục vụ 500 người dùng đồng thời (concurrency). Mỗi phiên hỏi đáp có prompt context đầu vào trung bình là 2,000 tokens và câu trả lời đầu ra trung bình là 500 tokens. Biết tốc độ sinh token trung bình của GPU phục vụ là 40 tokens/giây/user ở pha decode. Hãy tính tổng số token đầu ra cần sinh trong 1 giờ nếu mỗi user gửi trung bình 6 câu hỏi/giờ, và ước lượng băng thông tính toán tối thiểu cần thiết?",
+    "sample_answer": "1. Tổng số câu hỏi trong 1 giờ: 500 users * 6 câu hỏi = 3,000 queries/giờ.\n2. Tổng số token đầu vào (prompt): 3,000 * 2,000 = 6,000,000 tokens.\n3. Tổng số token đầu ra (completion): 3,000 * 500 = 1,500,000 tokens/giờ.\n4. Thông lượng trung bình cần đáp ứng: 1,500,000 tokens / 3,600 giây ≈ 416.7 tokens sinh ra/giây trên toàn cụm server.",
+    "points": 5,
+    "explanation": "**Phân tích Kỹ thuật & Bộ nhớ Phục vụ Mô hình (Serving Sizing):**\n- **Cơ chế tính toán:**\n  1. *Trọng số mô hình (Weights):* 7 tỷ tham số FP16 tốn $7 \\times 2 = 14\\text{ GB}$.\n  2. *KV Cache:* Công thức tốn bộ nhớ cho mỗi token trong ngữ cảnh:\n     $$2 \\times 2\\text{ bytes} \\times n_{\\text{layers}} \\times n_{\\text{heads}} \\times d_{\\text{head}} \\times \\text{context\\_len} \\times \\text{batch}$$\n     Với Llama-7B ($32$ layers, $32$ heads, $128$ dim), ngữ cảnh $4096$ tokens và batch $16$, KV Cache tốn khoảng $8\\text{ - }10\\text{ GB}$.\n  3. *Overhead kích hoạt (Activations & CUDA Kernels):* Khoảng $4\\text{ - }6\\text{ GB}$.\n  $$\\implies \\text{Tổng VRAM tối thiểu} \\approx 14 + 10 + 6 = 30\\text{ GB}$$\n- **Lựa chọn phần cứng:** Bắt buộc dùng 1 GPU A100 (40GB/80GB) hoặc phân tách mô hình sang 2x RTX 3090/4090 (24GB mỗi card) bằng Tensor Parallelism."
+  },
+  {
+    "id": "A28",
+    "module": "A",
+    "module_name": "Nền tảng Toán học & Tư duy Định lượng",
+    "topic": "Tối ưu hóa tham số mạng nơ-ron",
+    "difficulty": "Trung bình",
+    "type": "scenario",
+    "question": "[Tình huống Định lượng 3]: Một mạng nơ-ron tích chập (CNN) có lớp đầu vào là ảnh màu RGB kích thước 224x224x3. Lớp tích chập đầu tiên sử dụng 64 bộ lọc (kernels) kích thước 7x7 với bước trượt stride = 2 và padding = 3. Hãy tính kích thước (Height x Width x Depth) của bản đồ đặc trưng (Feature map) đầu ra và tổng số lượng trọng số (weights + bias) của lớp tích chập này?",
+    "sample_answer": "1. Kích thước đầu ra: H_out = (H_in - Kernel + 2*Padding) / Stride + 1 = (224 - 7 + 2*3) / 2 + 1 = 223 / 2 + 1 = 111.5 -> làm tròn xuống 112. Do đó shape đầu ra là 112 x 112 x 64.\n2. Số lượng tham số trọng số: Mỗi kernel kích thước 7 x 7 x 3 (vì ảnh RGB có 3 kênh) = 147 weights + 1 bias = 148 tham số. Với 64 bộ lọc: 64 * 148 = 9,472 tham số.",
+    "points": 5,
+    "explanation": "**Phân tích Kỹ thuật Lớp Tích chập CNN:**\n- **Số lượng tham số (Parameters):**\n  Công thức chuẩn: $(\\text{Kernel}_H \\times \\text{Kernel}_W \\times C_{\\text{in}} + 1) \\times C_{\\text{out}}$.\n  Thay số: $(3 \\times 3 \\times 3 + 1) \\times 64 = (27 + 1) \\times 64 = 28 \\times 64 = 1,792\\text{ tham số}$.\n- **Kích thước đầu ra (Feature Map Output):**\n  $$H_{\\text{out}} = \\frac{H - K + 2P}{S} + 1 = \\frac{224 - 3 + 2(1)}{1} + 1 = 224$$\n  Ma trận đầu ra giữ nguyên $224 \\times 224 \\times 64$.\n- **Số phép tính (FLOPs):**\n  $$\\text{FLOPs} \\approx 2 \\times H_{\\text{out}} \\times W_{\\text{out}} \\times (K_H \\times K_W \\times C_{\\text{in}}) \\times C_{\\text{out}}$$\n  $$= 2 \\times 224 \\times 224 \\times (3 \\times 3 \\times 3) \\times 64 \\approx 173.4\\text{ triệu FLOPs}$$.\n- **Lưu ý phòng thi:** Đừng quên cộng thêm 1 trọng số bias cho mỗi filter trước khi nhân với số filter đầu ra."
+  },
+  {
+    "id": "A29",
+    "module": "A",
+    "module_name": "Nền tảng Toán học & Tư duy Định lượng",
+    "topic": "Định lượng dữ liệu Vector Database",
+    "difficulty": "Trung bình",
+    "type": "scenario",
+    "question": "[Tình huống Định lượng 4]: Một công ty muốn xây dựng hệ thống tìm kiếm ngữ nghĩa lưu trữ 10 triệu đoạn văn bản (vectors). Mỗi vector có chiều d = 1,536 (định dạng float32, mỗi số tốn 4 bytes). Nếu lưu trữ nguyên bản (uncompressed), bộ nhớ RAM tối thiểu cần dùng chỉ riêng cho các vectors là bao nhiêu GB? Nếu dùng kỹ thuật Quantization (Product Quantization - PQ) nén mỗi số xuống còn 1 byte (int8), dung lượng RAM tiết kiệm được là bao nhiêu?",
+    "sample_answer": "1. Dung lượng mỗi vector float32: 1,536 * 4 bytes = 6,144 bytes.\n2. Tổng dung lượng cho 10 triệu vectors: 10,000,000 * 6,144 bytes = 61,440,000,000 bytes ≈ 61.44 GB (khoảng 57.2 GiB RAM thô chưa tính index).\n3. Khi nén sang int8 (1 byte): Dung lượng giảm 4 lần, còn 10,000,000 * 1,536 bytes ≈ 15.36 GB.\n4. Tiết kiệm được: 61.44 - 15.36 = 46.08 GB RAM (giảm 75% chi phí lưu trữ).",
+    "points": 5,
+    "explanation": "**Phân tích Kỹ thuật & Định lượng Bộ nhớ Vector Database:**\n- **Tính toán chi tiết:**\n  - Dung lượng vector gốc (FP32): Mỗi vector $1536$ chiều tốn $1536 \\times 4\\text{ bytes} = 6,144\\text{ bytes} = 6\\text{ KB}$.\n  - $10$ triệu vectors: $10^7 \\times 6\\text{ KB} = 60,000,000\\text{ KB} \\approx 57.22\\text{ GiB RAM}$ (chỉ tính riêng mảng thô).\n  - Chỉ mục tìm kiếm (HNSW Index Overhead): Thường tốn thêm $1.2\\times \\text{ - } 1.5\\times$ bộ nhớ để lưu đồ thị liên kết $\\implies$ Tổng thực tế lên tới $120\\text{ - }140\\text{ GB RAM}$.\n  - Khi áp dụng Scalar Quantization (SQ8 - INT8): Giảm vector từ 4 bytes xuống 1 byte (tiết kiệm $75\\%$ dung lượng vector raw), đưa tổng bộ nhớ xuống khoảng $35\\text{ - }40\\text{ GB RAM}$ mà suy hao recall không quá $1\\%$.\n- **Khuyến nghị kiến trúc:** Sử dụng Milvus hoặc Qdrant với tính năng On-disk Inverted Index kết hợp RAM cache để tối ưu chi phí server."
+  },
+  {
+    "id": "A30",
+    "module": "A",
+    "module_name": "Nền tảng Toán học & Tư duy Định lượng",
+    "topic": "Thống kê A/B Testing",
+    "difficulty": "Nâng cao",
+    "type": "scenario",
+    "question": "[Tình huống Định lượng 5]: Tỉ lệ chuyển đổi (Conversion Rate - CVR) hiện tại của mô hình gợi ý VinFast là 5.0%. Đội ngũ AI phát triển mô hình mới và kỳ vọng CVR tăng lên 5.5% (tăng tương đối 10%). Giả sử với mức ý nghĩa thống kê alpha = 0.05 và lực kiểm định (Statistical Power) 1 - beta = 0.80, công thức xấp xỉ cỡ mẫu tối thiểu cho mỗi nhóm là N ≈ 16 * p * (1 - p) / (delta^2). Hãy tính số lượng người dùng tối thiểu cần tham gia thử nghiệm A/B cho mỗi nhóm?",
+    "sample_answer": "Áp dụng công thức với p = 0.05, delta = 0.055 - 0.05 = 0.005:\nN ≈ 16 * 0.05 * (1 - 0.05) / (0.005^2)\n= 16 * 0.05 * 0.95 / 0.000025\n= 0.76 / 0.000025 = 30,400 người dùng cho mỗi nhóm (tổng cộng 2 nhóm là ~60,800 người dùng).",
+    "points": 5,
+    "explanation": "**Phân tích Kỹ thuật A/B Testing & Power Analysis:**\n- **Nguyên lý thống kê:** Để phát hiện sự khác biệt nhỏ giữa hai tỷ lệ chuyển đổi ($p_1 = 0.02$ và $p_2 = 0.025$, tức $\\Delta = 0.005$) với mức ý nghĩa $\\alpha = 0.05$ và độ nhạy thống kê (Statistical Power) $1 - \\beta = 0.80$:\n  $$n \\approx \\frac{2 \\cdot (Z_{\\alpha/2} + Z_{\\beta})^2 \\cdot p(1 - p)}{(p_2 - p_1)^2}$$\n  Với $Z_{0.025} = 1.96$ và $Z_{0.20} = 0.84$, tích số $(1.96 + 0.84)^2 = 7.84$.\n  $$n \\approx \\frac{2 \\times 7.84 \\times 0.0225 \\times 0.9775}{0.005^2} \\approx \\frac{0.3449}{0.000025} \\approx 13,800\\text{ người dùng/nhánh}$$\n- **Thời gian chạy thử nghiệm:**\n  Tổng số người dùng cần là $2 \\times 13,800 = 27,600$ người. Với lượng truy cập 5,000 người/ngày, thử nghiệm cần chạy tối thiểu $6\\text{ ngày}$ (khuyến nghị chạy đủ $7\\text{ - }14\\text{ ngày}$ để triệt tiêu hiệu ứng chu kỳ theo ngày trong tuần - Day-of-week effect)."
+  },
+  {
+    "id": "A31",
+    "module": "A",
+    "module_name": "Nền tảng Toán học & Tư duy Định lượng",
+    "topic": "Đại số tuyến tính & Hình chiếu",
+    "difficulty": "Trung bình",
+    "type": "multiple_choice",
+    "question": "Cho vector $\\mathbf{b} = [3, 4]$ và vector đơn vị $\\mathbf{u} = [1, 0]$. Độ dài hình chiếu vuông góc của $\\mathbf{b}$ lên phương của $\\mathbf{u}$ là:",
+    "options": {
+      "A": "3",
+      "B": "4",
+      "C": "5",
+      "D": "7"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Độ dài hình chiếu vô hướng của $\\mathbf{b}$ lên vector đơn vị $\\mathbf{u}$:\n$$\\text{proj}_{\\mathbf{u}}(\\mathbf{b}) = \\mathbf{b} \\cdot \\mathbf{u} = (3 \\times 1) + (4 \\times 0) = 3$$"
+  },
+  {
+    "id": "A32",
+    "module": "A",
+    "module_name": "Nền tảng Toán học & Tư duy Định lượng",
+    "topic": "Đại số ma trận & Chuẩn Frobenius",
+    "difficulty": "Cơ bản",
+    "type": "multiple_choice",
+    "question": "Cho ma trận trọng số $W$ kích thước $2 \\times 2$: $W = \\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}$. Chuẩn Frobenius $\\|W\\|_F$ của ma trận $W$ là:",
+    "options": {
+      "A": "$\\sqrt{30} \\approx 5.48$",
+      "B": "10",
+      "C": "$\\sqrt{20} \\approx 4.47$",
+      "D": "5"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Chuẩn Frobenius:\n$$\\|W\\|_F = \\sqrt{\\sum_{i,j} W_{ij}^2} = \\sqrt{1^2 + 2^2 + 3^2 + 4^2} = \\sqrt{1 + 4 + 9 + 16} = \\sqrt{30} \\approx 5.477$$"
+  },
+  {
+    "id": "A33",
+    "module": "A",
+    "module_name": "Nền tảng Toán học & Tư duy Định lượng",
+    "topic": "Đại số tuyến tính & Hạng ma trận",
+    "difficulty": "Trung bình",
+    "type": "multiple_choice",
+    "question": "Một ma trận dữ liệu A có kích thước 1000 x 50 (1000 mẫu, 50 thuộc tính). Biết rằng có 10 thuộc tính là tổ hợp tuyến tính chính xác từ 40 thuộc tính còn lại. Hạng (Rank) lớn nhất có thể của ma trận A là:",
+    "options": {
+      "A": "40",
+      "B": "50",
+      "C": "1000",
+      "D": "10"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Hạng của ma trận là số lượng cột (hoặc hàng) độc lập tuyến tính tối đa. Vì có 10 cột phụ thuộc tuyến tính vào 40 cột còn lại, số cột độc lập tuyến tính tối đa chỉ là 50 - 10 = 40. Do rank(A) <= min(1000, 40) nên hạng lớn nhất là 40 (dữ liệu bị hiện tượng đa cộng tuyến - multicollinearity)."
+  },
+  {
+    "id": "A34",
+    "module": "A",
+    "module_name": "Nền tảng Toán học & Tư duy Định lượng",
+    "topic": "Giải tích tối ưu & Ma trận Hessian",
+    "difficulty": "Nâng cao",
+    "type": "multiple_choice",
+    "question": "Tại một điểm dừng $\\mathbf{w}^*$ có gradient bằng $0$ ($\\nabla L(\\mathbf{w}^*) = \\mathbf{0}$), ma trận đạo hàm bậc hai Hessian $H$ có các giá trị riêng đều dương ($H \\succ 0$). Điểm dừng $\\mathbf{w}^*$ này là:",
+    "options": {
+      "A": "Điểm cực tiểu địa phương (Local Minimum)",
+      "B": "Điểm cực đại địa phương (Local Maximum)",
+      "C": "Điểm yên ngựa (Saddle Point)",
+      "D": "Điểm gián đoạn"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Theo tiêu chuẩn ma trận Hessian: Nếu ma trận Hessian tại điểm dừng là xác định dương ($H \\succ 0$, tức mọi giá trị riêng $\\lambda_i > 0$), thì hàm số lồi cục bộ tại điểm đó và $\\mathbf{w}^*$ là điểm cực tiểu địa phương (Local Minimum)."
+  },
+  {
+    "id": "A35",
+    "module": "A",
+    "module_name": "Nền tảng Toán học & Tư duy Định lượng",
+    "topic": "Tối ưu hóa & Lịch trình Learning Rate",
+    "difficulty": "Trung bình",
+    "type": "multiple_choice",
+    "question": "Kỹ thuật Learning Rate Warmup (tăng dần learning rate từ 0 lên giá trị cực đại trong những bước đầu) mang lại lợi ích toán học quan trọng nào khi huấn luyện mô hình Transformer lớn?",
+    "options": {
+      "A": "Ngăn chặn các bước cập nhật gradient ban đầu quá lớn làm phá vỡ trọng số khi ước lượng moment của Adam ($m_t$ và $v_t$) chưa kịp ổn định",
+      "B": "Tự động nhân đôi kích thước tập dữ liệu",
+      "C": "Loại bỏ hoàn toàn các lớp Attention",
+      "D": "Làm cho hàm mất mát luôn bằng 0"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Ở những bước đầu tiên của quá trình huấn luyện, các ước lượng moment bậc 1 ($m_t$) và bậc 2 ($v_t$) của thuật toán tối ưu Adam chưa có đủ mẫu để hội tụ, khiến phương sai của gradient cực lớn. Việc sử dụng Warmup giữ learning rate ban đầu nhỏ, giúp mô hình ổn định các hướng cập nhật trọng số trước khi tăng tốc học."
+  },
+  {
+    "id": "A36",
+    "module": "A",
+    "module_name": "Nền tảng Toán học & Tư duy Định lượng",
+    "topic": "Hàm mất mát hồi quy",
+    "difficulty": "Trung bình",
+    "type": "multiple_choice",
+    "question": "Trong bài toán hồi quy có nhiều điểm dữ liệu ngoại lai (outliers), tại sao hàm Huber Loss được ưa chuộng hơn Mean Squared Error (MSE)?",
+    "options": {
+      "A": "Huber Loss hoạt động như MSE khi sai số nhỏ ($|e| \\le \\delta$) và chuyển sang tuyến tính như MAE khi sai số lớn ($|e| > \\delta$), giúp hạn chế việc gradient bị phóng đại bởi các ngoại lai",
+      "B": "Huber Loss không cần tính toán số học",
+      "C": "Huber Loss luôn cho sai số bằng 0",
+      "D": "MSE chỉ dùng cho phân loại hình ảnh"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Công thức Huber Loss:\n$$\\mathcal{L}_\\delta(e) = \\begin{cases} \\frac{1}{2} e^2 & \\text{khi } |e| \\le \\delta \\\\ \\delta (|e| - \\frac{1}{2} \\delta) & \\text{khi } |e| > \\delta \\end{cases}$$\nMSE phạt theo bình phương sai số $e^2$, khiến các điểm nhiễu ngoại lai tạo ra gradient khổng lồ và kéo lệch toàn bộ đường hồi quy. Huber Loss kết hợp ưu điểm khả vi mượt mà của MSE ở vùng sai số nhỏ và tính bền vững (robustness) của MAE ở vùng sai số lớn."
+  },
+  {
+    "id": "A37",
+    "module": "A",
+    "module_name": "Nền tảng Toán học & Tư duy Định lượng",
+    "topic": "Xác suất & Phân phối Nhị thức",
+    "difficulty": "Cơ bản",
+    "type": "multiple_choice",
+    "question": "Kiểm tra ngẫu nhiên 5 câu trả lời sinh ra từ mô hình AI. Biết xác suất mỗi câu trả lời đúng độc lập là p = 0.8. Xác suất để CẢ 5 CÂU đều trả lời chính xác là:",
+    "options": {
+      "A": "0.8^5 ≈ 0.3277 (khoảng 32.8%)",
+      "B": "0.8 * 5 = 4.0",
+      "C": "0.2^5 = 0.00032",
+      "D": "0.50 (50%)"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Vì các lần thử là độc lập, áp dụng quy tắc nhân xác suất cho 5 biến cố độc lập: P(X = 5) = 0.8^5 = 0.32768 (khoảng 32.8%)."
+  },
+  {
+    "id": "A38",
+    "module": "A",
+    "module_name": "Nền tảng Toán học & Tư duy Định lượng",
+    "topic": "Định lý Giới hạn Trung tâm (CLT)",
+    "difficulty": "Trung bình",
+    "type": "multiple_choice",
+    "question": "Theo Định lý Giới hạn Trung tâm (Central Limit Theorem), khi kích thước mẫu $n$ đủ lớn ($n \\ge 30$), phân phối của trung bình mẫu $\\bar{X}$ sẽ hội tụ về phân phối nào?",
+    "options": {
+      "A": "Phân phối chuẩn $\\mathcal{N}\\left(\\mu, \\; \\frac{\\sigma^2}{n}\\right)$ bất kể hình dạng phân phối của tổng thể ban đầu",
+      "B": "Phân phối đều (Uniform Distribution)",
+      "C": "Phân phối Poisson với tham số $\\lambda = \\mu$",
+      "D": "Phân phối nhị thức"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Định lý Giới hạn Trung tâm (CLT) khẳng định rằng với bất kỳ tổng thể nào có kỳ vọng $\\mu$ và phương sai $\\sigma^2$ hữu hạn, khi cỡ mẫu $n$ đủ lớn:\n$$\\bar{X} \\xrightarrow{d} \\mathcal{N}\\left(\\mu, \\; \\frac{\\sigma^2}{n}\\right)$$\nĐây là cơ sở lý thuyết quan trọng nhất cho kiểm thử A/B và suy diễn thống kê trong khoa học dữ liệu."
+  },
+  {
+    "id": "A39",
+    "module": "A",
+    "module_name": "Nền tảng Toán học & Tư duy Định lượng",
+    "topic": "Đại số & Ma trận Hiệp phương sai",
+    "difficulty": "Trung bình",
+    "type": "multiple_choice",
+    "question": "Ma trận hiệp phương sai (Covariance Matrix) $\\Sigma$ của một vector ngẫu nhiên $D$ chiều $\\mathbf{X} = [X_1, X_2, \\dots, X_D]^T$ luôn có tính chất toán học nào sau đây?",
+    "options": {
+      "A": "Đối xứng và nửa xác định dương (Symmetric & Positive Semi-Definite)",
+      "B": "Phản đối xứng (Skew-symmetric)",
+      "C": "Định thức luôn bằng 0",
+      "D": "Tất cả các phần tử đều là số nguyên dương"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Ma trận hiệp phương sai $\\Sigma = \\mathbb{E}[(\\mathbf{X} - \\boldsymbol{\\mu})(\\mathbf{X} - \\boldsymbol{\\mu})^T]$ luôn đối xứng vì $\\text{Cov}(X_i, X_j) = \\text{Cov}(X_j, X_i)$, và nửa xác định dương (Positive Semi-Definite, $\\Sigma \\succeq 0$) vì với mọi vector $\\mathbf{u}$:\n$$\\mathbf{u}^T \\Sigma \\mathbf{u} = \\text{Var}(\\mathbf{u}^T \\mathbf{X}) \\ge 0$$\nĐiều này đảm bảo mọi giá trị riêng $\\lambda_i \\ge 0$, rất quan trọng trong thuật toán PCA."
+  },
+  {
+    "id": "A40",
+    "module": "A",
+    "module_name": "Nền tảng Toán học & Tư duy Định lượng",
+    "topic": "Giảm chiều dữ liệu PCA",
+    "difficulty": "Trung bình",
+    "type": "multiple_choice",
+    "question": "Về mặt hình học và tối ưu, thành phần chính thứ nhất (First Principal Component) trong thuật toán PCA tìm kiếm phương nào trong không gian dữ liệu?",
+    "options": {
+      "A": "Phương có phương sai dữ liệu chiếu lên đạt giá trị lớn nhất (tương ứng với vector riêng có giá trị riêng lớn nhất của ma trận hiệp phương sai)",
+      "B": "Phương vuông góc với tất cả các điểm dữ liệu",
+      "C": "Phương có phương sai bằng 0",
+      "D": "Phương ngẫu nhiên do máy tính chọn"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "PCA tìm trục tọa độ mới sao cho lượng thông tin (được đo bằng độ biến thiên/phương sai) được bảo toàn tối đa khi chiếu dữ liệu lên đó. Trục này chính là vector riêng ứng với giá trị riêng lớn nhất của ma trận hiệp phương sai."
+  },
+  {
+    "id": "A41",
+    "module": "A",
+    "module_name": "Nền tảng Toán học & Tư duy Định lượng",
+    "topic": "Tham số Nhiệt độ Softmax (Temperature)",
+    "difficulty": "Cơ bản",
+    "type": "multiple_choice",
+    "question": "Trong công thức Softmax có nhiệt độ:\n$$P(y_i) = \\frac{\\exp(z_i / T)}{\\sum_{j} \\exp(z_j / T)}$$\nKhi ta điều chỉnh nhiệt độ $T$ tiến rất gần về 0 ($T \\to 0^+$), hành vi của mô hình sinh ngôn ngữ sẽ thay đổi như thế nào?",
+    "options": {
+      "A": "Trở nên hoàn toàn tất định (Greedy Decoding / Argmax), tập trung 100% xác suất vào token có logit cao nhất, loại bỏ hoàn toàn tính ngẫu nhiên",
+      "B": "Sinh ra các từ ngữ ngẫu nhiên và hỗn loạn nhất",
+      "C": "Xác suất của mọi token trở nên bằng nhau (phân phối đều)",
+      "D": "Báo lỗi chia cho số âm"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Khi T -> 0+, chênh lệch giữa các logit bị khuếch đại cực đại, token lớn nhất sẽ chiếm trọn xác suất p -> 1 (Argmax). Ngược lại khi T -> vô cùng, z/T -> 0, exp(0) = 1 khiến phân phối trở thành phân phối đều (hoàn toàn ngẫu nhiên)."
+  },
+  {
+    "id": "A42",
+    "module": "A",
+    "module_name": "Nền tảng Toán học & Tư duy Định lượng",
+    "topic": "Đo khoảng cách phân phối KL Divergence",
+    "difficulty": "Trung bình",
+    "type": "multiple_choice",
+    "question": "Độ phân kỳ Kullback-Leibler $D_{KL}(P \\parallel Q)$ đo lường khoảng cách thông tin giữa hai phân phối xác suất $P$ và $Q$. Phát biểu nào sau đây là CHÍNH XÁC?",
+    "options": {
+      "A": "$D_{KL}(P \\parallel Q) \\ge 0$ và nói chung không đối xứng ($D_{KL}(P \\parallel Q) \\ne D_{KL}(Q \\parallel P)$)",
+      "B": "$D_{KL}(P \\parallel Q)$ luôn bằng $D_{KL}(Q \\parallel P)$",
+      "C": "$D_{KL}(P \\parallel Q)$ có thể nhận giá trị âm",
+      "D": "$D_{KL}(P \\parallel Q) = 0$ khi và chỉ khi $P$ và $Q$ trực giao"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Theo bất đẳng thức Gibbs, $D_{KL}(P \\parallel Q) \\ge 0$ và bằng 0 khi và chỉ khi $P = Q$ hầu khắp nơi. Tuy nhiên $D_{KL}$ không phải là một metric khoảng cách toán học vì nó **không có tính đối xứng**:\n$$D_{KL}(P \\parallel Q) \\ne D_{KL}(Q \\parallel P)$$"
+  },
+  {
+    "id": "A43",
+    "module": "A",
+    "module_name": "Nền tảng Toán học & Tư duy Định lượng",
+    "topic": "Hàm mất mát Focal Loss",
+    "difficulty": "Nâng cao",
+    "type": "multiple_choice",
+    "question": "Hàm mất mát Focal Loss:\n$$\\text{FL}(p_t) = - \\alpha_t (1 - p_t)^\\gamma \\log(p_t)$$\nđược phát minh để giải quyết bài toán cốt lõi nào trong thị giác máy tính phát hiện vật thể (Object Detection)?",
+    "options": {
+      "A": "Mất cân bằng cực độ giữa số lượng vùng nền (Easy Negatives chiếm 99%) và vật thể cần phát hiện (Hard Positives); hệ số (1 - p_t)^gamma tự động giảm trọng số phạt của các mẫu dễ xuống gần 0",
+      "B": "Tăng độ phân giải của camera xe điện",
+      "C": "Chuyển ảnh màu sang ảnh đen trắng",
+      "D": "Thay thế lớp tích chập bằng lớp hồi quy tuyến tính"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Trong bộ phát hiện một giai đoạn (RetinaNet), hàng trăm ngàn bounding boxes là nền (easy negatives, p_t cao). Nhân với (1 - p_t)^gamma (với gamma = 2) làm mất mát của các mẫu dễ giảm hàng ngàn lần, tập trung gradient vào các vật thể khó nhận biết."
+  },
+  {
+    "id": "A44",
+    "module": "A",
+    "module_name": "Nền tảng Toán học & Tư duy Định lượng",
+    "topic": "Công thức Xác suất Toàn phần",
+    "difficulty": "Cơ bản",
+    "type": "multiple_choice",
+    "question": "Xe tự hành VinFast có 3 cảm biến: Camera (xác suất nhận diện đúng người đi bộ 90%), Radar (xác suất nhận diện đúng 95%), Lidar (xác suất nhận diện đúng 98%). Biết trong điều kiện sương mù dày đặc, hệ thống tin tưởng giao quyền quyết định cho Camera 20%, Radar 30%, Lidar 50%. Xác suất nhận diện đúng người đi bộ của toàn hệ thống trong sương mù là:",
+    "options": {
+      "A": "95.5%",
+      "B": "94.3%",
+      "C": "98.0%",
+      "D": "90.0%"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Theo công thức xác suất toàn phần: P(Correct) = 0.20 * 0.90 + 0.30 * 0.95 + 0.50 * 0.98 = 0.18 + 0.285 + 0.49 = 0.955 (tức 95.5%)."
+  },
+  {
+    "id": "A45",
+    "module": "A",
+    "module_name": "Nền tảng Toán học & Tư duy Định lượng",
+    "topic": "Đại số & Trực chuẩn",
+    "difficulty": "Trung bình",
+    "type": "multiple_choice",
+    "question": "Một tập hợp các vector $\\{\\mathbf{v}_1, \\mathbf{v}_2, \\dots, \\mathbf{v}_k\\}$ được gọi là tập trực chuẩn (Orthonormal Set) khi thỏa mãn điều kiện nào sau đây?",
+    "options": {
+      "A": "Các vector đôi một trực giao và mỗi vector đều có độ dài bằng 1 ($\\mathbf{v}_i \\cdot \\mathbf{v}_j = \\delta_{ij}$)",
+      "B": "Tổng tất cả các vector bằng vector không",
+      "C": "Tất cả các vector đều cùng phương",
+      "D": "Định thức của tập vector bằng 0"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Tập trực chuẩn là tập hợp mà mỗi vector đều có độ dài bằng 1 (chuẩn hóa: $\\|\\mathbf{v}_i\\| = 1$) và hai vector bất kỳ khác nhau đều vuông góc với nhau (trực giao: $\\mathbf{v}_i \\cdot \\mathbf{v}_j = 0$ với $i \\ne j$):\n$$\\mathbf{v}_i \\cdot \\mathbf{v}_j = \\delta_{ij} = \\begin{cases} 1 & \\text{nếu } i = j \\\\ 0 & \\text{nếu } i \\ne j \\end{cases}$$"
+  },
+  {
+    "id": "A46",
+    "module": "A",
+    "module_name": "Nền tảng Toán học & Tư duy Định lượng",
+    "topic": "Tối ưu & Gradient Clipping",
+    "difficulty": "Cơ bản",
+    "type": "multiple_choice",
+    "question": "Kỹ thuật Gradient Clipping theo chuẩn $L_2$: nếu $\\|\\mathbf{g}\\|_2 > c$ thì gradient mới được tính là $\\mathbf{g}_{\\text{clipped}} = c \\cdot \\frac{\\mathbf{g}}{\\|\\mathbf{g}\\|_2}$. Kỹ thuật này có tác dụng gì?",
+    "options": {
+      "A": "Giữ nguyên hướng của gradient nhưng giới hạn độ lớn không vượt quá ngưỡng c, ngăn hiện tượng Exploding Gradients",
+      "B": "Đổi chiều gradient 180 độ",
+      "C": "Triệt tiêu gradient về 0",
+      "D": "Làm tăng learning rate"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Bằng cách chia cho $\\|\\mathbf{g}\\|_2$ rồi nhân với ngưỡng $c$, vector gradient được co lại để có độ dài đúng bằng $c$ trong khi phương và chiều của vector được bảo toàn tuyệt đối. Điều này ngăn chặn hiện tượng bùng nổ gradient phá hủy trọng số của mạng sâu."
+  },
+  {
+    "id": "A47",
+    "module": "A",
+    "module_name": "Nền tảng Toán học & Tư duy Định lượng",
+    "topic": "Ổn định số học & Số điều kiện",
+    "difficulty": "Nâng cao",
+    "type": "multiple_choice",
+    "question": "Số điều kiện của ma trận (Condition Number) $\\kappa(A) = \\|A\\| \\cdot \\|A^{-1}\\|$. Khi số điều kiện $\\kappa(A)$ rất lớn (ma trận Ill-conditioned), hệ quả kỹ thuật trong huấn luyện và giải hệ phương trình là:",
+    "options": {
+      "A": "Nghiệm cực kỳ nhạy cảm với nhiễu dữ liệu và sai số làm tròn số thực, giải thuật tối ưu hội tụ rất chậm hoặc không ổn định",
+      "B": "Mô hình học rất nhanh và ổn định tuyệt đối",
+      "C": "Ma trận luôn có định thức bằng 1",
+      "D": "Không ảnh hưởng gì đến tính toán số"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Số điều kiện $\\kappa(A) \\ge 1$ đo độ nhạy của nghiệm hệ phương trình tuyến tính $A \\mathbf{x} = \\mathbf{b}$ đối với sự biến thiên nhỏ của dữ liệu đầu vào.\nKhi $\\kappa(A) \\gg 1$, ma trận gần như suy biến (Ill-conditioned), các mặt elip mức của hàm mục tiêu bị kéo dài thành các hẻm hẹp, làm thuật toán Gradient Descent dao động mạnh và khó hội tụ."
+  },
+  {
+    "id": "A48",
+    "module": "A",
+    "module_name": "Nền tảng Toán học & Tư duy Định lượng",
+    "topic": "Ước lượng Bộ nhớ VRAM Huấn luyện LLM",
+    "difficulty": "Nâng cao",
+    "type": "scenario",
+    "question": "[Tình huống Định lượng 6]: Một nhóm nghiên cứu tại VinUni muốn huấn luyện toàn diện (Full Fine-tuning) mô hình LLM 7 tỷ tham số (7B parameters) ở định dạng 16-bit (FP16/BF16) sử dụng thuật toán tối ưu AdamW. Hãy tính toán dung lượng VRAM tĩnh tối thiểu cần thiết chỉ riêng cho Trọng số (Model Weights), Gradient, và Trạng thái tối ưu hóa của Adam (Optimizer States)?",
+    "sample_answer": "1. Trọng số mô hình (Model Weights ở FP16 - 2 bytes/param): 7 * 10^9 * 2 bytes = 14 GB.\n2. Gradients (ở FP16 - 2 bytes/param): 7 * 10^9 * 2 bytes = 14 GB.\n3. Trạng thái tối ưu hóa AdamW (Lưu bản sao FP32 master weights 4 bytes + moment bậc một m_t FP32 4 bytes + moment bậc hai v_t FP32 4 bytes = 12 bytes/param): 7 * 10^9 * 12 bytes = 84 GB.\nTổng bộ nhớ tĩnh tối thiểu: 14 + 14 + 84 = 112 GB VRAM (chưa bao gồm Activations và KV cache theo batch size). Do đó cần tối thiểu 2 GPU A100/H100 80GB kết hợp kỹ thuật DeepSpeed ZeRO để huấn luyện.",
+    "points": 5,
+    "explanation": "**Phân tích Kỹ thuật Ước Lượng VRAM Huấn Luyện (Training Memory):**\n- **Quy tắc 16-20 bytes / tham số cho FP16:**\n  1. *Model Parameters (FP16):* $7 \\times 2 = 14\\text{ GB}$.\n  2. *Gradients (FP16):* $7 \\times 2 = 14\\text{ GB}$.\n  3. *Optimizer States (AdamW trong FP32):* Cần lưu bản sao tham số FP32 ($4\\text{ bytes}$), Momentum bậc 1 ($4\\text{ bytes}$) và Variance bậc 2 ($4\\text{ bytes}$) $\\implies 7 \\times 12 = 84\\text{ GB}$.\n  $$\\implies \\text{Bộ nhớ tĩnh tối thiểu} = 14 + 14 + 84 = 112\\text{ GB}$$\n  4. *Activations:* Tùy thuộc vào sequence length và batch size, thường tốn thêm $20\\text{ - }40\\text{ GB}$.\n- **Giải pháp tối ưu thực chiến:**\n  - Áp dụng kỹ thuật ZeRO-Stage 3 (DeepSpeed) phân mảnh optimizer states và gradients qua nhiều GPU.\n  - Sử dụng 8-bit Adam (BitsAndBytes) giảm bộ nhớ optimizer từ 12 bytes xuống 2 bytes.\n  - Sử dụng LoRA hoặc QLoRA (giảm VRAM cần thiết xuống chỉ còn $16\\text{ - }24\\text{ GB}$)."
+  },
+  {
+    "id": "A49",
+    "module": "A",
+    "module_name": "Nền tảng Toán học & Tư duy Định lượng",
+    "topic": "Định lượng Suy hao Lượng tử hóa",
+    "difficulty": "Trung bình",
+    "type": "scenario",
+    "question": "[Tình huống Định lượng 7]: Khi chuyển đổi mô hình embedding từ FP32 (32-bit float) sang INT8 (8-bit signed integer) trong dải [-128, 127], kỹ thuật lượng tử hóa đối xứng sử dụng công thức: q = clip(round(x / scale), -128, 127). Nếu giá trị tuyệt đối lớn nhất của trọng số trong tensor là max|x| = 2.54. Hãy tính giá trị tỷ lệ scale tương ứng và tính giá trị lượng tử hóa q cho số thực x = 1.27?",
+    "sample_answer": "1. Tính hệ số tỷ lệ scale:\nscale = max|x| / 127 = 2.54 / 127 = 0.02.\n2. Tính giá trị lượng tử hóa q cho x = 1.27:\nq = clip(round(1.27 / 0.02), -128, 127) = clip(round(63.5), -128, 127) = 64 (theo quy tắc làm tròn nửa chẵn hoặc làm tròn chuẩn).\n3. Giá trị khôi phục (dequantized): x_approx = 64 * 0.02 = 1.28 (sai số lượng tử hóa là |1.28 - 1.27| = 0.01).",
+    "points": 5,
+    "explanation": "**Phân tích Kỹ thuật Định lượng Suy hao Lượng tử hóa (Quantization Error):**\n- **Cơ chế toán học:** Lượng tử hóa ánh xạ các số thực liên tục trong dải $[x_{\\min}, x_{\\max}]$ sang tập $256$ mức số nguyên có dấu $[-128, 127]$:\n  $$q = \\text{round}\\left(\\frac{x}{S}\\right) + Z, \\quad S = \\frac{x_{\\max} - x_{\\min}}{255}$$\n- **Các nguồn suy hao chính:**\n  1. *Clipping Error:* Do các trọng số ngoại lai (Outliers) có độ lớn bất thường khiến scale factor $S$ bị kéo giãn, làm mất chi tiết của $99\\%$ các trọng số thông thường.\n  2. *Rounding Error:* Sai số làm tròn từ số thực sang số nguyên gần nhất.\n- **Biện pháp khắc phục trong MLOps:**\n  - Áp dụng Per-channel Quantization (mỗi filter có scale factor riêng) thay vì Per-tensor.\n  - Áp dụng SmoothQuant hoặc AWQ (Activation-aware Weight Quantization) để bảo vệ các kênh trọng số nhạy cảm."
+  },
+  {
+    "id": "A50",
+    "module": "A",
+    "module_name": "Nền tảng Toán học & Tư duy Định lượng",
+    "topic": "Tính toán Tải GPU Xe Tự hành",
+    "difficulty": "Nâng cao",
+    "type": "scenario",
+    "question": "[Tình huống Định lượng 8]: Hệ thống lái tự động VinFast VF9 tiếp nhận dữ liệu từ 6 camera vòm độ phân giải 1920x1080 với tốc độ 30 khung hình/giây (FPS) mỗi camera. Mô hình nhận diện vật thể tiêu tốn 50 GFLOPs (50 * 10^9 phép tính) cho mỗi khung hình camera đơn lẻ. Hãy tính tổng năng lực tính toán dấu phẩy động (TFLOPs) mà chip SoC trên xe phải đáp ứng chỉ riêng cho tác vụ nhận diện hình ảnh thời gian thực không bị trễ khung hình?",
+    "sample_answer": "1. Tổng số khung hình cần xử lý trong 1 giây từ cả 6 camera:\n6 camera * 30 FPS = 180 khung hình/giây.\n2. Tổng số phép tính FLOPs mỗi giây cần thiết:\n180 khung hình/giây * 50 GFLOPs/khung hình = 9,000 GFLOPs/giây = 9.0 TFLOPs (TeraFLOPs).\n3. Tính thêm hệ số an toàn thực tế (Headroom / Margin) tối thiểu 40% để tránh quá nhiệt và nghẽn bus bộ nhớ:\nNăng lực chip SoC khuyến nghị tối thiểu = 9.0 / 0.6 ≈ 15.0 TFLOPs.",
+    "points": 5,
+    "explanation": "**Phân tích Kỹ thuật Băng Thông & Tải Tính Toán Xe Tự Hành:**\n- **Định lượng dữ liệu thô:**\n  - 6 camera $\\times 1920 \\times 1080 \\times 3\\text{ bytes} \\approx 37.32\\text{ MB/frame}$.\n  - Tại tốc độ $30\\text{ fps}$: Băng thông dữ liệu thô = $37.32 \\times 30 \\approx 1,120\\text{ MB/s} \\approx 1.12\\text{ GB/s}$.\n- **Khả năng xử lý thời gian thực:**\n  - Để đảm bảo an toàn phanh xe ở vận tốc $100\\text{ km/h}$ (xe di chuyển $27.8\\text{ mét/giây}$), độ trễ trọn gói (End-to-End Latency từ lúc nhận ảnh đến khi ra lệnh điều khiển) phải dưới $50\\text{ms}$.\n  - Thời gian xử lý inference cho mỗi frame chỉ được phép trong khoảng $15\\text{ - }20\\text{ms}$.\n- **Kiến trúc tối ưu:** Chuyển đổi toàn bộ mô hình backbone sang TensorRT, dùng FP16/INT8 kết hợp pipeline xử lý trực tiếp trên phần cứng đồ họa (Hardware Video Decoders - NVDEC) để tránh nghẽn cổ chai CPU bus."
+  },
+  {
+    "id": "A51",
+    "module": "A",
+    "module_name": "Nền tảng Toán học & Tư duy Định lượng",
+    "topic": "Xác suất & Biến cố đối (Đề gốc Practice.docx)",
+    "difficulty": "Trung bình",
+    "type": "multiple_choice",
+    "question": "Để đánh giá hiệu năng của một mô hình trí tuệ nhân tạo (AI) phân loại ảnh, người ta thử nghiệm trên một bộ dữ liệu gồm 1.000 hình ảnh. Kết quả thu được cho thấy: mô hình dự đoán chính xác 800 ảnh, dự đoán sai 200 ảnh. Chọn ngẫu nhiên đồng thời 2 ảnh từ bộ dữ liệu thử nghiệm này. Xác suất để có ít nhất 1 ảnh được mô hình AI dự đoán chính xác là bao nhiêu?",
+    "options": {
+      "A": "Xấp xỉ 96.02%",
+      "B": "Xấp xỉ 80.00%",
+      "C": "Xấp xỉ 64.00%",
+      "D": "Xấp xỉ 99.96%"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Sử dụng biến cố đối:\n- Gọi $A$ là biến cố 'có ít nhất 1 ảnh dự đoán đúng'. Biến cố đối $A'$ là 'cả 2 ảnh chọn ra đều bị dự đoán SAI'.\n- Số cách chọn ngẫu nhiên 2 ảnh trong 1.000 ảnh:\n$$C_{1000}^2 = \\frac{1000 \\times 999}{2} = 499,500$$\n- Số cách chọn 2 ảnh từ 200 ảnh dự đoán sai:\n$$C_{200}^2 = \\frac{200 \\times 199}{2} = 19,900$$\n- Xác suất cả 2 ảnh đều sai:\n$$P(A') = \\frac{19,900}{499,500} = \\frac{199}{4995} \\approx 0.03984$$\n- Vậy xác suất có ít nhất 1 ảnh đúng:\n$$P(A) = 1 - P(A') = 1 - 0.03984 = 0.96016 \\quad (\\approx 96.02\\%)$$"
+  },
+  {
+    "id": "A52",
+    "module": "A",
+    "module_name": "Nền tảng Toán học & Tư duy Định lượng",
+    "topic": "Thống kê Xúc xắc (Đề gốc Practice.docx)",
+    "difficulty": "Cơ bản",
+    "type": "multiple_choice",
+    "question": "Gieo một con xúc xắc 6 mặt cân đối, đồng chất. Phương sai $\\text{Var}(X)$ và độ lệch chuẩn $\\sigma(X)$ của số chấm xuất hiện lần lượt là:",
+    "options": {
+      "A": "$\\text{Var}(X) = \\frac{35}{12} \\approx 2.92, \\; \\sigma(X) \\approx 1.71$",
+      "B": "$\\text{Var}(X) = 3.5, \\; \\sigma(X) \\approx 1.87$",
+      "C": "$\\text{Var}(X) = 2.0, \\; \\sigma(X) = 1.41$",
+      "D": "$\\text{Var}(X) = 1.25, \\; \\sigma(X) \\approx 1.12$"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Các bước tính toán phương sai biến ngẫu nhiên rời rạc $X \\in \\{1, 2, 3, 4, 5, 6\\}$:\n1. Kỳ vọng:\n$$\\mathbb{E}[X] = \\frac{1 + 2 + 3 + 4 + 5 + 6}{6} = \\frac{21}{6} = 3.5$$\n2. Kỳ vọng bình phương:\n$$\\mathbb{E}[X^2] = \\frac{1^2 + 2^2 + 3^2 + 4^2 + 5^2 + 6^2}{6} = \\frac{91}{6} \\approx 15.167$$\n3. Phương sai:\n$$\\text{Var}(X) = \\mathbb{E}[X^2] - (\\mathbb{E}[X])^2 = \\frac{91}{6} - (3.5)^2 = \\frac{91}{6} - \\frac{49}{4} = \\frac{35}{12} \\approx 2.9167$$\n4. Độ lệch chuẩn:\n$$\\sigma(X) = \\sqrt{\\frac{35}{12}} \\approx 1.7078$$"
+  },
+  {
+    "id": "A53",
+    "module": "A",
+    "module_name": "Nền tảng Toán học & Tư duy Định lượng",
+    "topic": "Xấp xỉ Phân phối Bernoulli (Đề gốc Practice.docx)",
+    "difficulty": "Trung bình",
+    "type": "multiple_choice",
+    "question": "Tổng của $n$ biến ngẫu nhiên Bernoulli độc lập có cùng tham số xác suất $p$ tương ứng với phân phối Nhị thức $B(n, p)$. Khi $n$ tiến ra vô cùng, phân phối này xấp xỉ phân phối nào trong từng điều kiện tương ứng?",
+    "options": {
+      "A": "Nếu $p$ rất nhỏ ($p \\to 0$, $n p = \\lambda$ cố định) thì xấp xỉ Phân phối Poisson; nếu $p \\ge 0.1$ và $n p \\ge 5$ thì xấp xỉ Phân phối chuẩn $\\mathcal{N}(n p, n p(1-p))$",
+      "B": "Luôn luôn xấp xỉ phân phối đều",
+      "C": "Luôn xấp xỉ phân phối Student",
+      "D": "Không bao giờ xấp xỉ được phân phối nào"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Hai định lý giới hạn kinh điển của phân phối Nhị thức $B(n, p)$:\n1. **Định lý giới hạn Poisson (Law of Rare Events):** Khi $n \\to \\infty, p \\to 0$ sao cho $\\lambda = n p$ không đổi: $$B(n, p) \\xrightarrow{d} \\text{Poisson}(\\lambda)$$\n2. **Định lý De Moivre-Laplace (CLT):** Khi $n$ đủ lớn và $n p \\ge 5, n(1-p) \\ge 5$: $$B(n, p) \\xrightarrow{d} \\mathcal{N}\\left(n p, \\; n p(1-p)\\right)$$"
+  },
+  {
+    "id": "A54",
+    "module": "A",
+    "module_name": "Nền tảng Toán học & Tư duy Định lượng",
+    "topic": "Phân biệt Phân phối Poisson vs Phân phối Mũ (Đề gốc Practice.docx)",
+    "difficulty": "Cơ bản",
+    "type": "multiple_choice",
+    "question": "Sự khác biệt cốt lõi về bản chất giữa Phân phối Poisson và Phân phối Mũ (Exponential Distribution) trong việc mô hình hóa các sự kiện ngẫu nhiên là gì?",
+    "options": {
+      "A": "Phân phối Poisson là biến ngẫu nhiên rời rạc đo lường SỐ LƯỢNG sự kiện xảy ra trong một khoảng thời gian cố định; trong khi Phân phối Mũ là biến ngẫu nhiên liên tục đo lường KHOẢNG THỜI GIAN CHỜ giữa hai sự kiện liên tiếp",
+      "B": "Phân phối Poisson chỉ dùng cho âm thanh, Phân phối Mũ chỉ dùng cho hình ảnh",
+      "C": "Phân phối Poisson luôn có giá trị âm",
+      "D": "Hai phân phối này hoàn toàn giống nhau"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Trong cùng một tiến trình ngẫu nhiên Poisson (Poisson Process) với cường độ $\\lambda$ sự kiện/đơn vị thời gian:\n- **Phân phối Poisson (Rời rạc):** $P(N = k) = \\frac{\\lambda^k e^{-\\lambda}}{k!}$ đo lường số lần biến cố xảy ra trong một đơn vị thời gian.\n- **Phân phối Mũ (Liên tục):** $f(t) = \\lambda e^{-\\lambda t}$ đo lường khoảng thời gian chờ $T$ giữa hai biến cố kế tiếp nhau."
+  },
+  {
+    "id": "A55",
+    "module": "A",
+    "module_name": "Nền tảng Toán học & Tư duy Định lượng",
+    "topic": "Vector riêng & Bản chất Hình học (Đề gốc Practice.docx)",
+    "difficulty": "Trung bình",
+    "type": "multiple_choice",
+    "question": "Về mặt hình học và trực giác không gian, Vector riêng (Eigenvector) của một phép biến đổi tuyến tính ma trận $A$ thể hiện điều gì?",
+    "options": {
+      "A": "Là vector mà khi áp dụng phép biến đổi qua ma trận $A$, phương của nó KHÔNG BỊ ĐỔI HƯỚNG, chỉ bị kéo dài hoặc co ngắn lại theo hệ số tỉ lệ (chính là giá trị riêng $\\lambda$)",
+      "B": "Là vector luôn luôn vuông góc với trục hoành",
+      "C": "Là vector có độ dài luôn luôn bằng 0",
+      "D": "Là vector quay một góc 90 độ sau khi nhân ma trận"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Định nghĩa phương trình vector riêng: $$A \\mathbf{v} = \\lambda \\mathbf{v}$$\nPhép nhân ma trận $A$ lên eigenvector $\\mathbf{v}$ không làm thay đổi phương chuyển động (line of action) của vector, mà chỉ làm co giãn nó một lượng đúng bằng scalar $\\lambda$. Nếu $\\lambda > 0$, vector giữ nguyên hướng; nếu $\\lambda < 0$, vector đổi chiều 180 độ; nếu $\\lambda = 0$, vector bị ánh xạ về gốc tọa độ."
+  },
+  {
+    "id": "A56",
+    "module": "A",
+    "module_name": "Nền tảng Toán học & Tư duy Định lượng",
+    "topic": "Độc lập Tuyến tính & Phụ thuộc Tuyến tính (Đề gốc Practice.docx)",
+    "difficulty": "Cơ bản",
+    "type": "multiple_choice",
+    "question": "Cho ba vector trong không gian 3 chiều: $\\mathbf{v}_1 = [1, 0, 0]$, $\\mathbf{v}_2 = [0, 1, 0]$, $\\mathbf{v}_3 = [2, 3, 0]$. Khẳng định nào sau đây là ĐÚNG về không gian sinh bởi ba vector này?",
+    "options": {
+      "A": "Hệ ba vector phụ thuộc tuyến tính, không gian sinh là mặt phẳng Oxy (chiều bằng 2)",
+      "B": "Hệ ba vector độc lập tuyến tính, không gian sinh là toàn bộ không gian $\\mathbb{R}^3$",
+      "C": "Không gian sinh chỉ là một đường thẳng đi qua gốc tọa độ",
+      "D": "Tích vô hướng giữa cả ba vector đôi một bằng 1"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Ta thấy:\n$$\\mathbf{v}_3 = 2\\mathbf{v}_1 + 3\\mathbf{v}_2$$\nnghĩa là $\\mathbf{v}_3$ là một tổ hợp tuyến tính của $\\mathbf{v}_1$ và $\\mathbf{v}_2$. Do đó ba vector này phụ thuộc tuyến tính và không gian sinh chỉ là mặt phẳng $z = 0$ (mặt phẳng $Oxy$, số chiều bằng 2)."
+  },
+  {
+    "id": "A57",
+    "module": "A",
+    "module_name": "Nền tảng Toán học & Tư duy Định lượng",
+    "topic": "Ma trận Chuyển vị & Tính chất (Đề gốc Practice.docx)",
+    "difficulty": "Cơ bản",
+    "type": "multiple_choice",
+    "question": "Cho hai ma trận vuông $A$ và $B$ cùng cấp $n$. Tính chất nào sau đây của phép chuyển vị ma trận là CHÍNH XÁC?",
+    "options": {
+      "A": "$(A B)^T = B^T A^T$",
+      "B": "$(A B)^T = A^T B^T$",
+      "C": "$(A + B)^T = B^T - A^T$",
+      "D": "$\\det(A^T) = -\\det(A)$"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Quy tắc đảo thứ tự của phép chuyển vị khi nhân hai ma trận:\n$$(A B)^T = B^T A^T$$\n(Tương tự với ma trận nghịch đảo: $(A B)^{-1} = B^{-1} A^{-1}$). Ngoài ra, $\\det(A^T) = \\det(A)$."
+  },
+  {
+    "id": "A58",
+    "module": "A",
+    "module_name": "Nền tảng Toán học & Tư duy Định lượng",
+    "topic": "Đạo hàm Hàm Lượng giác trong Học máy",
+    "difficulty": "Cơ bản",
+    "type": "multiple_choice",
+    "question": "Trong cơ chế mã hóa vị trí Sinusoidal Positional Encoding của Transformer kinh điển: PE(pos, 2i) = sin(pos / 10000^(2i/d)). Đạo hàm của hàm f(x) = sin(w * x) theo biến x là:",
+    "options": {
+      "A": "w * cos(w * x)",
+      "B": "-w * cos(w * x)",
+      "C": "cos(w * x)",
+      "D": "w * sin(w * x)"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Áp dụng quy tắc đạo hàm hàm hợp: d/dx [sin(u(x))] = u'(x) * cos(u(x)). Với u(x) = w * x, đạo hàm bằng w * cos(w * x)."
+  },
+  {
+    "id": "A59",
+    "module": "A",
+    "module_name": "Nền tảng Toán học & Tư duy Định lượng",
+    "topic": "So sánh Khoảng cách L1 và L2 (Đề gốc Practice.docx)",
+    "difficulty": "Trung bình",
+    "type": "multiple_choice",
+    "question": "Cho hai điểm dữ liệu trong không gian 2D: $\\mathbf{p} = (1, 2)$ và $\\mathbf{q} = (4, 6)$. Khoảng cách Manhattan ($L_1$) và khoảng cách Euclidean ($L_2$) giữa hai điểm $\\mathbf{p}$ và $\\mathbf{q}$ lần lượt là:",
+    "options": {
+      "A": "Manhattan = 7, Euclidean = 5",
+      "B": "Manhattan = 5, Euclidean = 7",
+      "C": "Manhattan = 6, Euclidean = 5.2",
+      "D": "Manhattan = 7, Euclidean = 25"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "1. Khoảng cách Manhattan ($L_1$):\n$$d_1(\\mathbf{p}, \\mathbf{q}) = |4 - 1| + |6 - 2| = 3 + 4 = 7$$\n2. Khoảng cách Euclidean ($L_2$):\n$$d_2(\\mathbf{p}, \\mathbf{q}) = \\sqrt{(4 - 1)^2 + (6 - 2)^2} = \\sqrt{3^2 + 4^2} = \\sqrt{9 + 16} = 5$$"
+  },
+  {
+    "id": "A60",
+    "module": "A",
+    "module_name": "Nền tảng Toán học & Tư duy Định lượng",
+    "topic": "Bài toán Kiểm định Chất lượng AI (Tình huống)",
+    "difficulty": "Nâng cao",
+    "type": "scenario",
+    "question": "[Tình huống Định lượng 9 - Đề mẫu Thực chiến]: Một mô hình AI phân loại lỗi sản phẩm trên dây chuyền VinFast có độ chính xác thử nghiệm 80% (800 ảnh đúng trên 1.000 ảnh). Bộ phận QC lấy ngẫu nhiên 3 sản phẩm đã qua kiểm định AI. Hãy tính xác suất để có đúng 2 sản phẩm được AI phân loại chính xác, và xác suất có ít nhất 1 sản phẩm phân loại chính xác?",
+    "sample_answer": "1. Xác suất mỗi sản phẩm được phân loại đúng độc lập là p = 800/1000 = 0.8; phân loại sai là q = 0.2.\n2. Xác suất có ĐÚNG 2 sản phẩm phân loại đúng trong 3 sản phẩm:\nP(X = 2) = C(3, 2) * (0.8)^2 * (0.2)^1 = 3 * 0.64 * 0.2 = 0.384 (tức 38.4%).\n3. Xác suất có ÍT NHẤT 1 sản phẩm đúng:\nP(ít nhất 1 đúng) = 1 - P(cả 3 sản phẩm đều sai) = 1 - (0.2)^3 = 1 - 0.008 = 0.992 (tức 99.2%).",
+    "points": 5,
+    "explanation": "**Phân tích Xác Suất Bernoulli & Quy Tắc Biến Cố Đối:**\n- **Cơ sở xác suất:**\n  - Xác suất một sản phẩm ngẫu nhiên được AI phân loại đúng: $p = \\frac{800}{1000} = 0.8$.\n  - Xác suất phân loại sai: $q = 1 - p = 0.2$.\n- **1. Xác suất có ĐÚNG 2 sản phẩm phân loại đúng trong 3 sản phẩm:**\n  Áp dụng phân phối nhị thức $B(n=3, p=0.8)$:\n  $$P(X = 2) = C_3^2 \\cdot p^2 \\cdot q^{3-2} = 3 \\cdot (0.8)^2 \\cdot (0.2)^1 = 3 \\cdot 0.64 \\cdot 0.2 = 0.384 \\quad (\\mathbf{38.4\\%})$$\n- **2. Xác suất có ÍT NHẤT 1 sản phẩm phân loại đúng:**\n  Dùng biến cố đối (cả 3 sản phẩm đều bị phân loại sai):\n  $$P(X \\ge 1) = 1 - P(X = 0) = 1 - q^3 = 1 - (0.2)^3 = 1 - 0.008 = 0.992 \\quad (\\mathbf{99.2\\%})$$\n- **Ý nghĩa thực tế:** Dù độ chính xác đơn lẻ là $80\\%$, việc kiểm định lặp lại 3 mẫu nâng xác suất phát hiện đúng ít nhất một sản phẩm lên tới $99.2\\%$, chứng minh sức mạnh của phương pháp kiểm thử dư thừa (Redundant Inspection)."
+  }
+]

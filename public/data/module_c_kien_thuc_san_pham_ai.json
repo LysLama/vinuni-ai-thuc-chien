@@ -1,0 +1,1022 @@
+[
+  {
+    "id": "C01",
+    "module": "C",
+    "module_name": "Kiến thức AI & Tư duy sản phẩm AI",
+    "topic": "Đánh giá Mô hình Machine Learning",
+    "difficulty": "Trung bình",
+    "type": "multiple_choice",
+    "question": "Trong bài toán phát hiện gian lận tín dụng (Credit Card Fraud Detection), tỉ lệ giao dịch gian lận chỉ chiếm 0.1% tổng số giao dịch. Khi đánh giá mô hình, chỉ số nào dưới đây là PHÙ HỢP NHẤT và KHÔNG NÊN sử dụng chỉ số nào?",
+    "options": {
+      "A": "Nên dùng Accuracy; Không nên dùng Precision",
+      "B": "Nên dùng PR-AUC hoặc F1-Score (kết hợp Recall cao); Không nên dùng Accuracy",
+      "C": "Nên dùng Accuracy và ROC-AUC; Không cần quan tâm Precision-Recall",
+      "D": "Nên dùng MSE hoặc MAE; Không nên dùng F1-Score"
+    },
+    "correct_answer": "B",
+    "points": 3,
+    "explanation": "Với tập dữ liệu mất cân bằng nghiêm trọng (Imbalanced data), một mô hình 'ngây thơ' luôn đoán 'không gian lận' vẫn đạt Accuracy 99.9% nhưng hoàn toàn vô dụng. Do đó phải dùng Precision-Recall AUC (PR-AUC), F1-Score hoặc ưu tiên Recall cao để không bỏ lọt kẻ gian."
+  },
+  {
+    "id": "C02",
+    "module": "C",
+    "module_name": "Kiến thức AI & Tư duy sản phẩm AI",
+    "topic": "Kiến trúc RAG & Xử lý Ảo giác",
+    "difficulty": "Trung bình",
+    "type": "multiple_choice",
+    "question": "Trong kiến trúc RAG (Retrieval-Augmented Generation) cho trợ lý AI doanh nghiệp, kỹ thuật nào sau đây giúp giải quyết tốt nhất hiện tượng mô hình truy xuất được các đoạn văn bản liên quan nhưng lại bị 'chìm thông tin' ở giữa đoạn (Lost in the Middle) hoặc chunks quá rời rạc?",
+    "options": {
+      "A": "Chỉ tăng k (lấy top 50 chunks thay vì top 5)",
+      "B": "Sử dụng Re-ranking (Cross-Encoder) và cấu trúc phân cấp (Parent Document Retrieval / Small-to-Big chunking)",
+      "C": "Loại bỏ hoàn toàn Vector Database và dùng tìm kiếm từ khóa SQL LIKE",
+      "D": "Tăng kích thước chunk lên 50,000 tokens"
+    },
+    "correct_answer": "B",
+    "points": 3,
+    "explanation": "Kỹ thuật Re-ranking (bằng Cross-Encoder như Cohere hoặc BGE-Reranker) sắp xếp lại các đoạn văn bản có độ liên quan sâu sắc nhất lên đầu, kết hợp cơ chế Parent-Document Retrieval (tìm kiếm trên chunk nhỏ để tăng độ nhạy nhưng gửi kèm văn cảnh cha đầy đủ cho LLM) giúp triệt tiêu hiện tượng 'Lost in the middle'."
+  },
+  {
+    "id": "C03",
+    "module": "C",
+    "module_name": "Kiến thức AI & Tư duy sản phẩm AI",
+    "topic": "AI Agents & ReAct Pattern",
+    "difficulty": "Trung bình",
+    "type": "multiple_choice",
+    "question": "Khi thiết kế một AI Agent tự động xử lý đơn hàng của khách hàng, mẫu thiết kế (Design Pattern) nào sau đây đảm bảo mô hình có thể tự kiểm tra, lập luận qua từng bước và gọi các công cụ (Tool Call/Function Call) một cách có kiểm soát?",
+    "options": {
+      "A": "ReAct (Reasoning + Acting) kết hợp vòng lặp kiểm tra trạng thái và tool execution",
+      "B": "Single-shot Prompting không có context",
+      "C": "Chỉ sử dụng Regex tĩnh",
+      "D": "Fine-tuning mô hình 70B chỉ với 5 mẫu dữ liệu"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Mô hình ReAct (Synergizing Reasoning and Acting in Language Models) cho phép AI kết hợp giữa suy luận logic từng bước (Thought), thực thi hành động gọi công cụ (Action/Tool Call), và quan sát kết quả phản hồi (Observation) để quyết định bước tiếp theo, là chuẩn mực hàng đầu trong phát triển AI Agent thực chiến."
+  },
+  {
+    "id": "C04",
+    "module": "C",
+    "module_name": "Kiến thức AI & Tư duy sản phẩm AI",
+    "topic": "Khung năng lực SFIA",
+    "difficulty": "Cơ bản",
+    "type": "multiple_choice",
+    "question": "Khung năng lực SFIA (Skills Framework for the Information Age) được Vingroup - VinUni áp dụng trong chương trình nhằm mục tiêu cốt lõi nào?",
+    "options": {
+      "A": "Đánh giá khả năng học thuộc lòng các định lý toán học trừu tượng",
+      "B": "Chuẩn hóa năng lực nghề nghiệp công nghệ thông tin & AI theo chuẩn quốc tế, gắn liền giữa kỹ năng thực hành và mức độ tự chủ/trách nhiệm trong công việc thực tế (Levels of Responsibility)",
+      "C": "Chỉ dùng để tính thời gian làm việc hàng ngày của học viên",
+      "D": "Là một framework phần mềm dùng để huấn luyện mạng nơ-ron thay cho PyTorch"
+    },
+    "correct_answer": "B",
+    "points": 3,
+    "explanation": "SFIA là khung chuẩn hóa năng lực nhân lực số toàn cầu, định nghĩa 7 cấp độ trách nhiệm và các kỹ năng nghề nghiệp cụ thể (như MLNG - Machine Learning, DATS - Data Science), giúp đo lường chính xác khả năng 'làm được việc' và xếp bậc thu nhập tương xứng."
+  },
+  {
+    "id": "C05",
+    "module": "C",
+    "module_name": "Kiến thức AI & Tư duy sản phẩm AI",
+    "topic": "Kiến trúc Transformer & Attention",
+    "difficulty": "Trung bình",
+    "type": "multiple_choice",
+    "question": "Trong công thức Attention kinh điển của Transformer:\n$$\\text{Attention}(Q, K, V) = \\text{softmax}\\left(\\frac{Q K^T}{\\sqrt{d_k}}\\right) V$$\nHệ số chia $\\sqrt{d_k}$ (với $d_k$ là chiều vector Key) đóng vai trò kỹ thuật quan trọng nhất nào?",
+    "options": {
+      "A": "Ngăn chặn tích vô hướng $Q K^T$ quá lớn khiến hàm softmax rơi vào vùng bão hòa có gradient triệt tiêu (Vanishing Gradients)",
+      "B": "Tăng kích thước ma trận lên gấp đôi",
+      "C": "Chuyển đổi ma trận thành số nguyên",
+      "D": "Giúp mô hình hội tụ về 0"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Khi chiều vector $d_k$ lớn, giá trị tích vô hướng $Q K^T$ có xu hướng tăng theo $\\mathcal{O}(d_k)$ và phương sai bằng $d_k$.\nNếu không chia cho $\\sqrt{d_k}$, các giá trị đầu vào của hàm softmax sẽ cực lớn, đẩy hàm softmax về các vùng cực biên (xác suất tiến về 1 hoặc 0). Tại các vùng này, đạo hàm của softmax xấp xỉ bằng 0 (hiện tượng cực kỳ nguy hiểm là Vanishing Gradients), làm quá trình huấn luyện bằng Gradient Descent bị đình trệ hoàn toàn."
+  },
+  {
+    "id": "C06",
+    "module": "C",
+    "module_name": "Kiến thức AI & Tư duy sản phẩm AI",
+    "topic": "Kỹ thuật Fine-Tuning LoRA / QLoRA",
+    "difficulty": "Trung bình",
+    "type": "multiple_choice",
+    "question": "Phương pháp PEFT (Parameter-Efficient Fine-Tuning) với LoRA (Low-Rank Adaptation) đóng băng trọng số gốc $W_0 \\in \\mathbb{R}^{d \\times k}$ và huấn luyện phần cập nhật $\\Delta W$ dưới dạng tích của hai ma trận hạng thấp:\n$$W = W_0 + \\Delta W = W_0 + \\frac{\\alpha}{r} (B \\cdot A)$$\nKích thước của $B$ và $A$ theo rank $r$ là gì?",
+    "options": {
+      "A": "$B \\in \\mathbb{R}^{d \\times r}$ và $A \\in \\mathbb{R}^{r \\times k}$ với $r \\ll \\min(d, k)$",
+      "B": "$B \\in \\mathbb{R}^{d \\times d}$ và $A \\in \\mathbb{R}^{k \\times k}$",
+      "C": "$B \\in \\mathbb{R}^{1 \\times d}$ và $A \\in \\mathbb{R}^{k \\times 1}$",
+      "D": "$B$ và $A$ có cùng kích thước với $W_0$"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "LoRA xấp xỉ ma trận biến thiên trọng số $\\Delta W$ bằng tích của ma trận $B$ (chiều $d \\times r$, khởi tạo bằng 0) và ma trận $A$ (chiều $r \\times k$, khởi tạo theo phân phối Gauss). Với rank $r$ rất nhỏ (ví dụ $r = 8$ hoặc $16$), số lượng tham số huấn luyện giảm hơn $99\\%$ trong khi giữ nguyên chất lượng mô hình gốc."
+  },
+  {
+    "id": "C07",
+    "module": "C",
+    "module_name": "Kiến thức AI & Tư duy sản phẩm AI",
+    "topic": "Tối ưu hóa Suy luận LLM (Inference Optimization)",
+    "difficulty": "Nâng cao",
+    "type": "multiple_choice",
+    "question": "Cơ chế KV Cache trong quá trình sinh văn bản tự hồi quy (Autoregressive Generation) của mô hình Transformer giải quyết bài toán hiệu năng nào?",
+    "options": {
+      "A": "Lưu trữ lại các vector Key và Value của các token đã qua tính toán, giảm độ phức tạp suy luận mỗi token mới từ $\\mathcal{O}(N^2)$ xuống $\\mathcal{O}(N)$",
+      "B": "Giảm dung lượng bộ nhớ VRAM của GPU về 0",
+      "C": "Loại bỏ hoàn toàn bước tính hàm Softmax",
+      "D": "Nén các token thành một vector duy nhất"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Khi sinh token tự hồi quy, mô hình sinh từng token một. Nếu không có KV Cache, ở mỗi bước sinh token mới, mô hình phải tính toán lại toàn bộ ma trận Key và Value cho tất cả các token trước đó, tốn $\\mathcal{O}(N^2)$ tính toán. KV Cache lưu các vector Key và Value đã tính vào VRAM, chỉ cần tính vector Query cho token mới nhất, đưa độ phức tạp về $\\mathcal{O}(N)$."
+  },
+  {
+    "id": "C08",
+    "module": "C",
+    "module_name": "Kiến thức AI & Tư duy sản phẩm AI",
+    "topic": "Căn chỉnh Mô hình (AI Alignment & DPO)",
+    "difficulty": "Trung bình",
+    "type": "multiple_choice",
+    "question": "Phương pháp DPO (Direct Preference Optimization) có ưu thế vượt trội gì so với quy trình RLHF (Reinforcement Learning from Human Feedback) truyền thống sử dụng PPO?",
+    "options": {
+      "A": "DPO tối ưu trực tiếp trên cặp dữ liệu sở thích (Prompt, Chosen, Rejected) mà không cần phải huấn luyện thêm một Reward Model độc lập và không cần vòng lặp RL phức tạp không ổn định",
+      "B": "DPO không cần bất kỳ dữ liệu huấn luyện nào",
+      "C": "DPO chỉ áp dụng được cho bài toán thị giác máy tính",
+      "D": "DPO làm tăng thời gian huấn luyện lên gấp 10 lần"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "DPO chứng minh bằng toán học rằng bài toán RLHF có thể quy về bài toán phân loại nhị phân trên hàm mất mát khép kín, loại bỏ sự phức tạp và bất ổn định khi huấn luyện Reward Model riêng biệt và thuật toán PPO."
+  },
+  {
+    "id": "C09",
+    "module": "C",
+    "module_name": "Kiến thức AI & Tư duy sản phẩm AI",
+    "topic": "Vector Database & Indexing",
+    "difficulty": "Trung bình",
+    "type": "multiple_choice",
+    "question": "Thuật toán HNSW (Hierarchical Navigable Small World) được sử dụng phổ biến nhất trong các Vector Database hiện đại (Milvus, Qdrant, Pinecone) nhờ ưu điểm gì?",
+    "options": {
+      "A": "Cung cấp giải thuật tìm kiếm láng giềng gần nhất xấp xỉ (Approximate Nearest Neighbors - ANN) dựa trên đồ thị đa tầng với độ phức tạp thời gian tìm kiếm O(log N) và độ chính xác (recall) rất cao",
+      "B": "Chỉ lưu trữ vector trên ổ đĩa mềm",
+      "C": "Luôn quét toàn bộ 100% số vector trong cơ sở dữ liệu để tìm khoảng cách chính xác tuyệt đối",
+      "D": "Không hỗ trợ phép đo khoảng cách Cosine"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "HNSW xây dựng cấu trúc đồ thị tương tự mạng lưới Skip-List đa tầng: tầng trên cùng thưa thớt để nhảy bước lớn, các tầng dưới dày đặc để tinh chỉnh tìm kiếm, cho tốc độ tìm kiếm cực nhanh O(log N) trên hàng triệu vectors."
+  },
+  {
+    "id": "C10",
+    "module": "C",
+    "module_name": "Kiến thức AI & Tư duy sản phẩm AI",
+    "topic": "Định lượng Mô hình (Quantization)",
+    "difficulty": "Trung bình",
+    "type": "multiple_choice",
+    "question": "Khi nén mô hình LLM từ định dạng số thực FP16 (16-bit floating point) xuống INT4 (4-bit integer), dung lượng VRAM cần thiết để chứa trọng số mô hình thay đổi xấp xỉ như thế nào?",
+    "options": {
+      "A": "Giảm khoảng 4 lần (ví dụ mô hình 7B từ ~14GB VRAM giảm xuống còn ~3.5GB - 4GB VRAM)",
+      "B": "Giảm đúng 50%",
+      "C": "Không thay đổi dung lượng",
+      "D": "Tăng gấp đôi vì phải lưu thêm bảng tra cứu"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Mỗi tham số ở FP16 tốn 2 bytes (16 bits). Khi lượng tử hóa (Quantization) xuống 4 bits (0.5 byte), dung lượng bộ nhớ giảm 4 lần, cho phép chạy mô hình LLM 7B-8B mượt mà trên card đồ họa phổ thông 6GB-8GB VRAM."
+  },
+  {
+    "id": "C11",
+    "module": "C",
+    "module_name": "Kiến thức AI & Tư duy sản phẩm AI",
+    "topic": "Kỹ thuật Prompt Engineering",
+    "difficulty": "Cơ bản",
+    "type": "multiple_choice",
+    "question": "Kỹ thuật Chain-of-Thought (CoT) Prompting giúp cải thiện đáng kể độ chính xác của mô hình LLM trong các bài toán suy luận toán học và logic phức tạp bằng cách nào?",
+    "options": {
+      "A": "Yêu cầu hoặc minh họa cho mô hình giải thích tường tận từng bước suy luận trung gian ('Let's think step by step') trước khi đưa ra câu trả lời cuối cùng",
+      "B": "Gửi cùng một câu hỏi 100 lần liên tiếp",
+      "C": "Ép mô hình chỉ trả lời bằng một từ duy nhất",
+      "D": "Xóa bỏ toàn bộ từ khóa trong prompt"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Bằng cách khuyến khích mô hình sinh ra các bước suy luận trung gian (Intermediate reasoning steps), CoT cho phép mô hình dành nhiều token tính toán hơn cho pha suy luận, giảm thiểu lỗi nhảy vọt logic."
+  },
+  {
+    "id": "C12",
+    "module": "C",
+    "module_name": "Kiến thức AI & Tư duy sản phẩm AI",
+    "topic": "Đo lường Chất lượng Văn bản",
+    "difficulty": "Cơ bản",
+    "type": "multiple_choice",
+    "question": "Hai chỉ số đánh giá chất lượng tự động BLEU và ROUGE thường được sử dụng tương ứng cho các tác vụ NLP nào?",
+    "options": {
+      "A": "BLEU phổ biến trong Dịch máy (Machine Translation); ROUGE phổ biến trong Tóm tắt văn bản (Text Summarization)",
+      "B": "BLEU đo độ trễ mạng; ROUGE đo nhiệt độ GPU",
+      "C": "BLEU dùng cho nhận diện giọng nói; ROUGE dùng cho phân loại ảnh",
+      "D": "Cả hai đều dùng để đo tốc độ quạt tản nhiệt server"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "BLEU dựa trên độ chuẩn xác n-gram (Precision) rất phù hợp đánh giá bản dịch có sát nghĩa mẫu không. ROUGE dựa trên độ bao phủ n-gram (Recall) rất phù hợp đánh giá bản tóm tắt có giữ được đầy đủ ý chính của tài liệu gốc không."
+  },
+  {
+    "id": "C13",
+    "module": "C",
+    "module_name": "Kiến thức AI & Tư duy sản phẩm AI",
+    "topic": "Phát hiện Hiện tượng Trôi Dữ liệu (Drift)",
+    "difficulty": "Trung bình",
+    "type": "multiple_choice",
+    "question": "Trong vận hành hệ thống AI thực tế (MLOps), sự khác biệt giữa Data Drift và Concept Drift là gì?",
+    "options": {
+      "A": "Data Drift là phân phối dữ liệu đầu vào P(X) thay đổi; Concept Drift là mối quan hệ giữa đầu vào và nhãn đầu ra P(Y|X) thay đổi",
+      "B": "Data Drift xảy ra trên GPU; Concept Drift xảy ra trên CPU",
+      "C": "Data Drift chỉ xảy ra với dữ liệu hình ảnh; Concept Drift chỉ xảy ra với âm thanh",
+      "D": "Hai khái niệm này hoàn toàn đồng nghĩa và có thể dùng thay thế cho nhau"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Data Drift (hoặc Covariate Shift): phân phối của X thay đổi theo thời gian (ví dụ người dùng chụp ảnh bằng điện thoại mới nét hơn). Concept Drift: quy luật khách quan thay đổi, cùng một X nhưng nhãn Y lại khác đi (ví dụ hành vi gian lận ngân hàng thay đổi chiêu thức mới sau đại dịch)."
+  },
+  {
+    "id": "C14",
+    "module": "C",
+    "module_name": "Kiến thức AI & Tư duy sản phẩm AI",
+    "topic": "Tìm kiếm Kết hợp (Hybrid Search)",
+    "difficulty": "Trung bình",
+    "type": "multiple_choice",
+    "question": "Tại sao kiến trúc Hybrid Search (kết hợp Tìm kiếm từ khóa BM25 và Tìm kiếm ngữ nghĩa Dense Vector) lại trở thành tiêu chuẩn vàng trong các hệ thống RAG thực chiến?",
+    "options": {
+      "A": "Khắc phục điểm yếu của nhau: Dense Vector rất mạnh về hiểu ngữ cảnh/đồng nghĩa nhưng yếu trong việc tìm chính xác mã sản phẩm, từ viết tắt, số định danh (SKU, serial ID); trong khi BM25 giải quyết hoàn hảo các từ khóa chính xác này",
+      "B": "Vì BM25 hoàn toàn miễn phí còn Vector DB tốn phí bản quyền",
+      "C": "Giúp loại bỏ hoàn toàn nhu cầu sử dụng mô hình LLM",
+      "D": "Chỉ dùng để sắp xếp kết quả theo thứ tự bảng chữ cái"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Tìm kiếm lai (Hybrid Search kết hợp Reciprocal Rank Fusion - RRF) kết hợp sức mạnh khớp chính xác từ khóa đặc thù (BM25) với khả năng thấu hiểu ngữ nghĩa trừu tượng (Dense Vector), mang lại độ bao phủ và chuẩn xác cao nhất cho hệ thống RAG."
+  },
+  {
+    "id": "C15",
+    "module": "C",
+    "module_name": "Kiến thức AI & Tư duy sản phẩm AI",
+    "topic": "Học tăng cường & PPO",
+    "difficulty": "Trung bình",
+    "type": "multiple_choice",
+    "question": "Trong thuật toán PPO (Proximal Policy Optimization), kỹ thuật Clipping mục tiêu (Clipped Surrogate Objective) có vai trò cốt lõi nào?",
+    "options": {
+      "A": "Giới hạn độ lớn của bước cập nhật chính sách, ngăn không cho chính sách mới sai lệch quá xa so với chính sách cũ, đảm bảo quá trình huấn luyện ổn định",
+      "B": "Cắt bớt các câu văn quá dài của học viên",
+      "C": "Xóa bỏ các gradient có dấu âm",
+      "D": "Giảm số lượng epoch xuống bằng 1"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Clipping trong PPO giữ cho tỉ lệ giữa chính sách mới và chính sách cũ nằm trong khoảng [1 - epsilon, 1 + epsilon], ngăn chặn hiện tượng phá hủy hiệu năng (policy collapse) do cập nhật tham số quá đà trong Reinforcement Learning."
+  },
+  {
+    "id": "C16",
+    "module": "C",
+    "module_name": "Kiến thức AI & Tư duy sản phẩm AI",
+    "topic": "SFIA Cấp độ 4 trong Kỹ nghệ AI",
+    "difficulty": "Trung bình",
+    "type": "multiple_choice",
+    "question": "Theo mô tả cấp độ trách nhiệm của SFIA (Level 4 - Enable), một kỹ sư AI thực chiến ở cấp độ này cần thể hiện năng lực nào?",
+    "options": {
+      "A": "Làm việc độc lập, tự chủ trong việc lựa chọn và áp dụng các kỹ thuật AI/ML phù hợp, dẫn dắt các hoạt động kỹ thuật quy mô nhóm nhỏ và giải quyết các sự cố kỹ thuật phức tạp",
+      "B": "Chỉ làm theo hướng dẫn từng bước chi tiết của người khác mà không có quyền tự quyết",
+      "C": "Là Tổng giám đốc điều hành toàn bộ tập đoàn",
+      "D": "Chỉ tập trung vào công việc nhập liệu thủ công"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "SFIA Level 4 (Enable) yêu cầu quyền tự chủ (Autonomy) cao, năng lực tạo điều kiện hỗ trợ đồng nghiệp, lựa chọn giải pháp công nghệ phù hợp và giải quyết độc lập các bài toán kỹ thuật phức tạp trong phạm vi dự án."
+  },
+  {
+    "id": "C17",
+    "module": "C",
+    "module_name": "Kiến thức AI & Tư duy sản phẩm AI",
+    "topic": "Bảo vệ An toàn AI (AI Guardrails)",
+    "difficulty": "Cơ bản",
+    "type": "multiple_choice",
+    "question": "Công cụ Guardrails (như NeMo Guardrails, Llama Guard) được tích hợp vào sản phẩm GenAI nhằm đảm nhiệm nhiệm vụ gì?",
+    "options": {
+      "A": "Kiểm soát an toàn đầu vào/đầu ra, phát hiện và ngăn chặn tấn công Prompt Injection, Jailbreak, rò rỉ dữ liệu cá nhân (PII) và kiểm tra tính xác thực (Fact-checking)",
+      "B": "Tăng dung lượng pin cho máy chủ",
+      "C": "Biên dịch code Python sang C++",
+      "D": "Tự động thiết kế logo cho sản phẩm"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Guardrails đóng vai trò chốt chặn an toàn (Safety Layer) độc lập giữa người dùng và LLM, đảm bảo tuân thủ chính sách doanh nghiệp, chống độc hại và bảo vệ uy tín thương hiệu."
+  },
+  {
+    "id": "C18",
+    "module": "C",
+    "module_name": "Kiến thức AI & Tư duy sản phẩm AI",
+    "topic": "Học có giám sát & Điều hòa (Regularization)",
+    "difficulty": "Cơ bản",
+    "type": "multiple_choice",
+    "question": "Sự khác biệt cốt lõi về tác động lên trọng số giữa kỹ thuật điều hòa L1 Regularization (Lasso) và L2 Regularization (Ridge) là gì?",
+    "options": {
+      "A": "L1 có xu hướng triệt tiêu trọng số về chính xác bằng 0 (tạo ra mô hình thưa - Sparse weights và hỗ trợ chọn lọc đặc trưng); L2 thu nhỏ trọng số về gần 0 nhưng hiếm khi bằng 0 tuyệt đối",
+      "B": "L1 làm tăng kích thước trọng số lên vô cực",
+      "C": "L2 chỉ áp dụng được với hàm mất mát Cross-Entropy",
+      "D": "Cả hai phương pháp đều không có tác dụng chống Overfitting"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Hình học của hình cầu chuẩn L1 có các đỉnh nhọn tiếp xúc trên các trục tọa độ, khiến nghiệm tối ưu dễ rơi vào các trục (trọng số bằng 0), tạo tính chất thưa (sparsity) và chọn lọc đặc trưng tự nhiên."
+  },
+  {
+    "id": "C19",
+    "module": "C",
+    "module_name": "Kiến thức AI & Tư duy sản phẩm AI",
+    "topic": "Kỹ thuật Chunking trong RAG",
+    "difficulty": "Trung bình",
+    "type": "multiple_choice",
+    "question": "Khi chuẩn bị dữ liệu văn bản tài liệu hợp đồng pháp lý cho hệ thống RAG, tại sao kỹ thuật Semantic Chunking hoặc Markdown-Header Chunking lại hiệu quả hơn Fixed-size Chunking (ví dụ cắt cố định 500 ký tự)?",
+    "options": {
+      "A": "Bảo tồn trọn vẹn ngữ nghĩa của từng điều khoản, tiêu đề và ngữ cảnh pháp lý liền mạch, tránh tình trạng một điều khoản bị chặt đôi ở giữa câu gây hiểu sai bản chất",
+      "B": "Cắt cố định làm tăng gấp đôi số lượng vector",
+      "C": "Semantic Chunking không cần dùng bộ nhớ RAM",
+      "D": "Hợp đồng pháp lý không thể mã hóa thành vector"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Cắt thô theo số ký tự cố định dễ cắt ngang câu hoặc tách rời tiêu đề với nội dung điều khoản. Phân đoạn theo cấu trúc ngữ nghĩa (Semantic/Header chunking) giữ trọn văn cảnh, giúp độ tương đồng vector chính xác hơn nhiều."
+  },
+  {
+    "id": "C20",
+    "module": "C",
+    "module_name": "Kiến thức AI & Tư duy sản phẩm AI",
+    "topic": "Đánh giá LLM-as-a-Judge",
+    "difficulty": "Trung bình",
+    "type": "multiple_choice",
+    "question": "Trong quy trình đánh giá chất lượng sản phẩm GenAI tự động, kỹ thuật LLM-as-a-Judge (sử dụng một mô hình lớn mạnh như GPT-4 hoặc Claude 3.5 Sonnet làm giám khảo) đo lường chất lượng câu trả lời theo các tiêu chí chuẩn nào?",
+    "options": {
+      "A": "Độ trung thực với văn cảnh (Faithfulness/Groundedness), Độ liên quan câu trả lời (Answer Relevance), và Độ liên quan của văn cảnh truy xuất (Context Precision/Recall)",
+      "B": "Số lượng chữ cái viết hoa trong câu trả lời",
+      "C": "Tốc độ gõ phím của người hỏi",
+      "D": "Địa chỉ IP của người dùng gửi truy vấn"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Các framework đánh giá RAG chuẩn mực như Ragas hoặc TruLens sử dụng mô hình mạnh làm giám khảo dựa trên các thang đo cốt lõi: Faithfulness (có bịa đặt ngoài tài liệu không) và Relevance (có trả lời trúng ý hỏi không)."
+  },
+  {
+    "id": "C21",
+    "module": "C",
+    "module_name": "Kiến thức AI & Tư duy sản phẩm AI",
+    "topic": "Mô hình Nhỏ SLM vs Mô hình Lớn LLM",
+    "difficulty": "Cơ bản",
+    "type": "multiple_choice",
+    "question": "Trong xu hướng AI thực chiến doanh nghiệp 2026, các mô hình nhỏ (Small Language Models - SLM như Llama-3-8B, Phi-3, Qwen-2.5-7B) được ưu tiên ứng dụng thay thế LLM khổng lồ trong trường hợp nào?",
+    "options": {
+      "A": "Khi bài toán có phạm vi nghiệp vụ hẹp, đòi hỏi triển khai On-Premise/Edge, độ trễ cực thấp (Low Latency) và tiết kiệm chi phí vận hành (Inference Cost)",
+      "B": "Khi cần giải quyết mọi kiến thức bách khoa toàn thư của nhân loại mà không cần context",
+      "C": "Khi máy chủ có tài nguyên GPU vô hạn",
+      "D": "Chỉ khi hệ thống không có kết nối Internet"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "SLM tinh chỉnh chuyên sâu kết hợp RAG giải quyết xuất sắc 90% nhu cầu doanh nghiệp với chi phí chỉ bằng 1/20, độ trễ thấp và bảo mật dữ liệu nội bộ."
+  },
+  {
+    "id": "C22",
+    "module": "C",
+    "module_name": "Kiến thức AI & Tư duy sản phẩm AI",
+    "topic": "Tư duy Sản phẩm AI & MVP",
+    "difficulty": "Cơ bản",
+    "type": "multiple_choice",
+    "question": "Khi nhận một yêu cầu phát triển tính năng AI từ các phòng ban nghiệp vụ, bước đầu tiên của một Kỹ sư / Quản trị sản phẩm AI chuyên nghiệp là gì?",
+    "options": {
+      "A": "Làm rõ bài toán nghiệp vụ, xác định xem AI có thực sự là giải pháp tối ưu không (hay chỉ cần logic quy tắc đơn giản/Rule-based), và định nghĩa rõ chỉ số thành công (Success Metrics / ROI)",
+      "B": "Lập tức thuê cụm 8 máy chủ GPU H100 để bắt đầu train model từ đầu",
+      "C": "Viết thông cáo báo chí tuyên bố công ty đã ứng dụng AI thành công",
+      "D": "Từ chối thực hiện vì AI quá phức tạp"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Nguyên tắc sản phẩm cốt lõi: Xác định đúng vấn đề (Problem-first, not Technology-first). Tránh dùng 'dao mổ trâu để giết gà' nếu các giải pháp đơn giản, rẻ tiền hơn đã đáp ứng tốt mục tiêu nghiệp vụ."
+  },
+  {
+    "id": "C23",
+    "module": "C",
+    "module_name": "Kiến thức AI & Tư duy sản phẩm AI",
+    "topic": "Cơ chế Tự động Gọi Công cụ (Tool Calling)",
+    "difficulty": "Trung bình",
+    "type": "multiple_choice",
+    "question": "Khi mô hình AI sinh ra một Function Call, thực chất mô hình đã làm điều gì?",
+    "options": {
+      "A": "Mô hình sinh ra một chuỗi văn bản có cấu trúc JSON hợp lệ chứa tên hàm và các tham số khớp với định nghĩa JSON Schema đã cung cấp trong prompt hệ thống",
+      "B": "Mô hình tự động hack vào máy chủ cơ sở dữ liệu để sửa đổi dữ liệu mà không cần phần mềm trung gian",
+      "C": "Mô hình tự động nạp code vào RAM và ép CPU thực thi",
+      "D": "Mô hình gọi điện thoại trực tiếp cho lập trình viên"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "LLM chỉ sinh văn bản. Tính năng Tool Call là khả năng mô hình sinh chuỗi JSON có cấu trúc chính xác theo schema đã khai báo. Việc thực thi hàm (function execution) hoàn toàn do backend máy chủ của ứng dụng đảm nhiệm một cách có kiểm soát."
+  },
+  {
+    "id": "C24",
+    "module": "C",
+    "module_name": "Kiến thức AI & Tư duy sản phẩm AI",
+    "topic": "Học chuyển giao (Transfer Learning)",
+    "difficulty": "Cơ bản",
+    "type": "multiple_choice",
+    "question": "Ưu điểm lớn nhất của việc áp dụng Transfer Learning từ các mô hình nền tảng (Foundation Models) đã được tiền huấn luyện là gì?",
+    "options": {
+      "A": "Tận dụng tri thức đặc trưng đã học từ hàng tỷ dữ liệu tổng quát, giúp đạt độ chính xác cao trên bài toán cụ thể với lượng dữ liệu gắn nhãn ít hơn và thời gian đào tạo ngắn hơn nhiều",
+      "B": "Đảm bảo mô hình luôn đúng 100% không bao giờ có sai số",
+      "C": "Không cần bất kỳ dữ liệu kiểm thử nào",
+      "D": "Mô hình tự động viết tài liệu báo cáo kỹ thuật"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Transfer Learning giải quyết bài toán thiếu hụt dữ liệu đặc thù và tiết kiệm hàng triệu USD chi phí tính toán huấn luyện từ đầu."
+  },
+  {
+    "id": "C25",
+    "module": "C",
+    "module_name": "Kiến thức AI & Tư duy sản phẩm AI",
+    "topic": "Hệ thống Đa Tác tử (Multi-Agent)",
+    "difficulty": "Trung bình",
+    "type": "multiple_choice",
+    "question": "Mô hình cộng tác đa tác tử (Multi-Agent Collaboration) mang lại sự vượt trội nào so với một tác tử đơn lẻ (Single Agent) khi giải quyết các nhiệm vụ phức tạp?",
+    "options": {
+      "A": "Phân chia chuyên môn hóa (ví dụ: Agent Soạn thảo, Agent Phản biện/Review, Agent Tìm kiếm dữ liệu) và có cơ chế kiểm tra chéo (Peer-Review) giúp giảm thiểu lỗi logic và ảo giác",
+      "B": "Chạy nhanh hơn gấp 100 lần mà không tốn token nào",
+      "C": "Không cần kết nối mạng Internet",
+      "D": "Loại bỏ hoàn toàn sự tham gia của con người"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Bằng cách chia nhỏ bài toán cho các tác tử chuyên biệt có vai trò rõ ràng và cơ chế phản biện lẫn nhau (Critic/Reflector pattern), chất lượng đầu ra tăng rõ rệt so với cố gắng bắt một tác tử làm mọi việc."
+  },
+  {
+    "id": "C26",
+    "module": "C",
+    "module_name": "Kiến thức AI & Tư duy sản phẩm AI",
+    "topic": "Tư vấn Chiến lược RAG vs Fine-Tuning",
+    "difficulty": "Nâng cao",
+    "type": "scenario",
+    "question": "[Tình huống Tư duy Sản phẩm 1]: Ban giám đốc muốn triển khai chatbot AI chăm sóc khách hàng tự động cho một chuỗi bán lẻ. Đội ngũ kỹ thuật đề xuất fine-tune một mô hình mã nguồn mở trên toàn bộ dữ liệu hỏi-đáp cũ. Là một Kỹ sư / Product Owner AI, bạn sẽ phản biện và tư vấn giải pháp tiếp cận như thế nào để cân bằng giữa chi phí, thời gian triển khai (Time-to-market), khả năng cập nhật chính sách giá sản phẩm hàng ngày, và giảm thiểu ảo giác (hallucination)?",
+    "sample_answer": "Tư vấn đề xuất:\n1. Phản biện Fine-tuning: Tốn kém GPU, thời gian đào tạo lâu, và quan trọng nhất là dữ liệu bảng giá, khuyến mãi thay đổi liên tục hàng ngày nên mô hình fine-tune sẽ lập tức lỗi thời hoặc sinh ảo giác về giá cũ.\n2. Giải pháp tối ưu: Xây dựng hệ thống RAG (Retrieval-Augmented Generation) kết hợp Hybrid Search (BM25 + Vector) và Prompt Engineering.\n- Lưu chính sách, giá vào cơ sở dữ liệu có thể cập nhật tức thì (Zero-downtime update).\n- Khi khách hàng hỏi, truy xuất thông tin mới nhất làm context gửi kèm câu hỏi cho SLM/LLM.\n- Thêm lớp Guardrails kiểm tra tính xác thực để chống hallucination.\n- Kết quả: Tiết kiệm chi phí, cập nhật dữ liệu tức thì, triển khai MVP trong 2 tuần thay vì 3 tháng.",
+    "points": 5,
+    "explanation": "**Phân tích Chiến Lược Sản Phẩm: RAG vs Fine-Tuning vs In-Context Learning:**\n- **Quy tắc phân loại quyết định:**\n  1. *Khi nào dùng RAG?* Khi bài toán đòi hỏi: tri thức cập nhật liên tục (chính sách, văn bản pháp luật, dữ liệu khách hàng), cần dẫn nguồn chính xác (Traceability), chống ảo giác tuyệt đối và chi phí thấp.\n  2. *Khi nào dùng Fine-Tuning (LoRA)?* Khi cần thay đổi phong cách hành văn (Tone of voice), bắt mô hình tuân thủ cấu trúc đầu ra phức tạp (JSON Schema, DSL riêng), hoặc dạy mô hình một ngôn ngữ chuyên ngành mới. *Fine-tuning không hiệu quả để nạp tri thức mới vì dễ gây ra hiện tượng quên tai hại (Catastrophic Forgetting).*\n  3. *Khi nào dùng In-Context Learning / Prompt Engineering?* Là bước bắt buộc đầu tiên để làm nguyên mẫu (Proof-of-Concept) trước khi đầu tư hạ tầng nặng."
+  },
+  {
+    "id": "C27",
+    "module": "C",
+    "module_name": "Kiến thức AI & Tư duy sản phẩm AI",
+    "topic": "Thiết kế Hệ thống RAG Doanh nghiệp",
+    "difficulty": "Nâng cao",
+    "type": "scenario",
+    "question": "[Tình huống Tư duy Sản phẩm 2]: Hệ thống RAG nội bộ của công ty tra cứu tài liệu quy chế 500 trang thường xuyên trả lời sai hoặc nói 'Không tìm thấy thông tin' đối với các câu hỏi phức tạp đòi hỏi tổng hợp thông tin từ 3 chương khác nhau. Hãy phân tích các điểm nghẽn kỹ thuật trong pipeline RAG truyền thống (Naive RAG) và đề xuất kiến trúc Advanced RAG cải tiến cụ thể?",
+    "sample_answer": "1. Điểm nghẽn Naive RAG:\n- Cắt chunk quá nhỏ làm mất tính toàn cục; cắt quá lớn làm loãng embedding.\n- Tìm kiếm vector thuần túy chỉ lấy top 3-5 chunks rời rạc, không đủ bao quát 3 chương.\n2. Kiến trúc Advanced RAG đề xuất:\n- Query Transformation / Decomposition: Tách câu hỏi phức tạp của người dùng thành 3 câu hỏi phụ (Sub-queries), truy xuất song song cho từng chương.\n- Hierarchical / Parent-Document Retrieval: Tìm kiếm theo chunk nhỏ (200 tokens) nhưng gửi văn cảnh cha (1000 tokens) cho LLM.\n- Re-ranking: Dùng Cross-Encoder (như BGE-Reranker) sắp xếp lại top 20 chunks lấy ra top 5 chunks tinh hoa nhất.\n- Multi-hop Reasoning: Sử dụng Agentic RAG để tổng hợp đối chiếu thông tin giữa các phần trước khi xuất kết quả.",
+    "points": 5,
+    "explanation": "**Phân tích Kiến trúc RAG Doanh Nghiệp Nâng Cao (Advanced RAG):**\n- **Khắc phục hiện tượng 'Lost in the middle':**\n  Khi nhồi nhét quá nhiều chunk vào context window, mô hình ngôn ngữ lớn thường chỉ chú ý đến phần đầu và phần cuối mà bỏ quên phần giữa.\n- **Bộ giải pháp kiến trúc toàn diện:**\n  1. *Hypothetical Document Embeddings (HyDE):* Dùng LLM sinh câu trả lời giả định trước, sau đó dùng câu trả lời này để tìm kiếm văn bản tương đồng, giúp thu hẹp khoảng cách ngữ nghĩa giữa câu hỏi ngắn và đoạn văn bản dài.\n  2. *Parent-Document Retriever:* Tìm kiếm trên các chunk nhỏ ($200$ tokens) để tăng độ nhạy cosine, nhưng gửi chunk cha ($1000$ tokens) cho LLM để đảm bảo ngữ cảnh nguyên vẹn.\n  3. *Cross-Encoder Re-ranking:* Tái sắp xếp kết quả bằng mô hình so sánh cặp (BGE-Reranker/Cohere) để chọn ra 3-5 tài liệu thực sự tinh hoa nhất."
+  },
+  {
+    "id": "C28",
+    "module": "C",
+    "module_name": "Kiến thức AI & Tư duy sản phẩm AI",
+    "topic": "Chống Ảo giác trong Lĩnh vực Nhạy cảm",
+    "difficulty": "Nâng cao",
+    "type": "scenario",
+    "question": "[Tình huống Tư duy Sản phẩm 3]: Ứng dụng trợ lý AI tư vấn sức khỏe cho cán bộ nhân viên gặp hiện tượng ảo giác (hallucination) thỉnh thoảng khuyên người dùng uống sai liều lượng thuốc. Đây là rủi ro nghiêm trọng về an toàn tính mạng. Hãy thiết kế một quy trình kỹ thuật phòng thủ đa lớp (Defense-in-Depth) để triệt tiêu hoàn toàn rủi ro này trong môi trường sản phẩm thực tế?",
+    "sample_answer": "Quy trình phòng thủ đa tầng:\n1. Tầng Input Guardrails: Phát hiện các câu hỏi liên quan đến kê đơn thuốc đặc trị để chặn ngay lập tức và chuyển hướng khuyến cáo đến bác sĩ chuyên khoa.\n2. Tầng RAG nghiêm ngặt: Chỉ cho phép mô hình trích dẫn thông tin trực tiếp từ Dược thư quốc gia đã được Bộ Y tế phê duyệt. Thiết lập System Prompt nghiêm ngặt: 'Nếu tài liệu không nêu rõ liều lượng, BẮT BUỘC trả lời tôi không biết'.\n3. Tầng Fact-checking / Hallucination Detection: Dùng một mô hình phân loại nhỏ kiểm tra chéo (NLI - Natural Language Inference) xem câu trả lời có được suy diễn trực tiếp từ văn bản trích dẫn hay không.\n4. Human-in-the-Loop (HITL): Với các tư vấn quan trọng, câu trả lời phải được dược sĩ/bác sĩ phụ trách phê duyệt trước khi gửi tới người dùng.",
+    "points": 5,
+    "explanation": "**Phân tích Trách Nhiệm An Toàn & Chống Ảo Giác Trong Y Tế:**\n- **Hệ thống phòng vệ nhiều lớp (Defense-in-depth Guardrails):**\n  1. *Input Guardrails:* Lọc câu hỏi, phát hiện các trường hợp khẩn cấp (Emergency Detection) để hiển thị ngay số hotline cấp cứu thay vì cố gắng sinh câu trả lời.\n  2. *Retrieval Constraint:* Chỉ truy xuất từ cơ sở dữ liệu y khoa đã được hội đồng chuyên môn thẩm định (Vinmec Guidelines, WHO, Bộ Y tế).\n  3. *Self-Correction / Verification Loop:* Dùng mô hình thứ hai kiểm tra chéo (Fact-Checking): mọi khẳng định trong câu trả lời có được chứng minh bởi tài liệu tham khảo không (Faithfulness Metric). Nếu không đạt, từ chối trả lời và chuyển tiếp tới bác sĩ."
+  },
+  {
+    "id": "C29",
+    "module": "C",
+    "module_name": "Kiến thức AI & Tư duy sản phẩm AI",
+    "topic": "Định vị Năng lực theo Khung SFIA",
+    "difficulty": "Trung bình",
+    "type": "scenario",
+    "question": "[Tình huống Tư duy Sản phẩm 4]: Một ứng viên tốt nghiệp chương trình AI Thực chiến ứng tuyển vị trí Kỹ sư AI tại một công ty công nghệ thuộc Vingroup. Theo khung SFIA, kỹ năng Machine Learning (MLNG) ở Cấp độ 3 (Level 3 - Apply) và Cấp độ 5 (Level 5 - Ensure & Advise) khác biệt nhau như thế nào về phạm vi công việc và trách nhiệm đóng góp?",
+    "sample_answer": "- SFIA Level 3 (Apply): Ứng viên làm việc dưới sự chỉ dẫn chung; có khả năng áp dụng thành thạo các kỹ thuật ML đã được kiểm chứng (tiền xử lý dữ liệu, tinh chỉnh mô hình, huấn luyện mô hình cơ bản) để giải quyết các vấn đề kỹ thuật cụ thể đã được định nghĩa rõ ràng; tự chủ trong việc hoàn thành nhiệm vụ được giao.\n- SFIA Level 5 (Ensure & Advise): Cấp chuyên gia/trưởng nhóm kỹ thuật; chịu trách nhiệm định hướng chiến lược công nghệ AI cho dự án/tổ chức; đánh giá và quản trị rủi ro AI; thiết lập tiêu chuẩn kỹ thuật chất lượng cho toàn đội ngũ; tư vấn có thẩm quyền cho ban lãnh đạo về việc lựa chọn kiến trúc AI và tối ưu hóa chi phí đầu tư.",
+    "points": 5,
+    "explanation": "**Phân tích Khung Năng Lực Chuẩn SFIA (Skills Framework for the Information Age):**\n- **Sự chuyển dịch trách nhiệm giữa Level 3 và Level 4:**\n  - *Level 3 (Apply):* Tự chủ thực thi công việc được giao theo quy trình chuẩn, lựa chọn công cụ phù hợp, giải quyết các sự cố kỹ thuật quen thuộc.\n  - *Level 4 (Enable):* Hướng dẫn chuyên môn cho thành viên khác (Mentorship), chịu trách nhiệm về chất lượng kỹ thuật của cả module, chủ động đề xuất giải pháp cải tiến quy trình và đánh giá rủi ro tác động kinh doanh.\n- **Tiêu chí Vingroup:** Khóa đào tạo Nhân tài AI Thực chiến hướng tới việc đưa học viên từ Level 3 nhanh chóng đạt ngưỡng Level 4 (Làm được việc, làm chủ công nghệ, giải quyết bài toán thực tế)."
+  },
+  {
+    "id": "C30",
+    "module": "C",
+    "module_name": "Kiến thức AI & Tư duy sản phẩm AI",
+    "topic": "Hạ tầng Tự động hóa MLOps",
+    "difficulty": "Nâng cao",
+    "type": "scenario",
+    "question": "[Tình huống Tư duy Sản phẩm 5]: Bạn được giao phụ trách xây dựng quy trình CI/CD/CT (Continuous Training) cho hệ thống thị giác máy tính nhận diện biển số xe tự động tại các khu đô thị Vinhomes. Khi mô hình trên thực địa có dấu hiệu giảm độ chính xác từ 98% xuống 91% sau 3 tháng vận hành, bạn sẽ thiết lập hệ thống tự động hóa phản hồi như thế nào để khắc phục?",
+    "sample_answer": "Quy trình MLOps tự động hóa:\n1. Giám sát & Phát hiện (Continuous Monitoring): Thiết lập hệ thống theo dõi phân phối hình ảnh đầu vào để phát hiện Data Drift (ví dụ: mùa mưa bão, bụi bẩn, góc chiếu sáng thay đổi) và cảnh báo khi tỷ lệ nhận diện giảm.\n2. Thu thập & Active Learning: Tự động gom các mẫu ảnh có độ tin cậy thấp (Confidence Score < 0.8) chuyển vào hàng đợi gắn nhãn của con người (Human-in-the-loop).\n3. Tự động Huấn luyện lại (Continuous Training): Khi tích lũy đủ số lượng mẫu mới, kích hoạt pipeline tự động retrain mô hình trên tập dữ liệu mở rộng.\n4. Đánh giá tự động & Shadow Deployment: Chạy bài kiểm thử tự động trên tập test chuẩn; triển khai thử nghiệm dạng Shadow (chạy song song kiểm tra ngầm với dữ liệu thực tế) trước khi quyết định chuyển đổi lưu lượng (Canary Release).",
+    "points": 5,
+    "explanation": "**Phân tích Quy Trình Kiểm Thử Toàn Diện GenAI Trước Khi Go-Live:**\n- **Bộ tiêu chí đánh giá đa chiều (Multi-dimensional Evaluation Matrix):**\n  1. *Chỉ số RAG (Ragas Framework):* Faithfulness (tính trung thực), Answer Relevance (đúng trọng tâm), Context Precision, Context Recall.\n  2. *Độ an toàn (Safety & Red-teaming):* Tấn công giả lập Jailbreak, Prompt Injection, rò rỉ thông tin PII.\n  3. *Chỉ số hiệu năng (Latency & SLA):* TTFT (Time-To-First-Token) < $500\\text{ms}$, Throughput tokens/sec dưới tải cao điểm mô phỏng 1000 người dùng đồng thời.\n  4. *Chiến lược phát hành:* Triển khai Canary Deployment (chỉ mở cho 5% người dùng nội bộ trước khi mở rộng dần ra toàn bộ khách hàng)."
+  },
+  {
+    "id": "C31",
+    "module": "C",
+    "module_name": "Kiến thức AI & Tư duy sản phẩm AI",
+    "topic": "Vị trí Tương đối RoPE & Mở rộng Context",
+    "difficulty": "Nâng cao",
+    "type": "multiple_choice",
+    "question": "Cơ chế mã hóa vị trí quay RoPE (Rotary Position Embedding) được sử dụng trong Llama 3 và Qwen 2 mang lại ưu thế vượt trội nào so với mã hóa vị trí tuyệt đối (Absolute Positional Embedding) của Transformer ban đầu?",
+    "options": {
+      "A": "Mã hóa thông tin vị trí tương đối thông qua phép quay vector trong không gian phức, giúp mô hình suy luận tốt mối tương quan khoảng cách giữa các token và dễ dàng mở rộng độ dài cửa sổ ngữ cảnh (Context Window Extension)",
+      "B": "Xóa bỏ hoàn toàn lớp Attention",
+      "C": "Giúp mô hình không cần dùng dữ liệu huấn luyện",
+      "D": "Chỉ hoạt động được với ngôn ngữ tiếng Anh"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "RoPE nhân ma trận quay trực giao với vector Query và Key, khiến tích vô hướng q_m . k_n chỉ phụ thuộc vào khoảng cách tương đối m - n. Điều này cho phép áp dụng các kỹ thuật mở rộng ngữ cảnh như NTK-Aware Scaling hay YaRN để mở rộng context lên 128k tokens mượt mà."
+  },
+  {
+    "id": "C32",
+    "module": "C",
+    "module_name": "Kiến thức AI & Tư duy sản phẩm AI",
+    "topic": "Tối ưu hóa GPU FlashAttention",
+    "difficulty": "Nâng cao",
+    "type": "multiple_choice",
+    "question": "Thuật toán FlashAttention (và FlashAttention-2) tăng tốc độ tính toán Self-Attention lên 2-4 lần và giảm mạnh bộ nhớ VRAM chủ yếu nhờ kỹ thuật kiến trúc phần cứng nào?",
+    "options": {
+      "A": "Kỹ thuật Tiling (chia khối) để tính toán Softmax từng phần trực tiếp trên bộ nhớ SRAM siêu nhanh của GPU, tránh việc ghi và đọc ma trận Attention kích thước N x N khổng lồ ra bộ nhớ HBM băng thông chậm",
+      "B": "Bỏ qua việc tính toán 50% số lượng token",
+      "C": "Chuyển toàn bộ phép tính sang CPU máy chủ",
+      "D": "Ép xung xung nhịp GPU vượt mức cho phép"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Phép toán Attention bị nghẽn bởi tốc độ đọc/ghi bộ nhớ (Memory-bound / IO-bound) chứ không phải do tốc độ nhân ma trận. FlashAttention áp dụng giải thuật Softmax online và tính toán theo từng khối trong SRAM, giảm số lần truy cập bộ nhớ ngoài HBM từ O(N^2) xuống O(N)."
+  },
+  {
+    "id": "C33",
+    "module": "C",
+    "module_name": "Kiến thức AI & Tư duy sản phẩm AI",
+    "topic": "Kiến trúc Grouped-Query Attention (GQA)",
+    "difficulty": "Trung bình",
+    "type": "multiple_choice",
+    "question": "Kiến trúc GQA (Grouped-Query Attention) được sử dụng trong hầu hết các LLM hiện đại nhằm giải quyết vấn đề gì trong quá trình phục vụ suy luận (Serving Inference)?",
+    "options": {
+      "A": "Giảm dung lượng bộ nhớ KV Cache và tăng thông lượng (Throughput) bằng cách cho nhiều Query heads chia sẻ chung một cặp Key-Value head duy nhất, cân bằng hoàn hảo giữa MHA và MQA",
+      "B": "Tăng kích thước mô hình lên gấp 8 lần",
+      "C": "Loại bỏ hoàn toàn lớp nhúng từ vựng",
+      "D": "Tự động dịch văn bản sang 100 thứ tiếng"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Multi-Head Attention (MHA) tiêu tốn lượng VRAM khổng lồ cho KV Cache khi phục vụ đồng thời hàng ngàn người dùng với context dài. GQA gom nhóm các Query heads (ví dụ 8 Query heads dùng chung 1 KV head), giúp giảm 8 lần dung lượng KV Cache mà chất lượng suy luận gần như không suy giảm."
+  },
+  {
+    "id": "C34",
+    "module": "C",
+    "module_name": "Kiến thức AI & Tư duy sản phẩm AI",
+    "topic": "Chưng cất Tri thức (Knowledge Distillation)",
+    "difficulty": "Cơ bản",
+    "type": "multiple_choice",
+    "question": "Quy trình Chưng cất Tri thức (Knowledge Distillation) từ mô hình Giáo viên (Teacher) lớn sang mô hình Học sinh (Student) nhỏ hoạt động dựa trên nguyên lý cốt lõi nào?",
+    "options": {
+      "A": "Mô hình nhỏ học cách mô phỏng phân phối xác suất mềm (Soft Probabilities) của mô hình lớn ở nhiệt độ cao (Temperature T > 1), tiếp thu thông tin về mối tương quan giữa các nhãn thay vì chỉ học nhãn cứng nhị phân (One-hot hard labels)",
+      "B": "Sao chép toàn bộ trọng số của mô hình lớn sang mô hình nhỏ",
+      "C": "Xóa bỏ 90% số layer của mô hình giáo viên",
+      "D": "Huấn luyện lại từ đầu mà không cần dữ liệu"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Phân phối xác suất mềm (Soft targets / Dark knowledge) chứa đựng thông tin phong phú về sự tương đồng giữa các lớp (ví dụ: ảnh con mèo có xác suất giống chó 0.1 và giống ô tô 0.0001), giúp mô hình nhỏ học nhanh và tổng quát hóa tốt hơn nhiều so với chỉ học nhãn nhị phân."
+  },
+  {
+    "id": "C35",
+    "module": "C",
+    "module_name": "Kiến thức AI & Tư duy sản phẩm AI",
+    "topic": "Học Tương phản Đa phương thức (CLIP & InfoNCE)",
+    "difficulty": "Trung bình",
+    "type": "multiple_choice",
+    "question": "Mô hình đa phương thức CLIP (Contrastive Language-Image Pretraining) đồng bộ không gian vector giữa văn bản và hình ảnh bằng cách nào?",
+    "options": {
+      "A": "Sử dụng hàm mất mát tương phản (InfoNCE Loss) để kéo gần vector biểu diễn của cặp ảnh - mô tả tương ứng trong không gian nhúng, đồng thời đẩy xa các cặp ảnh - mô tả không khớp",
+      "B": "Chuyển ảnh thành file âm thanh rồi nạp vào LLM",
+      "C": "Chỉ huấn luyện trên các ảnh đen trắng",
+      "D": "Dùng cây quyết định để phân loại ảnh"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "CLIP huấn luyện song song một Text Encoder và một Image Encoder trên hàng trăm triệu cặp (Image, Text), tối đa hóa độ tương đồng Cosine của các cặp đúng trên đường chéo ma trận và giảm thiểu các cặp sai, tạo nên không gian biểu diễn đa phương thức thống nhất."
+  },
+  {
+    "id": "C36",
+    "module": "C",
+    "module_name": "Kiến thức AI & Tư duy sản phẩm AI",
+    "topic": "Kiến trúc Chuyên gia Pha trộn (Mixture of Experts - MoE)",
+    "difficulty": "Trung bình",
+    "type": "multiple_choice",
+    "question": "Kiến trúc MoE thưa (Sparse Mixture of Experts như Mixtral 8x7B) đạt được ưu thế gì về hiệu năng và chi phí tính toán?",
+    "options": {
+      "A": "Sở hữu tổng số lượng tham số rất lớn (dung lượng tri thức cao) nhưng với mỗi token đầu vào, mạng định tuyến (Gating Network) chỉ kích hoạt một số lượng nhỏ chuyên gia (ví dụ: 2 trong số 8 experts), giúp tốc độ suy luận nhanh tương đương mô hình nhỏ hơn nhiều",
+      "B": "Tiêu tốn gấp 8 lần năng lượng GPU ở mỗi bước sinh từ",
+      "C": "Bắt buộc phải có 8 kỹ sư vận hành cùng lúc",
+      "D": "Chỉ hoạt động được khi có 8 card GPU giống nhau"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Sparse MoE tách các lớp Feed-Forward thành nhiều 'chuyên gia' độc lập. Cơ chế định tuyến động (Top-K Routing) chỉ kích hoạt 2 chuyên gia cho mỗi token, giúp mô hình đạt sức mạnh tri thức của mô hình 47B nhưng tốc độ và chi phí suy luận chỉ tương đương mô hình 13B."
+  },
+  {
+    "id": "C37",
+    "module": "C",
+    "module_name": "Kiến thức AI & Tư duy sản phẩm AI",
+    "topic": "Giải mã Phỏng đoán (Speculative Decoding)",
+    "difficulty": "Nâng cao",
+    "type": "multiple_choice",
+    "question": "Kỹ thuật Giải mã Phỏng đoán (Speculative Decoding) tăng tốc độ suy luận của LLM lớn mà KHÔNG LÀM THAY ĐỔI phân phối đầu ra bằng cách nào?",
+    "options": {
+      "A": "Sử dụng một mô hình phụ trợ nhỏ (Draft Model) sinh nhanh một chuỗi k token dự kiến, sau đó mô hình lớn (Target Model) kiểm tra và chấp nhận song song k token này trong đúng một lần chạy forward duy nhất",
+      "B": "Bỏ qua các từ nối trong câu",
+      "C": "Giảm độ dài câu trả lời xuống còn 1 dòng",
+      "D": "Tắt kiểm tra ngữ pháp tiếng Việt"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Thay vì mô hình lớn phải chạy k lần tuần tự chậm chạp, Draft model sinh nhanh k tokens, Target model chỉ chạy 1 lần để xác thực song song cả k tokens theo phân phối chuẩn. Kết quả đầu ra được toán học chứng minh hoàn toàn giống với việc chỉ dùng Target model nhưng tốc độ nhanh hơn 2 - 3 lần."
+  },
+  {
+    "id": "C38",
+    "module": "C",
+    "module_name": "Kiến thức AI & Tư duy sản phẩm AI",
+    "topic": "Đầu ra Có cấu trúc (Structured Outputs & GBNF)",
+    "difficulty": "Trung bình",
+    "type": "multiple_choice",
+    "question": "Khi xây dựng sản phẩm AI yêu cầu phản hồi BẮT BUỘC phải là JSON hợp lệ theo Schema cố định, phương pháp kỹ thuật nào sau đây đảm bảo tỷ lệ thành công 100% không bao giờ gặp lỗi cú pháp JSON?",
+    "options": {
+      "A": "Grammar-based Constrained Sampling (Áp dụng văn phạm ngữ pháp GBNF hoặc thư viện Outlines để mask các token không hợp lệ ngay tại bước tính logit Softmax của LLM)",
+      "B": "Chỉ viết hoa từ 'JSON' trong System Prompt",
+      "C": "Cho mô hình đọc lại định nghĩa JSON 50 lần",
+      "D": "Dùng regex xóa dấu ngoặc nhọn sau khi sinh xong"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Prompt Engineering thông thường vẫn có xác suất sinh lỗi cú pháp (missing quote, trailing comma). Kỹ thuật Constrained Decoding can thiệp trực tiếp vào logits mask, chỉ cho phép mô hình chọn các token tuân thủ trạng thái của máy hữu hạn trạng thái (FSM/Grammar), bảo đảm 100% kết quả là JSON chuẩn."
+  },
+  {
+    "id": "C39",
+    "module": "C",
+    "module_name": "Kiến thức AI & Tư duy sản phẩm AI",
+    "topic": "Nén Ngữ cảnh RAG (Context Compression)",
+    "difficulty": "Trung bình",
+    "type": "multiple_choice",
+    "question": "Kỹ thuật Nén ngữ cảnh (Context Compression như LongLLMLingua) giúp tối ưu hóa sản phẩm RAG như thế nào trước khi gửi vào LLM?",
+    "options": {
+      "A": "Loại bỏ các từ nối, thông tin dư thừa và các đoạn văn có độ tương quan thấp bằng một mô hình nhỏ có chi phí thấp, giúp giảm 50-70% số lượng token gửi vào LLM đắt tiền mà vẫn bảo toàn đầy đủ ý chính",
+      "B": "Dịch toàn bộ văn bản sang mã Morse",
+      "C": "Chỉ giữ lại chữ cái đầu tiên của mỗi từ",
+      "D": "Xóa hết các con số trong tài liệu"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Context Compression đo lường thông tin tương hỗ và perplexity của từng token, loại bỏ các từ đệm vô nghĩa trước khi gửi tới LLM, giúp tiết kiệm chi phí token đầu vào, giảm độ trễ Time-to-First-Token và giảm nguy cơ mất thông tin."
+  },
+  {
+    "id": "C40",
+    "module": "C",
+    "module_name": "Kiến thức AI & Tư duy sản phẩm AI",
+    "topic": "Kỹ thuật Phân mảnh Văn bản (Chunking Overlap)",
+    "difficulty": "Cơ bản",
+    "type": "multiple_choice",
+    "question": "Khi phân chia tài liệu dài thành các đoạn nhỏ (chunks) để tạo vector embedding trong hệ thống RAG, tại sao luôn cần thiết lập một tỷ lệ chồng lấn (Chunk Overlap, ví dụ 10-20%) giữa hai đoạn liên tiếp?",
+    "options": {
+      "A": "Đảm bảo các câu hoặc ý tứ quan trọng nằm sát ranh giới cắt không bị đứt đoạn ngữ cảnh, giúp câu văn được bảo tồn trọn vẹn nghĩa trong ít nhất một chunk",
+      "B": "Làm tăng gấp đôi dung lượng bộ nhớ Vector DB",
+      "C": "Để mô hình đọc chậm lại",
+      "D": "Tránh việc tài liệu bị trùng lặp từ khóa"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Nếu cắt cứng không có overlap, một câu định nghĩa quan trọng bị chia đôi ở điểm cắt sẽ làm embedding của cả 2 mảnh bị sai lệch nghĩa hoàn toàn. Chunk Overlap (thường là 50-100 tokens) duy trì tính liền mạch của ngữ cảnh."
+  },
+  {
+    "id": "C41",
+    "module": "C",
+    "module_name": "Kiến thức AI & Tư duy sản phẩm AI",
+    "topic": "Độ đo Xếp hạng Tìm kiếm NDCG",
+    "difficulty": "Trung bình",
+    "type": "multiple_choice",
+    "question": "Trong việc đánh giá chất lượng hệ thống tìm kiếm ngữ nghĩa và gợi ý, chỉ số NDCG@k (Normalized Discounted Cumulative Gain tại vị trí k) có ưu điểm vượt trội nào so với Precision@k?",
+    "options": {
+      "A": "Tính đến vị trí xuất hiện của kết quả: tài liệu có độ liên quan cao nếu được xếp ở vị trí đầu tiên (Rank 1) sẽ nhận điểm thưởng cao hơn nhiều so với việc bị đẩy xuống các vị trí sau (Rank 5 hay Rank 10)",
+      "B": "Chỉ đếm số lượng tài liệu tìm được bất kể thứ tự",
+      "C": "Chỉ dùng để tính thời gian chạy của máy chủ",
+      "D": "Luôn có giá trị lớn hơn 100"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "NDCG áp dụng hàm chiết khấu logarit (Discounting factor: 1 / log2(rank + 1)) cho các vị trí thấp hơn, phản ánh chính xác hành vi người dùng chỉ tập trung vào các kết quả đầu tiên trên trang tìm kiếm."
+  },
+  {
+    "id": "C42",
+    "module": "C",
+    "module_name": "Kiến thức AI & Tư duy sản phẩm AI",
+    "topic": "Độ đo Độ hỗn loạn Perplexity (PPL)",
+    "difficulty": "Trung bình",
+    "type": "multiple_choice",
+    "question": "Chỉ số Perplexity (PPL) thường dùng để đánh giá năng lực của Language Model được tính toán trực tiếp từ hàm mất mát nào và giá trị PPL càng thấp thể hiện điều gì?",
+    "options": {
+      "A": "PPL = exp(Cross-Entropy Loss); PPL càng thấp chứng tỏ mô hình càng tự tin và dự đoán chính xác token tiếp theo trong chuỗi văn bản kiểm thử",
+      "B": "PPL tính từ MSE; PPL càng thấp mô hình càng kém",
+      "C": "PPL đo lường nhiệt độ chip xử lý",
+      "D": "PPL càng cao thể hiện mô hình càng thông minh"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Perplexity có thể hiểu trực giác là số lượng từ mà mô hình đang phân vân chọn lựa ở mỗi bước tiếp theo. PPL = exp(loss), do đó loss càng nhỏ thì PPL càng thấp, biểu thị mô hình dự đoán văn bản trôi chảy và chuẩn xác."
+  },
+  {
+    "id": "C43",
+    "module": "C",
+    "module_name": "Kiến thức AI & Tư duy sản phẩm AI",
+    "topic": "Continuous Batching & vLLM",
+    "difficulty": "Nâng cao",
+    "type": "multiple_choice",
+    "question": "Công nghệ Continuous Batching (kết hợp thuật toán PagedAttention trong vLLM) giúp tăng thông lượng phục vụ suy luận LLM lên gấp 5-10 lần so với Dynamic Batching truyền thống nhờ cơ chế nào?",
+    "options": {
+      "A": "Thực hiện ghép lô ở cấp độ bước sinh từng token (Iteration-level Batching): ngay khi một request hoàn thành và trả lời xong, request mới từ hàng đợi được chèn ngay vào batch ở bước tiếp theo mà không cần đợi các request khác trong batch kết thúc",
+      "B": "Tắt tính năng làm mát của card đồ họa",
+      "C": "Bỏ qua các bước tính toán tích vô hướng",
+      "D": "Ép mọi câu trả lời của người dùng phải có cùng độ dài chính xác"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Trong batching truyền thống, một câu hỏi sinh dài 1000 tokens sẽ bắt các câu hỏi ngắn 20 tokens phải chờ đợi lãng phí tài nguyên GPU. Continuous Batching giải phóng và nạp request mới liên tục ở từng bước sinh đơn lẻ, triệt tiêu thời gian nhàn rỗi của GPU."
+  },
+  {
+    "id": "C44",
+    "module": "C",
+    "module_name": "Kiến thức AI & Tư duy sản phẩm AI",
+    "topic": "Khung SFIA Kỹ năng Khoa học Dữ liệu (DATS)",
+    "difficulty": "Trung bình",
+    "type": "multiple_choice",
+    "question": "Theo chuẩn kỹ năng SFIA - Data Science (Mã DATS), trách nhiệm cốt lõi của một chuyên gia ở Cấp độ 5 (Level 5 - Ensure & Advise) trong một tập đoàn công nghệ là gì?",
+    "options": {
+      "A": "Thiết lập tiêu chuẩn thực hành và phương pháp luận khoa học dữ liệu cho toàn bộ tổ chức; định hướng việc khai thác dữ liệu chiến lược; đánh giá các tác động đạo đức và pháp lý của các mô hình phân tích tiên tiến",
+      "B": "Chỉ thực hiện việc gắn nhãn dữ liệu thủ công theo bảng tính Excel",
+      "C": "Chỉ cài đặt hệ điều hành cho máy tính nhân viên mới",
+      "D": "Không tham gia vào bất kỳ quyết định kỹ thuật nào"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "SFIA Level 5 thể hiện vai trò lãnh đạo chuyên môn kỹ thuật (Thought Leadership): định hình phương pháp luận, quản trị rủi ro khoa học dữ liệu và bảo đảm sự liên kết chặt chẽ giữa năng lực dữ liệu và chiến lược kinh doanh của tập đoàn."
+  },
+  {
+    "id": "C45",
+    "module": "C",
+    "module_name": "Kiến thức AI & Tư duy sản phẩm AI",
+    "topic": "Thủy ấn Văn bản AI (Watermarking)",
+    "difficulty": "Trung bình",
+    "type": "multiple_choice",
+    "question": "Phương pháp Thủy ấn số (Statistical Watermarking) cho văn bản sinh bởi AI của Kirchenbauer et al. hoạt động dựa trên kỹ thuật nào để chứng minh văn bản do AI tạo ra mà người đọc không nhận thấy sự khác biệt?",
+    "options": {
+      "A": "Chia ngẫu nhiên từ vựng thành danh sách xanh (Green list) và danh sách đỏ (Red list) dựa trên hàm băm của token trước đó, và thêm một lượng bias nhỏ vào logit để mô hình ưu tiên chọn các token trong danh sách xanh",
+      "B": "Chèn một dòng chữ 'Được tạo bởi AI' vào cuối mỗi văn bản",
+      "C": "Thay đổi màu chữ trên màn hình",
+      "D": "Xóa toàn bộ dấu chấm và dấu phẩy trong bài viết"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Văn bản của con người sẽ có tỉ lệ token rơi vào Green list xấp xỉ 50%. Văn bản AI có thủy ấn sẽ có tỉ lệ token thuộc Green list cao áp đảo bất thường (80-90%), cho phép kiểm định thống kê toán học khẳng định nguồn gốc AI mà nội dung đọc vẫn hoàn toàn tự nhiên."
+  },
+  {
+    "id": "C46",
+    "module": "C",
+    "module_name": "Kiến thức AI & Tư duy sản phẩm AI",
+    "topic": "Chiến lược Tương tác Con người (HITL Triage)",
+    "difficulty": "Cơ bản",
+    "type": "multiple_choice",
+    "question": "Trong hệ thống AI nhận diện khuyết tật sản phẩm dây chuyền lắp ráp VinFast, chiến lược Human-in-the-Loop (HITL) phân luồng thông minh hoạt động theo nguyên lý nào?",
+    "options": {
+      "A": "Tự động phê duyệt các sản phẩm mà mô hình có độ tin cậy cực cao (Confidence > 98%), tự động loại bỏ các sản phẩm khuyết tật rõ ràng, và chỉ chuyển các trường hợp nghi ngờ (vùng không chắc chắn 60% - 90%) cho kỹ sư kiểm định thủ công",
+      "B": "Bắt kỹ sư kiểm tra lại 100% tất cả sản phẩm bằng mắt thường",
+      "C": "Cho phép AI tự quyết định 100% kể cả khi mô hình hoàn toàn phân vân",
+      "D": "Dừng dây chuyền sản xuất mỗi khi phát hiện một sản phẩm lỗi"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "HITL tối ưu hóa sự phối hợp người - máy: giải phóng 90% khối lượng công việc lặp lại cho AI, đồng thời tận dụng chuyên môn sâu của con người ở đúng điểm giới hạn của mô hình, đảm bảo chất lượng xuất xưởng tối đa với chi phí nhân sự tối thiểu."
+  },
+  {
+    "id": "C47",
+    "module": "C",
+    "module_name": "Kiến thức AI & Tư duy sản phẩm AI",
+    "topic": "Học Tăng cường Từ phản hồi DPO vs KTO",
+    "difficulty": "Nâng cao",
+    "type": "multiple_choice",
+    "question": "Phương pháp KTO (Kahneman-Tversky Optimization) mang lại bước đột phá gì trong việc căn chỉnh mô hình ngôn ngữ so với DPO?",
+    "options": {
+      "A": "KTO không cần dữ liệu dạng cặp đối sánh (Chosen vs Rejected), mà chỉ cần dữ liệu đơn lẻ gắn nhãn nhị phân 'Tốt' hoặc 'Tệ' (Upvote / Downvote), phù hợp hoàn hảo với dữ liệu thu thập thực tế từ nút like/dislike của người dùng",
+      "B": "KTO chỉ dùng cho bài toán nhận diện âm thanh",
+      "C": "KTO yêu cầu phải có 1000 chuyên gia tâm lý học tham gia chấm điểm",
+      "D": "KTO làm mô hình phản hồi chậm đi 10 lần"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "DPO đòi hỏi dữ liệu cặp (Prompt, Chosen, Rejected) rất đắt đỏ để thu thập. KTO áp dụng lý thuyết triển vọng (Prospect Theory) của nhà kinh tế học đoạt giải Nobel Daniel Kahneman, cho phép học trực tiếp từ tín hiệu like/dislike rời rạc tự nhiên của sản phẩm."
+  },
+  {
+    "id": "C48",
+    "module": "C",
+    "module_name": "Kiến thức AI & Tư duy sản phẩm AI",
+    "topic": "Chuyển đổi Hệ thống Tìm kiếm Doanh nghiệp",
+    "difficulty": "Nâng cao",
+    "type": "scenario",
+    "question": "[Tình huống Tư duy Sản phẩm 6]: Một doanh nghiệp đang sử dụng hệ thống tìm kiếm từ khóa truyền thống Elasticsearch cho 2 triệu văn bản quy định nội bộ. Nhân viên phản ánh tìm kiếm từ khóa không hiểu ý nghĩa câu hỏi dài (ví dụ: 'thủ tục xin nghỉ dưỡng sức sau ốm đau'). Hãy lập kế hoạch kỹ thuật chi tiết để chuyển đổi sang kiến trúc Hybrid Search kết hợp Reranker và RAG mà không làm gián đoạn hệ thống hiện tại?",
+    "sample_answer": "Kế hoạch chuyển đổi 4 giai đoạn không gián đoạn:\n1. Giai đoạn 1 - Kiến trúc dữ liệu song song (Shadow Pipeline):\n- Giữ nguyên cluster Elasticsearch hiện tại phục vụ tìm kiếm BM25.\n- Dựng Vector DB (như Qdrant hoặc Milvus) và pipeline sinh embedding văn bản bất đồng bộ bằng mô hình đa ngôn ngữ (BGE-M3).\n2. Giai đoạn 2 - Triển khai Hybrid Retrieval & RRF:\n- Thiết lập tầng API trung gian: Gửi truy vấn đồng thời tới cả Elasticsearch (BM25) và Vector DB.\n- Áp dụng thuật toán Reciprocal Rank Fusion (RRF): `RRF_Score = sum(1 / (60 + rank_i))` để tổng hợp danh sách Top 30 kết quả tốt nhất từ cả 2 nguồn.\n3. Giai đoạn 3 - Re-ranking & Tóm tắt RAG:\n- Đưa Top 30 qua mô hình BGE-Reranker lấy Top 5 kết quả sát nghĩa nhất.\n- Nạp Top 5 vào LLM/SLM sinh câu trả lời trực tiếp kèm trích dẫn văn bản quy định gốc.\n4. Giai đoạn 4 - A/B Testing & Chuyển giao:\n- Định tuyến 10% người dùng thử nghiệm tính năng 'Tìm kiếm thông minh AI', theo dõi tỉ lệ Click-Through-Rate (CTR) và thời gian tìm kiếm thành công trước khi chuyển đổi 100%.",
+    "points": 5,
+    "explanation": "**Phân tích Chiến Lược Chuyển Đổi Hệ Thống Tìm Kiếm Sang Hybrid Search:**\n- **Tại sao cần Hybrid Search (Vector Search + BM25)?**\n  - *Vector Search (Dense):* Rất mạnh về hiểu ngữ nghĩa, từ đồng nghĩa, ý định người dùng (Semantic Intent), nhưng rất yếu khi tìm mã sản phẩm chính xác, tên riêng, số hiệu văn bản (SKU, serial numbers).\n  - *BM25 (Sparse):* Cực kỳ chuẩn xác với từ khóa đặc thù (Exact Keyword Matching).\n- **Cơ chế Reciprocal Rank Fusion (RRF):**\n  Kết hợp thứ hạng của cả hai luồng tìm kiếm:\n  $$RRF(d) = \\sum_{m \\in \\{Dense, Sparse\\}} \\frac{1}{k + \\text{rank}_m(d)}$$\n  (thường chọn $k = 60$). Phương pháp này không cần chuẩn hóa điểm số khác biệt giữa hai hệ thống và mang lại kết quả vượt trội."
+  },
+  {
+    "id": "C49",
+    "module": "C",
+    "module_name": "Kiến thức AI & Tư duy sản phẩm AI",
+    "topic": "Thiết kế AI Agent Tự động Sửa Lỗi Mã nguồn",
+    "difficulty": "Nâng cao",
+    "type": "scenario",
+    "question": "[Tình huống Tư duy Sản phẩm 7]: Bạn được giao phát triển một Coding Agent tự động sửa lỗi (Bug-fixing Agent) cho kho mã nguồn Python của dự án. Nếu chỉ dùng một prompt đơn lẻ đưa mã nguồn vào LLM, tỷ lệ mã sửa xong vượt qua bài test chỉ đạt 45%. Hãy thiết kế một quy trình vòng lặp tự sửa chữa (Self-Debugging & Verification Loop) để nâng tỷ lệ thành công lên trên 85%?",
+    "sample_answer": "Thiết kế kiến trúc Vòng lặp Tự sửa chữa (Self-Healing Loop):\n1. Phân tích lỗi (Error Localization): Agent nhận traceback và mã nguồn, sử dụng công cụ đọc AST (Abstract Syntax Tree) để xác định chính xác dòng gây lỗi.\n2. Lập kế hoạch & Sinh mã (Code Generation): Agent đề xuất phương án sửa đổi và áp dụng code patch vào môi trường sandbox cô lập.\n3. Kiểm thử tự động (Automated Verification): Tự động thực thi `pytest` trong Docker container an toàn:\n- Nếu toàn bộ test case PASS: Trả về pull request hoàn thiện.\n- Nếu FAILED: Trích xuất thông báo lỗi mới và traceback của pytest, chuyển sang Bước 4.\n4. Phản biện và Sửa lại (Reflexion & Retry Loop): Cung cấp lịch sử lỗi trước đó và kết quả chạy test thất bại làm phản hồi cho Agent suy ngẫm (Thought) và sinh phương án sửa mới.\n- Giới hạn tối đa 3-5 vòng lặp. Cơ chế này giúp Agent tự học từ chính sai lầm của nó, đẩy tỷ lệ pass test từ 45% lên trên 85%.",
+    "points": 5,
+    "explanation": "**Phân tích Kiến trúc AI Agent Tự Động Sửa Lỗi (Reflexion Architecture):**\n- **Vòng lặp Phản tư & Tự sửa sai (Self-Reflection Loop):**\n  Thay vì chỉ sinh code 1 lần (Single-turn), Agent hoạt động theo chu trình:\n  1. *Tạo mã (Generation):* Agent sinh code giải quyết bài toán.\n  2. *Thực thi cô lập (Sandboxed Execution):* Chạy code bên trong môi trường Docker cô lập an toàn, thu thập log lỗi và kết quả Unit Test.\n  3. *Phản tư (Reflection):* Nếu test thất bại, Agent đọc traceback lỗi, phân tích nguyên nhân gốc rễ và tự viết lời giải thích rút kinh nghiệm vào bộ nhớ ngắn hạn.\n  4. *Tái sinh mã (Regeneration):* Sinh lại mã sửa đổi dựa trên bài học phản tư. Lặp lại tối đa 3-5 vòng cho đến khi vượt qua 100% test cases."
+  },
+  {
+    "id": "C50",
+    "module": "C",
+    "module_name": "Kiến thức AI & Tư duy sản phẩm AI",
+    "topic": "Hệ thống AI Thị giác Dây chuyền VinFast",
+    "difficulty": "Nâng cao",
+    "type": "scenario",
+    "question": "[Tình huống Tư duy Sản phẩm 8]: Dây chuyền sơn xe tự động tại nhà máy VinFast Hải Phòng yêu cầu hệ thống AI thị giác máy tính phát hiện các vết xước nhỏ dưới 0.5mm trên bề mặt vỏ xe với tốc độ dây chuyền di chuyển 1 mét/giây. Hãy đề xuất giải pháp kỹ thuật kết hợp giữa Phần cứng (Camera, Chiếu sáng) và Kiến trúc Mô hình AI để đảm bảo không bỏ sót khuyết tật (Zero Defect)?",
+    "sample_answer": "Giải pháp kỹ thuật toàn diện:\n1. Giải pháp Phần cứng & Quang học (Imaging Setup):\n- Sử dụng Camera quét dòng công nghiệp (Line-scan camera) độ phân giải cao kết hợp ống kính telecentric để loại bỏ hiện tượng biến dạng hình học.\n- Hệ thống chiếu sáng vòm góc xiên (Dark-field illumination) hoặc đèn LED phản xạ gương để làm nổi bật các vết xước và dị tật bề mặt siêu nhỏ 0.5mm trên lớp sơn bóng.\n2. Kiến trúc Mô hình AI:\n- Sử dụng mô hình Segment Anything (SAM) được tinh chỉnh (fine-tuned) hoặc mô hình Unsupervised Anomaly Detection (như PatchCore) huấn luyện chỉ trên bề mặt sơn chuẩn, phát hiện dị tật thông qua việc so sánh khoảng cách đặc trưng bộ nhớ (Memory Bank).\n- Phân đoạn ảnh thành các mảng nhỏ (Patches) độ phân giải gốc để giữ nguyên chi tiết vi mô, không downsample ảnh.\n3. Triển khai Suy luận Biên (Edge Deployment):\n- Tối ưu hóa mô hình bằng TensorRT trên cụm máy trạm GPU công nghiệp đặt cạnh dây chuyền, đảm bảo thời gian xử lý dưới 50ms cho mỗi mét thân xe di chuyển qua.",
+    "points": 5,
+    "explanation": "**Phân tích Kiến trúc Thị Giác Máy Tính Edge AI Cho Nhà Máy VinFast:**\n- **Giải quyết bài toán độ trễ và độ tin cậy thời gian thực:**\n  - Băng chuyền chuyển động liên tục không thể gửi ảnh lên đám mây (Cloud) vì độ trễ mạng và rủi ro đứt cáp làm dừng toàn bộ dây chuyền sản xuất.\n- **Mô hình triển khai chuẩn mực:**\n  - *Edge Devices:* Trang bị máy tính công nghiệp nhúng GPU (như NVIDIA Jetson AGX Orin hoặc PC trang bị RTX 4000) đặt ngay cạnh dây chuyền.\n  - *Mô hình tối ưu:* Sử dụng YOLOv8/YOLOv10 đã qua lượng tử hóa INT8 bằng TensorRT, tốc độ xử lý > 100 FPS.\n  - *Cơ chế dự phòng (Fail-safe):* Khi phát hiện bất thường với độ tin cậy thấp, tự động gạt sản phẩm sang làn chờ kiểm tra thủ công và gửi mẫu về server trung tâm để gắn nhãn huấn luyện lại (Active Learning)."
+  },
+  {
+    "id": "C51",
+    "module": "C",
+    "module_name": "Kiến thức AI & Tư duy sản phẩm AI",
+    "topic": "So sánh LSTM vs RNN Triệt tiêu Gradient (Đề gốc Practice.docx)",
+    "difficulty": "Trung bình",
+    "type": "multiple_choice",
+    "question": "Tại sao kiến trúc LSTM (Long Short-Term Memory) lại giải quyết được triệt để hiện tượng Triệt tiêu đạo hàm (Vanishing Gradient) vốn làm cho mạng RNN truyền thống không thể học được phụ thuộc xa trong chuỗi văn bản dài?",
+    "options": {
+      "A": "Nhờ đường dẫn thông tin Cell State tuyến tính (Constant Error Carousel) với các cổng (Forget gate, Input gate); gradient khi lan truyền ngược qua thời gian được truyền qua phép cộng thay vì phép nhân ma trận liên tiếp, giúp gradient không bị triệt tiêu về 0",
+      "B": "LSTM nhân đôi số lượng GPU trong quá trình tính toán",
+      "C": "LSTM chỉ dùng hàm kích hoạt ReLU thay vì hàm Tanh",
+      "D": "LSTM xóa bỏ hoàn toàn chuỗi thời gian quá khứ"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Trong RNN chuẩn, đạo hàm qua thời gian chứa tích của hàng loạt ma trận trọng số W_hh, nếu trị riêng < 1 gradient sẽ tắt theo hàm số mũ. Trong LSTM, C_t = f_t * C_{t-1} + i_t * C_tilde_t, đạo hàm dC_t/dC_{t-1} chứa số hạng f_t (cổng quên) cho phép gradient chạy thẳng không suy giảm qua hàng trăm bước thời gian."
+  },
+  {
+    "id": "C52",
+    "module": "C",
+    "module_name": "Kiến thức AI & Tư duy sản phẩm AI",
+    "topic": "Ma trận Trạng thái Bias & Variance (Đề gốc Practice.docx)",
+    "difficulty": "Cơ bản",
+    "type": "multiple_choice",
+    "question": "Khi đánh giá mô hình học máy, trường hợp mô hình có Độ chệch cao (High Bias) kết hợp với Phương sai thấp (Low Variance) biểu hiện cho tình trạng nào của mô hình?",
+    "options": {
+      "A": "Underfitting (Mô hình quá đơn giản, không học được quy luật dữ liệu, sai số cao trên cả tập Train và tập Test)",
+      "B": "Overfitting (Mô hình học vẹt, nhạy cảm với nhiễu)",
+      "C": "Mô hình lý tưởng (Good Fit)",
+      "D": "Mô hình hoàn hảo 100%"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "- High Bias + Low Variance = Underfitting.\n- Low Bias + High Variance = Overfitting.\n- High Bias + High Variance = Mô hình kém toàn diện (vừa sai lệch vừa không ổn định).\n- Low Bias + Low Variance = Mô hình tối ưu lý tưởng."
+  },
+  {
+    "id": "C53",
+    "module": "C",
+    "module_name": "Kiến thức AI & Tư duy sản phẩm AI",
+    "topic": "Lựa chọn RAG vs LoRA vs Full Fine-Tuning (Đề gốc Practice.docx)",
+    "difficulty": "Trung bình",
+    "type": "multiple_choice",
+    "question": "Khi nào một kỹ sư AI thực chiến nên ưu tiên sử dụng LoRA thay vì Full Fine-Tuning hoặc RAG?",
+    "options": {
+      "A": "Khi cần thay đổi phong cách diễn đạt (Style/Tone), cấu trúc phản hồi hoặc học cú pháp/nhiệm vụ chuyên biệt mới (Task Adaptation) mà tài nguyên GPU bị giới hạn và không muốn làm suy thoái tri thức tổng quát ban đầu của mô hình",
+      "B": "Khi dữ liệu cần tra cứu thay đổi giá bán liên tục mỗi 5 phút",
+      "C": "Khi máy chủ không có card đồ họa GPU",
+      "D": "Khi chỉ cần tìm kiếm từ khóa trong file PDF"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "- RAG: Tối ưu khi dữ liệu thay đổi liên tục, cần trích dẫn chính xác nguồn và triệt tiêu ảo giác.\n- LoRA: Tối ưu khi cần thay đổi cách hành văn, học format chuyên ngành mới với chi phí GPU thấp.\n- Full Fine-tuning: Tốn kém nhất, chỉ dùng khi có nguồn GPU khổng lồ và muốn dạy mô hình một ngôn ngữ hoàn toàn mới từ đầu."
+  },
+  {
+    "id": "C54",
+    "module": "C",
+    "module_name": "Kiến thức AI & Tư duy sản phẩm AI",
+    "topic": "Thuật toán Support Vector Machine - SVM (Đề gốc Practice.docx)",
+    "difficulty": "Trung bình",
+    "type": "multiple_choice",
+    "question": "Mục tiêu tối ưu hóa cốt lõi của thuật toán Support Vector Machine (SVM) trong bài toán phân loại tuyến tính là gì?",
+    "options": {
+      "A": "Tìm một siêu phẳng (Hyperplane) phân chia hai lớp dữ liệu sao cho Khoảng cách lề (Margin) giữa siêu phẳng và các điểm dữ liệu gần nhất (Support Vectors) của hai lớp đạt giá trị LỚN NHẤT",
+      "B": "Tìm đường cong đi qua tất cả các điểm dữ liệu",
+      "C": "Tính giá trị trung bình của toàn bộ dữ liệu",
+      "D": "Giảm số chiều dữ liệu về bằng 1"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "SVM là bộ phân loại lề cực đại (Maximum Margin Classifier). Khoảng cách lề bằng 2 / ||w||, do đó tối đa hóa lề tương đương với bài toán tối ưu lồi bình phương: cực tiểu hóa (1/2) * ||w||^2, đảm bảo khả năng tổng quát hóa cao nhất trên dữ liệu chưa thấy."
+  },
+  {
+    "id": "C55",
+    "module": "C",
+    "module_name": "Kiến thức AI & Tư duy sản phẩm AI",
+    "topic": "Hàm kích hoạt ReLU vs Sigmoid (Đề gốc Practice.docx)",
+    "difficulty": "Cơ bản",
+    "type": "multiple_choice",
+    "question": "Tại sao hàm kích hoạt ReLU: $f(x) = \\max(0, x)$ lại thay thế gần như hoàn toàn Sigmoid và Tanh trong các tầng ẩn (Hidden Layers) của Deep Learning?",
+    "options": {
+      "A": "Giải quyết triệt để hiện tượng Vanishing Gradients ở miền dương ($f'(x) = 1$) và tính toán cực nhanh không cần hàm mũ",
+      "B": "Cho đầu ra luôn bị chặn trong khoảng [0, 1]",
+      "C": "Đạo hàm liên tục tại mọi điểm kể cả x = 0",
+      "D": "Luôn đối xứng qua gốc tọa độ"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Hai ưu điểm áp đảo giúp ReLU thống trị các mạng Deep Learning:\n1. **Triệt tiêu Vanishing Gradients:** Với mọi $x > 0$, đạo hàm $f'(x) = 1$ không đổi, gradient có thể lan truyền qua hàng chục hoặc hàng trăm lớp mà không bị suy giảm theo cấp số nhân như Sigmoid hay Tanh.\n2. **Hiệu năng tính toán cực cao:** ReLU chỉ là một phép so sánh đơn giản $\\max(0, x)$, không tốn chu kỳ CPU/GPU để tính hàm lũy thừa $e^{-z}$ như Sigmoid hay Tanh."
+  },
+  {
+    "id": "C56",
+    "module": "C",
+    "module_name": "Kiến thức AI & Tư duy sản phẩm AI",
+    "topic": "Phương pháp Ensemble: Bagging vs Boosting (Đề gốc Practice.docx)",
+    "difficulty": "Trung bình",
+    "type": "multiple_choice",
+    "question": "Sự khác biệt cốt lõi về cơ chế huấn luyện giữa hai phương pháp học kết hợp (Ensemble Learning) là Bagging (ví dụ: Random Forest) và Boosting (ví dụ: XGBoost / LightGBM) là gì?",
+    "options": {
+      "A": "Bagging huấn luyện các mô hình con một cách độc lập và song song rồi lấy trung bình (giúp giảm Variance); trong khi Boosting huấn luyện các mô hình con một cách TUẦN TỰ, mỗi mô hình sau tập trung sửa các lỗi sai của mô hình trước (giúp giảm Bias)",
+      "B": "Bagging chỉ dùng cho bài toán phân loại ảnh, Boosting chỉ dùng cho văn bản",
+      "C": "Boosting huấn luyện độc lập không liên quan đến nhau",
+      "D": "Random Forest luôn chạy nhanh hơn XGBoost 100 lần"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "- Bagging (Bootstrap Aggregating): Lấy mẫu có hoàn lại, train song song nhiều cây sâu, giảm Variance chống Overfitting.\n- Boosting: Train tuần tự, tăng trọng số các mẫu bị dự đoán sai, biến các mô hình yếu (Weak Learners) thành mô hình mạnh (Strong Learner), chủ yếu giảm Bias."
+  },
+  {
+    "id": "C57",
+    "module": "C",
+    "module_name": "Kiến thức AI & Tư duy sản phẩm AI",
+    "topic": "Kỹ thuật Pooling trong CNN (Đề gốc Practice.docx)",
+    "difficulty": "Cơ bản",
+    "type": "multiple_choice",
+    "question": "Lớp Max Pooling trong mạng nơ-ron tích chập (CNN) đóng vai trò kỹ thuật quan trọng nào?",
+    "options": {
+      "A": "Giảm kích thước không gian (chiều rộng và chiều cao) của feature map, giúp giảm số lượng tham số tính toán và tạo tính bất biến tịnh tiến nhỏ (Translation Invariance) cho đặc trưng",
+      "B": "Tăng số lượng tham số trọng số của mô hình lên gấp đôi",
+      "C": "Chuyển đổi ảnh màu RGB sang ảnh đen trắng",
+      "D": "Tự động đảo ngược ảnh theo chiều dọc"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Max Pooling giữ lại đặc trưng kích hoạt mạnh nhất trong từng vùng cục bộ (ví dụ 2x2 stride 2 làm giảm 75% số điểm ảnh), giúp mạng nhìn ở trường tiếp nhận (Receptive field) rộng hơn ở các tầng sau và giảm nguy cơ overfitting."
+  },
+  {
+    "id": "C58",
+    "module": "C",
+    "module_name": "Kiến thức AI & Tư duy sản phẩm AI",
+    "topic": "Thuật toán Kernel Trick trong SVM (Đề gốc Practice.docx)",
+    "difficulty": "Nâng cao",
+    "type": "multiple_choice",
+    "question": "Bí quyết 'Kernel Trick' cho phép SVM phân loại dữ liệu không thể phân tách tuyến tính trong không gian ban đầu mà không bị bùng nổ chi phí tính toán nhờ nguyên lý toán học nào?",
+    "options": {
+      "A": "Tính toán tích vô hướng trong không gian số chiều cao vô hạn thông qua hàm nhân K(x, z) trực tiếp từ các vector ở không gian ban đầu, mà không cần phải thực hiện phép biến đổi phi tuyến tường minh phi(x)",
+      "B": "Chuyển toàn bộ dữ liệu thành ma trận đường chéo",
+      "C": "Xóa bỏ các điểm dữ liệu nằm ở biên",
+      "D": "Bỏ qua các phép nhân ma trận"
+    },
+    "correct_answer": "A",
+    "points": 3,
+    "explanation": "Định lý Mercer cho phép tính K(x, z) = <phi(x), phi(z)> trong O(d) thời gian ban đầu, dù không gian đặc trưng phi có thể là vô hạn chiều (như RBF Gaussian Kernel), giúp SVM giải quyết xuất sắc các bài toán phi tuyến phức tạp."
+  },
+  {
+    "id": "C59",
+    "module": "C",
+    "module_name": "Kiến thức AI & Tư duy sản phẩm AI",
+    "topic": "Xử lý Sụt giảm Hiệu năng Sau Deploy (Đề gốc Practice.docx)",
+    "difficulty": "Nâng cao",
+    "type": "scenario",
+    "question": "[Tình huống Tự luận Case Study 1 - Đề mẫu Thực chiến]: Khi deploy hệ thống mô hình AI lên môi trường Production, bộ phận vận hành báo cáo độ chính xác (Accuracy/Performance) bị sụt giảm rõ rệt so với lúc huấn luyện và kiểm thử. Hãy nêu các bước xử lý kỹ thuật, các từ khóa cốt lõi cần làm và hệ thống chỉ số cần đo lường?",
+    "sample_answer": "Quy trình xử lý chuẩn mực (Keywords bắt buộc):\n1. Monitoring & Logging toàn diện: Code phải log đầy đủ đầu vào (inputs), kết quả dự đoán (predictions) và phản hồi thực tế (ground truth feedback từ người dùng/chuyên viên). Dashboard giám sát bắt lỗi và khoanh vùng chính xác điểm nghẽn.\n2. Kiểm tra phân phối dữ liệu (Data Drift / Covariate Shift): So sánh phân phối thống kê của tập dữ liệu thực tế hiện tại với tập train/validation ban đầu để phát hiện sự phân kỳ (drift do hành vi người dùng, môi trường thực tế thay đổi).\n3. Retraining Pipeline & Active Learning: Thu thập các mẫu dữ liệu thực địa có độ tin cậy thấp (Low Confidence) để chuyên viên gắn nhãn bổ sung, kích hoạt pipeline retrain tự động và đánh giá lại bằng Shadow Deployment trước khi chuyển đổi.\n4. Hệ thống Metrics Kép: Đo lường đồng thời Offline Metrics (Accuracy, Precision, Recall, F1) và Business Metrics (Tỷ lệ hoàn thành công việc, chi phí, mức độ hài lòng khách hàng).",
+    "points": 5,
+    "explanation": "**Phân tích Nguyên Nhân & Quy Trình Xử Lý Sụt Giảm Độ Chính Xác Sau Deploy (Đề Gốc Practice.docx):**\n- **1. Phân loại nguyên nhân suy giảm:**\n  - *Data Drift:* Phân phối dữ liệu đầu vào $P(X)$ thay đổi (ví dụ: camera đổi góc chụp, ánh sáng nhà xưởng thay đổi, mùa đông người dùng mặc trang phục khác).\n  - *Concept Drift:* Mối quan hệ giữa đầu vào và nhãn $P(Y \\mid X)$ thay đổi (ví dụ: tiêu chuẩn lỗi sản phẩm được siết chặt hơn).\n- **2. Quy trình 4 bước khắc phục chuẩn mực:**\n  - *Bước 1 (Monitor & Alert):* Thiết lập chỉ số giám sát độ lệch phân phối bằng kiểm định thống kê KS-test (Kolmogorov-Smirnov) hoặc chỉ số PSI (Population Stability Index).\n  - *Bước 2 (Data Collection):* Lưu vết các mẫu dự đoán có độ tự tin thấp (Low confidence).\n  - *Bước 3 (Active Learning & Re-training):* Chuyên viên gắn nhãn bổ sung cho các mẫu biên khó, đưa vào tập huấn luyện lại mô hình mới.\n  - *Bước 4 (Shadow/Canary Deployment):* Chạy mô hình mới song song ở chế độ bóng râm (Shadow mode) để so sánh chỉ số trước khi thay thế hoàn toàn."
+  },
+  {
+    "id": "C60",
+    "module": "C",
+    "module_name": "Kiến thức AI & Tư duy sản phẩm AI",
+    "topic": "Hệ thống AI Agent Giáo dục & Semantic Caching (Đề gốc Practice.docx)",
+    "difficulty": "Nâng cao",
+    "type": "scenario",
+    "question": "[Tình huống Tự luận Case Study 2 - Đề mẫu Thực chiến]: Thiết kế một hệ thống AI Agent hỗ trợ học sinh giải bài tập. Nếu đưa kết quả ngay lập tức thì phản tác dụng đối với học sinh (học sinh không tự tư duy). Làm thế nào để giải quyết vấn đề đó về mặt sư phạm AI và tối ưu hóa hạ tầng để giảm tải hệ thống khi có nhiều học sinh cùng hỏi bài khó?",
+    "sample_answer": "Giải pháp kỹ thuật (Keywords cốt lõi):\n1. Thiết kế Gợi ý Dần (Socratic Tutoring / Scaffolding): Thiết lập System Prompt và cơ chế Agent chỉ đưa ra câu hỏi gợi mở hoặc gợi ý một bước trung gian tiếp theo, tuyệt đối không đưa ngay đáp án hoặc lời giải hoàn chỉnh. Theo dõi tiến trình suy luận của học sinh qua đối thoại nhiều lượt (Multi-turn Conversation), chỉ mở khóa bước tiếp theo khi học sinh đã hiểu bước trước.\n2. Semantic Caching (Redis + Vector Cache): Trong môi trường giáo dục, các bài tập khó thường sẽ có rất nhiều học sinh cùng hỏi trong cùng một thời điểm (kỳ thi, bài tập về nhà). Thiết lập Semantic Cache: Nếu câu hỏi mới tương đồng trên 95% với câu hỏi đã có trong cache, tái sử dụng luồng gợi ý đã sinh trước đó -> Giảm tải 70-80% chi phí gọi GPU/LLM API và giảm độ trễ phản hồi xuống dưới 50ms.\n3. Đo lường Metrics: Đo lường Business Metrics (Tỷ lệ học sinh tự giải được bài sau gợi ý, thời gian tương tác) kết hợp Offline Metrics (Cache Hit Rate, Latency, API Cost).",
+    "points": 5,
+    "explanation": "**Phân tích Hệ Thống Gia Sư Socratic & Semantic Caching Redis (Đề Gốc Practice.docx):**\n- **1. Prompt Engineering theo phương pháp Socratic:**\n  - Khóa chặt hành vi của LLM: *'Không bao giờ đưa ra lời giải trực tiếp. Luôn đặt câu hỏi định hướng, giải thích nguyên lý gợi mở từng bước để học sinh tự tìm ra đáp án'*.\n  - Bổ sung quy tắc dừng: Khi học sinh đưa ra suy luận đúng, khen ngợi và mở rộng sang bài toán nâng cao.\n- **2. Semantic Caching với Vector Database & Redis:**\n  - Thay vì cache chính xác từng ký tự (Exact Keyword Cache rất vô dụng trong hội thoại), hệ thống chuyển câu hỏi của học sinh thành embedding vector.\n  - So sánh Cosine Similarity với kho câu hỏi đã trả lời trong Redis Vector Store. Nếu độ tương đồng $> 0.95$, trả về câu trả lời đã được cache ngay lập tức.\n  - *Lợi ích vượt trội:* Giảm độ trễ từ $2000\\text{ms}$ xuống dưới $30\\text{ms}$, tiết kiệm tới $60\\text{ - }70\\%$ chi phí gọi API mô hình lớn."
+  }
+]

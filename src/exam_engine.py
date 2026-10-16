@@ -219,8 +219,12 @@ def save_attempt_history(result: Dict[str, Any]) -> None:
     }
     history.append(summary_entry)
 
-    with open(HISTORY_FILE, "w", encoding="utf-8") as f:
-        json.dump(history, f, ensure_ascii=False, indent=2)
+    try:
+        with open(HISTORY_FILE, "w", encoding="utf-8") as f:
+            json.dump(history, f, ensure_ascii=False, indent=2)
+    except Exception as e:
+        # Gracefully continue if running in read-only environment (e.g. Vercel serverless)
+        pass
 
 
 def load_history() -> List[Dict[str, Any]]:
