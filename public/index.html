@@ -203,17 +203,17 @@
         </div>
 
         <!-- Review Question Filters -->
-        <div style="display: flex; justify-content: space-between; align-items: center; margin: 32px 0 16px 0;">
+        <div class="review-filter-bar">
           <h2 style="font-size: 16px; font-weight: 700; color: var(--text-main);">Lời Giải & Giải Thích Chi Tiết 20 Câu Hỏi</h2>
-          <div style="display: flex; gap: 8px;">
-            <button class="btn btn-secondary" onclick="renderReviewList('all')">Tất cả (20)</button>
-            <button class="btn btn-secondary" onclick="renderReviewList('wrong')">Câu làm sai</button>
-            <button class="btn btn-secondary" onclick="renderReviewList('correct')">Câu làm đúng</button>
-            <button class="btn btn-primary" onclick="window.print()">
-              <i data-lucide="printer" style="width: 15px; height: 15px;"></i> In Bài Thi / Xuất PDF
+          <div class="review-filter-actions">
+            <button class="btn btn-secondary btn-sm" onclick="renderReviewList('all')">Tất cả (20)</button>
+            <button class="btn btn-secondary btn-sm" onclick="renderReviewList('wrong')">Câu làm sai</button>
+            <button class="btn btn-secondary btn-sm" onclick="renderReviewList('correct')">Câu làm đúng</button>
+            <button class="btn btn-primary btn-sm" onclick="window.print()">
+              <i data-lucide="printer" style="width: 14px; height: 14px;"></i> In Bài Thi
             </button>
-            <button class="btn btn-secondary" onclick="startNewExam(); switchTab('exam');">
-              <i data-lucide="refresh-cw" style="width: 15px; height: 15px;"></i> Thi Lại Đề Mới
+            <button class="btn btn-secondary btn-sm" onclick="startNewExam(); switchTab('exam');">
+              <i data-lucide="refresh-cw" style="width: 14px; height: 14px;"></i> Thi Lại Đề Mới
             </button>
           </div>
         </div>
@@ -226,14 +226,14 @@
 
     <!-- VIEW 3: PRACTICE MODE (FILTER BY MODULE & DIFFICULTY) -->
     <div id="view-practice" style="display: none;">
-      <div style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 24px; margin-bottom: 24px;">
-        <h1 style="font-size: 20px; font-weight: 800; color: var(--text-main); margin-bottom: 8px;">LUYỆN TẬP THEO CHUYÊN ĐỀ (240 CÂU HỎI)</h1>
-        <p style="color: var(--text-muted); font-size: 13px; margin-bottom: 20px;">Luyện theo từng module với phản hồi đáp án và phân tích chi tiết ngay sau mỗi câu.</p>
+      <div class="practice-header-card">
+        <h1 class="practice-main-title">LUYỆN TẬP THEO CHUYÊN ĐỀ (240 CÂU HỎI)</h1>
+        <p class="practice-sub-desc">Luyện theo từng module với phản hồi đáp án và phân tích chi tiết ngay sau mỗi câu.</p>
 
-        <div style="display: grid; grid-template-columns: 1fr 180px 180px 120px; gap: 14px; align-items: end;">
+        <div class="practice-toolbar-grid">
           <div>
-            <label style="display: block; font-size: 12px; font-weight: 700; margin-bottom: 6px;">Chọn Module:</label>
-            <select id="practice-module-select" style="width: 100%; padding: 8px 12px; border-radius: var(--radius-md); border: 1px solid var(--border-strong); font-size: 13px;">
+            <label class="field-label">Chọn Module:</label>
+            <select id="practice-module-select" class="form-select">
               <option value="A">Module A: Nền tảng Toán học & Định lượng (60 câu)</option>
               <option value="B">Module B: Kỹ thuật Lập trình & Xử lý dữ liệu (60 câu)</option>
               <option value="C">Module C: Kiến thức AI & Tư duy sản phẩm AI (60 câu)</option>
@@ -242,8 +242,8 @@
           </div>
 
           <div>
-            <label style="display: block; font-size: 12px; font-weight: 700; margin-bottom: 6px;">Độ khó:</label>
-            <select id="practice-diff-select" style="width: 100%; padding: 8px 12px; border-radius: var(--radius-md); border: 1px solid var(--border-strong); font-size: 13px;">
+            <label class="field-label">Độ khó:</label>
+            <select id="practice-diff-select" class="form-select">
               <option value="all">Tất cả mức độ</option>
               <option value="Cơ bản">Cơ bản</option>
               <option value="Trung bình">Trung bình</option>
@@ -252,15 +252,15 @@
           </div>
 
           <div>
-            <label style="display: block; font-size: 12px; font-weight: 700; margin-bottom: 6px;">Chế độ ôn tập:</label>
-            <button id="btn-toggle-all-explanations" class="btn btn-secondary" onclick="toggleAllPracticeExplanations()" style="width: 100%; padding: 8px 10px; font-size: 12px; white-space: nowrap;">
+            <label class="field-label">Chế độ ôn tập:</label>
+            <button id="btn-toggle-all-explanations" class="btn btn-secondary btn-full" onclick="toggleAllPracticeExplanations()">
               <i data-lucide="eye" style="width: 14px; height: 14px;"></i>
               <span id="toggle-all-exp-label">Mở hết lời giải</span>
             </button>
           </div>
 
           <div>
-            <span class="tabular-nums" id="practice-count-badge" style="display: inline-block; padding: 9px 12px; background: #eff6ff; color: var(--accent-primary); font-weight: 700; border-radius: var(--radius-md); font-size: 13px; border: 1px solid #bfdbfe; width: 100%; text-align: center;">
+            <span class="tabular-nums practice-count-badge" id="practice-count-badge">
               60 câu hỏi
             </span>
           </div>
